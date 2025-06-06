@@ -398,71 +398,68 @@
 
 <!-- JavaScript to handle conditional visibility -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const supplierType = document.getElementById('supplier_legal_personality');
-    const naturalFields = document.getElementById('natural_person_fields');
-    const legalFields = document.getElementById('legal_person_fields');
+document.addEventListener('DOMContentLoaded', () => {
+  const supplierType = document.getElementById('supplier_legal_personality');
+  const naturalFields = document.getElementById('natural_person_fields');
+  const legalFields = document.getElementById('legal_person_fields');
 
-    const groupWrapper = document.getElementById('group_wrapper');
-    const groupSelector = document.getElementById('group_d365');
-    
-    function toggleSupplierFields() {
-      const supplier = supplierType.value;
+  const groupSelector = document.getElementById('group');
 
-      // Show the right block
-      naturalFields.style.display = supplier === 'Natural Person' ? 'block' : 'none';
-      legalFields.style.display = supplier === 'Legal Person' ? 'block' : 'none';
+  const mediaVehicleSection = document.getElementById('media_vehicle_section');
+  const mediaVehicleCheckboxes = document.querySelectorAll('input[name="media_vehicle"]');
 
-      // Hide group section initially
-      groupWrapper.style.display = supplier === 'Natural Person' ? 'block' : 'none';
+  const vendorWebsiteGroup = document.getElementById('vendor_website_section');
+  const vendorWebsite = document.getElementById('vendor_website');
+
+  const inactiveBpcEntityGroup = document.getElementById('inactiveBpcEntityGroup');
+
+  function toggleSupplierFields() {
+    const supplier = supplierType.value;
+
+    naturalFields.style.display = supplier === 'Natural Person' ? 'block' : 'none';
+    legalFields.style.display = supplier === 'Legal Person' ? 'block' : 'none';
+
+    if (supplier === 'Natural Person') {
       groupSelector.value = '';
-      // Hide everything else
+      groupSelector.style.display = 'block';
+    } else {
+      groupSelector.style.display = 'none';
       mediaVehicleSection.style.display = 'none';
-      mandatevendorwebsite.style.display = 'none';
-      nonmandatevendorwebsite.style.display = 'none';
+      vendorWebsiteGroup.style.display = 'none';
+      inactiveBpcEntityGroup.style.display = 'none';
     }
+  }
 
-    function toggleBasedOnGroup() {
-      const group = document.getElementById("group").value;
+  function toggleBasedOnGroup() {
+    const group = groupSelector.value;
 
-      const mediaVehicleSection = document.getElementById("media_vehicle_section");
-      const mediaVehicleCheckboxes = document.querySelectorAll('input[name="media_vehicle"]');
+    mediaVehicleSection.style.display = 'none';
+    vendorWebsiteGroup.style.display = 'none';
+    inactiveBpcEntityGroup.style.display = 'none';
 
-      const vendorWebsiteGroup = document.getElementById("vendorWebsiteGroup");
-      const vendorWebsite = document.getElementById("vendorWebsite");
+    vendorWebsite.required = false;
+    mediaVehicleCheckboxes.forEach(cb => { cb.required = false; cb.checked = false; });
 
-      const inactiveBpcEntityGroup = document.getElementById("inactiveBpcEntityGroup");
-
-      // Reset all visibility
-      mediaVehicleSection.classList.add("hidden");
-      vendorWebsiteGroup.classList.add("hidden");
-      inactiveBpcEntityGroup.classList.add("hidden");
-
-      // Clear required flags
-      vendorWebsite.required = false;
-      mediaVehicleCheckboxes.forEach(cb => cb.required = false);
-
-      if (group === "MEDIA") {
-        mediaVehicleSection.classList.remove("hidden");
-        vendorWebsiteGroup.classList.remove("hidden");
-
-        vendorWebsite.required = true;
-
-        // Apply required to at least one checkbox (formally JS should validate)
-        mediaVehicleCheckboxes.forEach(cb => cb.required = true);
-      }
-
-      if (group === "INTCO") {
-        inactiveBpcEntityGroup.classList.remove("hidden");
-      }
+    if (group === 'MEDIA') {
+      mediaVehicleSection.style.display = 'block';
+      vendorWebsiteGroup.style.display = 'block';
+      vendorWebsite.required = true;
+      mediaVehicleCheckboxes.forEach(cb => cb.required = true);
+    } else if (group === 'INTCO') {
+      vendorWebsiteGroup.style.display = 'block'; // optional
+      inactiveBpcEntityGroup.style.display = 'block';
+    } else if (['NONMEDIA', 'HOUSE', 'TAXSS'].includes(group)) {
+      vendorWebsiteGroup.style.display = 'block'; // optional
     }
-    supplierType.addEventListener('change', toggleSupplierFields);
-    groupSelector.addEventListener('change', toggleBasedOnGroup);
+  }
 
-    // Initial load
-    toggleSupplierFields();
-    toggleBasedOnGroup();
-  });
+  supplierType.addEventListener('change', toggleSupplierFields);
+  groupSelector.addEventListener('change', toggleBasedOnGroup);
+
+  // initialize
+  toggleSupplierFields();
+  toggleBasedOnGroup();
+});
 </script>
 </body>
 </html>
