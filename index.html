@@ -28,9 +28,25 @@
 </header>
 
 <form action="http://10.19.244.10:5000/submit" method="POST" enctype="multipart/form-data">
-  
+  <!-- Request made by -->
   <label for="request_by">Request made by:<span style="color: red;">*</span></label>
   <input type="email" id="request_by" name="request_by" required />
+
+  <!-- Company -->
+  <label>Company:<span style="color: red;">*</span></label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" name="company" value="DENTSU ITALIA SPA" /> DENTSU ITALIA SPA</label>
+    <label><input type="checkbox" name="company" value="CARAT ITALIA SPA" /> CARAT ITALIA SPA</label>
+    <label><input type="checkbox" name="company" value="iPROSPECT ITALIA SPA" /> iPROSPECT ITALIA SPA</label>
+    <label><input type="checkbox" name="company" value="DENTSU DIGITAL SRL" /> DENTSU DIGITAL SRL</label>
+    <label><input type="checkbox" name="company" value="DENTSU CREATIVE SRL SB" /> DENTSU CREATIVE SRL SB</label>
+    <label><input type="checkbox" name="company" value="AMNET ITALIA SRL" /> AMNET ITALIA SRL</label>
+    <label><input type="checkbox" name="company" value="SIMPLE AGENCY SRL" /> SIMPLE AGENCY SRL</label>
+    <label><input type="checkbox" name="company" value="DENTSU TECH & SERVICES SRL" /> DENTSU TECH & SERVICES SRL</label>
+    <label><input type="checkbox" name="company" value="DENTSU X SRL" /> DENTSU X SRL</label>
+    <label><input type="checkbox" name="company" value="MERKLE ITALIA SRL (NEW LEGAL)" /> MERKLE ITALIA SRL (NEW LEGAL)</label>
+    <label><input type="checkbox" name="company" value="MMA TECHNOLOGIES LTD ITALIAN BRANCH" /> MMA TECHNOLOGIES LTD ITALIAN BRANCH</label>
+  </div>
 
   <!-- Supplier Legal Personality -->
   <label>Supplier Legal Personality:<span style="color: red;">*</span></label>
