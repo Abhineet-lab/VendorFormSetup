@@ -456,19 +456,6 @@
         inactiveBpcEntityGroup.classList.remove("hidden");
       }
     }
-
-    // Optional: Custom validation to ensure at least one checkbox is checked
-    document.getElementById("entityForm").addEventListener("submit", function (e) {
-      const group = document.getElementById("group").value;
-      if (group === "MEDIA") {
-        const checkboxes = document.querySelectorAll('input[name="media_vehicle"]');
-        const isChecked = Array.from(checkboxes).some(cb => cb.checked);
-        if (!isChecked) {
-          alert("Please select at least one Media Vehicle.");
-          e.preventDefault();
-        }
-      }
-
     supplierType.addEventListener('change', toggleSupplierFields);
     groupSelector.addEventListener('change', toggleBasedOnGroup);
 
