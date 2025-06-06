@@ -64,18 +64,16 @@
     <option value="Yes">Yes</option>
     <option value="No">No</option>
   </select>
-    <!-- Inside natural_person_fields -->
-<div id="group_wrapper" style="display: none;">
-  <label>Group (D365):<span style="color: red;">*</span></label>
-  <select name="group_d365" id="group_d365" required>
-    <option value="">--Select--</option>
-    <option value="MEDIA">MEDIA</option>
-    <option value="NONMEDIA">NONMEDIA</option>
-    <option value="HOUSE">HOUSE</option>
-    <option value="INTCO">INTCO</option>
-    <option value="TAXSS">TAXSS</option>
-  </select>
-</div>
+     <!-- Group Selector -->
+    <label for="group">Group:<span style="color: red;">*</span></label>
+    <select id="group" name="group" onchange="toggleBasedOnGroup()">
+      <option value="">Select Group</option>
+      <option value="MEDIA">MEDIA</option>
+      <option value="NONMEDIA">NONMEDIA</option>
+      <option value="HOUSE">HOUSE</option>
+      <option value="INTCO">INTCO</option>
+      <option value="TAXSS">TAXSS</option>
+    </select>
     <label>Influencer (D365) promoter:</label>
   <select name="influencer_d365" required>
     <option value="">--Select--</option>
@@ -87,10 +85,15 @@
   <label for="vendor_website">Vendor Website:<span id="website_required_star" style="color: red; display: none;">*</span></label>
   <input type="url" id="vendor_website" name="vendor_website">
 </div>
+
+    <div id="inactiveBpcEntityGroup" class="form-group hidden">
+      <label for="inactiveBpcEntity">Inactive BPC Entity:</label>
+      <input type="text" id="inactiveBpcEntity" name="inactiveBpcEntity">
+    </div>
     
       <!-- Media Vehicle Section (conditional) -->
   <div id="media_vehicle_section" style="display: none;">
-    <label>Media Vehicle (indicate the name of the vehicle):</label>
+    <label>Media Vehicle (indicate the name of the vehicle):<span style="color: red;">*</span></label>
     <div class="checkbox-group">
       <label><input type="checkbox" name="media_vehicle" value="INTERNET" /> INTERNET</label>
       <label><input type="checkbox" name="media_vehicle" value="STAMPA" /> INTERNET STAMPA</label>
@@ -402,12 +405,7 @@
 
     const groupWrapper = document.getElementById('group_wrapper');
     const groupSelector = document.getElementById('group_d365');
-
-    const mediaVehicleSection = document.getElementById('media_vehicle_section');
-    const vendorWebsiteSection = document.getElementById('vendor_website_section');
-    const vendorWebsiteInput = document.getElementById('vendor_website');
-    const websiteStar = document.getElementById('website_required_star');
-
+    
     function toggleSupplierFields() {
       const supplier = supplierType.value;
 
@@ -425,24 +423,51 @@
     }
 
     function toggleBasedOnGroup() {
-  const grp = groupSelector.value;
+      const group = document.getElementById("group").value;
 
-  mediaVehicleSection.style.display = 'none';
-  vendorWebsiteSection.style.display = 'none';
-  vendorWebsiteInput.required = false;
-  websiteStar.style.display = 'none';
+      const mediaVehicleSection = document.getElementById("media_vehicle_section");
+      const mediaVehicleCheckboxes = document.querySelectorAll('input[name="media_vehicle"]');
 
-  if (grp === 'MEDIA') {
-    mediaVehicleSection.style.display = 'block';
-    vendorWebsiteSection.style.display = 'block';
-    vendorWebsiteInput.required = true;
-    websiteStar.style.display = 'inline';
-  } else if (['NONMEDIA','HOUSE','INTCO','TAXSS'].includes(grp)) {
-    vendorWebsiteSection.style.display = 'block';
-    vendorWebsiteInput.required = false;
-    websiteStar.style.display = 'none';
-  }
-}
+      const vendorWebsiteGroup = document.getElementById("vendorWebsiteGroup");
+      const vendorWebsite = document.getElementById("vendorWebsite");
+
+      const inactiveBpcEntityGroup = document.getElementById("inactiveBpcEntityGroup");
+
+      // Reset all visibility
+      mediaVehicleSection.classList.add("hidden");
+      vendorWebsiteGroup.classList.add("hidden");
+      inactiveBpcEntityGroup.classList.add("hidden");
+
+      // Clear required flags
+      vendorWebsite.required = false;
+      mediaVehicleCheckboxes.forEach(cb => cb.required = false);
+
+      if (group === "MEDIA") {
+        mediaVehicleSection.classList.remove("hidden");
+        vendorWebsiteGroup.classList.remove("hidden");
+
+        vendorWebsite.required = true;
+
+        // Apply required to at least one checkbox (formally JS should validate)
+        mediaVehicleCheckboxes.forEach(cb => cb.required = true);
+      }
+
+      if (group === "INTCO") {
+        inactiveBpcEntityGroup.classList.remove("hidden");
+      }
+    }
+
+    // Optional: Custom validation to ensure at least one checkbox is checked
+    document.getElementById("entityForm").addEventListener("submit", function (e) {
+      const group = document.getElementById("group").value;
+      if (group === "MEDIA") {
+        const checkboxes = document.querySelectorAll('input[name="media_vehicle"]');
+        const isChecked = Array.from(checkboxes).some(cb => cb.checked);
+        if (!isChecked) {
+          alert("Please select at least one Media Vehicle.");
+          e.preventDefault();
+        }
+      }
 
     supplierType.addEventListener('change', toggleSupplierFields);
     groupSelector.addEventListener('change', toggleBasedOnGroup);
