@@ -434,26 +434,42 @@
       const value = supplierType.value;
       naturalFields.style.display = value === 'Natural Person' ? 'block' : 'none';
       legalFields.style.display = value === 'Legal Person' ? 'block' : 'none';
+
+      // Hide everything under group until group is selected
+      groupSelector.parentElement.style.display = value ? 'block' : 'none'; // Show group_d365 dropdown only if type selected
+      mediaVehicleSection.style.display = 'none';
+      mandatevendorwebsite.style.display = 'none';
+      nonmandatevendorwebsite.style.display = 'none';
     }
 
     function toggleMediaVehicleSection() {
       const value = groupSelector.value;
-      mediaVehicleSection.style.display = value === 'MEDIA' ? 'block' : 'none';
-      mandatevendorwebsite.style.display = value === 'MEDIA' ? 'block' : 'none';
-      nonmandatevendorwebsite.style.display = value === 'NONMEDIA' ? 'block' : 'none';
-      nonmandatevendorwebsite.style.display = value === 'HOUSE' ? 'block' : 'none';
-      nonmandatevendorwebsite.style.display = value === 'INTCO' ? 'block' : 'none';
-      nonmandatevendorwebsite.style.display = value === 'TAXSS' ? 'block' : 'none';
+
+      // Hide both sections by default
+      mediaVehicleSection.style.display = 'none';
+      mandatevendorwebsite.style.display = 'none';
+      nonmandatevendorwebsite.style.display = 'none';
+
+      // Only show if there's a valid group selected
+      if (value) {
+        if (value === 'MEDIA') {
+          mediaVehicleSection.style.display = 'block';
+          mandatevendorwebsite.style.display = 'block';
+        } else if (['NONMEDIA', 'HOUSE', 'INTCO', 'TAXSS'].includes(value)) {
+          nonmandatevendorwebsite.style.display = 'block';
+        }
+      }
     }
 
     supplierType.addEventListener('change', toggleSupplierFields);
     groupSelector.addEventListener('change', toggleMediaVehicleSection);
 
-    // Initial check in case values are pre-selected (e.g., from form reload)
+    // Initial load setup
     toggleSupplierFields();
     toggleMediaVehicleSection();
   });
 </script>
+
 
 </body>
 </html>
