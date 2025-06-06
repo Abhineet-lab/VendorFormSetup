@@ -64,7 +64,8 @@
     <option value="Yes">Yes</option>
     <option value="No">No</option>
   </select>
-    <!-- Group (D365) -->
+    <!-- Inside natural_person_fields -->
+<div id="group_wrapper" style="display: none;">
   <label>Group (D365):<span style="color: red;">*</span></label>
   <select name="group_d365" id="group_d365" required>
     <option value="">--Select--</option>
@@ -72,8 +73,9 @@
     <option value="NONMEDIA">NONMEDIA</option>
     <option value="HOUSE">HOUSE</option>
     <option value="INTCO">INTCO</option>
-    <option value="INTCO">TAXSS</option>
+    <option value="TAXSS">TAXSS</option>
   </select>
+</div>
     <label>Influencer (D365) promoter:</label>
   <select name="influencer_d365" required>
     <option value="">--Select--</option>
@@ -395,55 +397,56 @@
 
 <!-- JavaScript to handle conditional visibility -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', () => {
     const supplierType = document.getElementById('supplier_legal_personality');
     const naturalFields = document.getElementById('natural_person_fields');
     const legalFields = document.getElementById('legal_person_fields');
+
+    const groupWrapper = document.getElementById('group_wrapper');
     const groupSelector = document.getElementById('group_d365');
+
     const mediaVehicleSection = document.getElementById('media_vehicle_section');
     const mandatevendorwebsite = document.getElementById('vendor_website_mandatory');
     const nonmandatevendorwebsite = document.getElementById('vendor_website');
 
     function toggleSupplierFields() {
-      const value = supplierType.value;
-      naturalFields.style.display = value === 'Natural Person' ? 'block' : 'none';
-      legalFields.style.display = value === 'Legal Person' ? 'block' : 'none';
+      const supplier = supplierType.value;
 
-      // Hide everything under group until group is selected
-      groupSelector.parentElement.style.display = value ? 'block' : 'none'; // Show group_d365 dropdown only if type selected
+      // Show the right block
+      naturalFields.style.display = supplier === 'Natural Person' ? 'block' : 'none';
+      legalFields.style.display = supplier === 'Legal Person' ? 'block' : 'none';
+
+      // Hide group section initially
+      groupWrapper.style.display = supplier === 'Natural Person' ? 'block' : 'none';
+      groupSelector.value = '';
+      // Hide everything else
       mediaVehicleSection.style.display = 'none';
       mandatevendorwebsite.style.display = 'none';
       nonmandatevendorwebsite.style.display = 'none';
     }
 
-    function toggleMediaVehicleSection() {
-      const value = groupSelector.value;
+    function toggleBasedOnGroup() {
+      const grp = groupSelector.value;
 
-      // Hide both sections by default
       mediaVehicleSection.style.display = 'none';
       mandatevendorwebsite.style.display = 'none';
       nonmandatevendorwebsite.style.display = 'none';
 
-      // Only show if there's a valid group selected
-      if (value) {
-        if (value === 'MEDIA') {
-          mediaVehicleSection.style.display = 'block';
-          mandatevendorwebsite.style.display = 'block';
-        } else if (['NONMEDIA', 'HOUSE', 'INTCO', 'TAXSS'].includes(value)) {
-          nonmandatevendorwebsite.style.display = 'block';
-        }
+      if (grp === 'MEDIA') {
+        mediaVehicleSection.style.display = 'block';
+        mandatevendorwebsite.style.display = 'block';
+      } else if (['NONMEDIA','HOUSE','INTCO','TAXSS'].includes(grp)) {
+        nonmandatevendorwebsite.style.display = 'block';
       }
     }
 
     supplierType.addEventListener('change', toggleSupplierFields);
-    groupSelector.addEventListener('change', toggleMediaVehicleSection);
+    groupSelector.addEventListener('change', toggleBasedOnGroup);
 
-    // Initial load setup
+    // Initial load
     toggleSupplierFields();
-    toggleMediaVehicleSection();
+    toggleBasedOnGroup();
   });
 </script>
-
-
 </body>
 </html>
