@@ -58,7 +58,13 @@
 
   <!-- Natural Person Fields -->
   <div id="natural_person_fields" style="display: none;">
-    <label for="first_name">First Name:</label>
+    <label>Vendor created by dentsu:<span style="color: red;">*</span></label>
+  <select name="vendor_created_by_dentsu" required>
+    <option value="">--Select--</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+    <label for="first_name">First Name:<span style="color: red;">*</span></label>
     <input type="text" id="first_name" name="first_name" />
 
     <label for="last_name">Last Name:</label>
