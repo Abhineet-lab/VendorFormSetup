@@ -83,13 +83,11 @@
     <option value="Influencer">Influencer</option>
   </select>
     
-    <!-- Vendor website (conditional)-->
-    <label for="vendor_website">Vendor Web Site:<span style="color: red;">*</span></label>
-    <input type="text" id="vendor_website_mandatory" name="vendor_website_mandatory" />
-
-    <label for="vendor_website">Vendor Web Site:</label>
-    <input type="text" id="vendor_website" name="vendor_website" />
-
+    <div id="vendor_website_section" style="display: none;">
+  <label for="vendor_website">Vendor Website:<span id="website_required_star" style="color: red; display: none;">*</span></label>
+  <input type="url" id="vendor_website" name="vendor_website">
+</div>
+    
       <!-- Media Vehicle Section (conditional) -->
   <div id="media_vehicle_section" style="display: none;">
     <label>Media Vehicle (indicate the name of the vehicle):</label>
@@ -406,8 +404,9 @@
     const groupSelector = document.getElementById('group_d365');
 
     const mediaVehicleSection = document.getElementById('media_vehicle_section');
-    const mandatevendorwebsite = document.getElementById('vendor_website_mandatory');
-    const nonmandatevendorwebsite = document.getElementById('vendor_website');
+    const vendorWebsiteSection = document.getElementById('vendor_website_section');
+    const vendorWebsiteInput = document.getElementById('vendor_website');
+    const websiteStar = document.getElementById('website_required_star');
 
     function toggleSupplierFields() {
       const supplier = supplierType.value;
@@ -426,19 +425,24 @@
     }
 
     function toggleBasedOnGroup() {
-      const grp = groupSelector.value;
+  const grp = groupSelector.value;
 
-      mediaVehicleSection.style.display = 'none';
-      mandatevendorwebsite.style.display = 'none';
-      nonmandatevendorwebsite.style.display = 'none';
+  mediaVehicleSection.style.display = 'none';
+  vendorWebsiteSection.style.display = 'none';
+  vendorWebsiteInput.required = false;
+  websiteStar.style.display = 'none';
 
-      if (grp === 'MEDIA') {
-        mediaVehicleSection.style.display = 'block';
-        mandatevendorwebsite.style.display = 'block';
-      } else if (['NONMEDIA','HOUSE','INTCO','TAXSS'].includes(grp)) {
-        nonmandatevendorwebsite.style.display = 'block';
-      }
-    }
+  if (grp === 'MEDIA') {
+    mediaVehicleSection.style.display = 'block';
+    vendorWebsiteSection.style.display = 'block';
+    vendorWebsiteInput.required = true;
+    websiteStar.style.display = 'inline';
+  } else if (['NONMEDIA','HOUSE','INTCO','TAXSS'].includes(grp)) {
+    vendorWebsiteSection.style.display = 'block';
+    vendorWebsiteInput.required = false;
+    websiteStar.style.display = 'none';
+  }
+}
 
     supplierType.addEventListener('change', toggleSupplierFields);
     groupSelector.addEventListener('change', toggleBasedOnGroup);
