@@ -1,0 +1,141 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vendor Onboarding Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: auto; padding: 20px; }
+    label { font-weight: bold; display: block; margin-top: 15px; }
+    input, select, textarea { width: 100%; padding: 6px; margin-top: 5px; }
+    .checkbox-group, .multiple-choice { margin-top: 5px; }
+    .checkbox-group label, .multiple-choice label {
+      font-weight: normal; display: inline-flex; align-items: center; margin-right: 20px; white-space: nowrap;
+    }
+    .checkbox-group label input, .multiple-choice label input {
+      margin-right: 5px;
+      order: -1;
+    }
+    .attachments input { margin-top: 10px; }
+    button { margin-top: 20px; padding: 10px 15px; font-size: 16px; }
+  </style>
+</head>
+<body>
+
+<header style="display: flex; align-items: center; margin-bottom: 20px; background-color: black; padding: 10px 20px; color: white;">
+  <img src="https://www.dentsu.com/assets/images/main-logo-alt.png" alt="Dentsu Logo" style="height: 25px; margin-right: 15px;" />
+  <h2 style="margin: 0; color: white; font-size: 45px;">NEW VENDOR FORM</h2>
+</header>
+
+<form action="http://10.19.244.10:5000/submit" method="POST" enctype="multipart/form-data">
+  
+  <label for="request_by">Request made by:</label>
+  <input type="email" id="request_by" name="request_by" required />
+
+  <!-- Supplier Legal Personality -->
+  <label>Supplier Legal Personality:</label>
+  <select name="supplier_legal_personality" id="supplier_legal_personality" required>
+    <option value="">--Select--</option>
+    <option value="Natural Person">Natural Person</option>
+    <option value="Legal Person">Legal Person</option>
+  </select>
+
+  <!-- Natural Person Fields -->
+  <div id="natural_person_fields" style="display: none;">
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" />
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" />
+
+    <label for="birth_place">Birth Place:</label>
+    <input type="text" id="birth_place" name="birth_place" />
+
+    <label>Birth County:</label>
+    <select name="birth_county" id="birth_county">
+      <option value="">--Select--</option>
+      <option value="County A">County A</option>
+      <option value="County B">County B</option>
+    </select>
+
+    <label for="birth_date">Birth Date:</label>
+    <input type="date" id="birth_date" name="birth_date" />
+
+    <label>Gender:</label>
+    <select name="gender" id="gender">
+      <option value="">--Select--</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <!-- Legal Person Fields -->
+  <div id="legal_person_fields" style="display: none;">
+    <label for="business_register_number">Number of inscription in the Business Register (CCIAA):</label>
+    <input type="text" id="business_register_number" name="business_register_number" />
+
+    <label>Attachment Chambre of commerce certification:</label>
+    <input type="file" name="attachment_chamber_of_commerce" />
+  </div>
+
+  <!-- Group (D365) -->
+  <label>Group (D365):</label>
+  <select name="group_d365" id="group_d365" required>
+    <option value="">--Select--</option>
+    <option value="MEDIA">MEDIA</option>
+    <option value="NONMEDIA">NONMEDIA</option>
+    <option value="HOUSE">HOUSE</option>
+    <option value="INTCO">INTCO</option>
+  </select>
+
+  <!-- Media Vehicle Section (conditional) -->
+  <div id="media_vehicle_section" style="display: none;">
+    <label>Media Vehicle (indicate the name of the vehicle):</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="media_vehicle" value="INTERNET" /> INTERNET</label>
+      <label><input type="checkbox" name="media_vehicle" value="STAMPA" /> INTERNET STAMPA</label>
+      <label><input type="checkbox" name="media_vehicle" value="STAMPA TV" /> STAMPA TV</label>
+      <label><input type="checkbox" name="media_vehicle" value="TV OOH" /> TV OOH</label>
+      <label><input type="checkbox" name="media_vehicle" value="OOH MEZZI DIVERSI" /> OOH MEZZI DIVERSI</label>
+      <label><input type="checkbox" name="media_vehicle" value="MEZZI DIVERSI DIGITAL" /> MEZZI DIVERSI DIGITAL</label>
+      <label><input type="checkbox" name="media_vehicle" value="DIGITAL RADIO" /> DIGITAL RADIO</label>
+      <label><input type="checkbox" name="media_vehicle" value="RADIO" /> RADIO</label>
+    </div>
+  </div>
+
+  <!-- Remaining form fields here... -->
+  <button type="submit">Submit</button>
+</form>
+
+<!-- JavaScript to handle conditional visibility -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const supplierType = document.getElementById('supplier_legal_personality');
+    const naturalFields = document.getElementById('natural_person_fields');
+    const legalFields = document.getElementById('legal_person_fields');
+    const groupSelector = document.getElementById('group_d365');
+    const mediaVehicleSection = document.getElementById('media_vehicle_section');
+
+    function toggleSupplierFields() {
+      const value = supplierType.value;
+      naturalFields.style.display = value === 'Natural Person' ? 'block' : 'none';
+      legalFields.style.display = value === 'Legal Person' ? 'block' : 'none';
+    }
+
+    function toggleMediaVehicleSection() {
+      const value = groupSelector.value;
+      mediaVehicleSection.style.display = value === 'MEDIA' ? 'block' : 'none';
+    }
+
+    supplierType.addEventListener('change', toggleSupplierFields);
+    groupSelector.addEventListener('change', toggleMediaVehicleSection);
+
+    // Initial check in case values are pre-selected (e.g., from form reload)
+    toggleSupplierFields();
+    toggleMediaVehicleSection();
+  });
+</script>
+
+</body>
+</html>
