@@ -403,14 +403,15 @@
   <input type="email" id="vendor_email" name="vendor_email" />
 
 
-    <label>Professional:</label>
-  <select name="professional" required>
+    <label>Professional:<span style="color: red;">*</span></label>
+  <select name="professional" id = "professional" required>
     <option value="">--Select--</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
   </select>
 
-  <label for="withholding_tax">Withholding tax:</label>
+    <div id="witholding_tax_section_natural_person" style="display: none;">
+  <label for="withholding_tax">Withholding tax:<span id="witholding_tax_required_star" style="color: red; display: none;">*</span></label>
 <select name="withholding_tax" id="withholding_tax" required>
   <option value="">--Select--</option>
   <option value="E25 L.111/2011 Regime agevolato">E25 L.111/2011 Regime agevolato</option>
@@ -428,6 +429,7 @@
   <option value="P56 Lavoro autonomo 20% - ENPALS 35">P56 Lavoro autonomo 20% - ENPALS 35</option>
   <option value="70%">70%</option>
 </select>
+</div>
 
     
     <div id="supplier_vat_number_section" style="display: none;">
@@ -439,6 +441,16 @@
   <label for="supplier_fiscal_code">Supplier Fiscal Code:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="supplier_fiscal_code" name="supplier_fiscal_code">
 </div>
+
+   <label>Attachment fiscal code:<span style="color: red;">*</span></label>
+  <input type="file" name="attachment_fiscal_code" />
+
+    <label for="treatment_type_vat">Treatment type VAT / Jurisprudence:</label>
+  <input type="text" id="treatment_type_vat" name="treatment_type_vat" />
+    
+  <label>Attachment Identity card:<span style="color: red;">*</span></label>
+  <input type="file" name="attachment_identity_card" />
+
     
 </div>
   
@@ -479,8 +491,10 @@
     const supplierFiscalCodeInput = document.getElementById('supplier_fiscal_code');
     const supplierVatNumberStar = document.getElementById('supplier_vat_number_required_star');
     const supplierFiscalCodeStar = document.getElementById('supplier_fiscal_code_required_star');
-
-    
+    const withholdingTaxNaturalPersonSection = document.getElementById('witholding_tax_section_natural_person');
+    const withholdingTaxInputNaturalPerson = document.getElementById('withholding_tax');
+    const withholdingTaxStarNaturalPerson = document.getElementById('witholding_tax_required_star');\
+    const professionalValue = document.getElementById('professional');
 
     function toggleSupplierFields() {
       const supplier = supplierType.value;
@@ -504,6 +518,17 @@
         supplierFiscalCodeSection.style.display = 'none';
         supplierFiscalCodeInput.required = false;
         supplierFiscalCodeStar.style.display = 'none';
+    }
+    function toggleBasedOnProfessionalNaturalPerson() {
+      if (professionalValue.value === 'Yes'){
+        withholdingTaxNaturalPersonSection.style.display = 'block';
+        withholdingTaxInputNaturalPerson.required = true;
+        withholdingTaxStarNaturalPerson.style.display = 'inline';
+      } else {
+        withholdingTaxNaturalPersonSection.style.display = 'none';
+        withholdingTaxInputNaturalPerson.required = false;
+        withholdingTaxStarNaturalPerson.style.display = 'none';
+      }
     }
     function toggleBasedOnVatGroupNaturalPerson(){
       const grp = vatGroup.value;
@@ -560,11 +585,13 @@
     supplierType.addEventListener('change', toggleSupplierFields);
     mediagroupSelector.addEventListener('change', toggleBasedOnMediaGroup);
     vatGroup.addEventListener('change', toggleBasedOnVatGroupNaturalPerson);
+    professionalValue.addEventListener('change' , toggleBasedOnProfessionalNaturalPerson);
 
     // Initial load
     toggleSupplierFields();
     toggleBasedOnMediaGroup();
     toggleBasedOnVatGroupNaturalPerson();
+    toggleBasedOnProfessionalNaturalPerson();
   });
 </script>
 </body>
