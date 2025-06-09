@@ -411,6 +411,7 @@
     const vendorWebsiteSection = document.getElementById('vendor_website_section');
     const vendorWebsiteInput = document.getElementById('vendor_website');
     const websiteStar = document.getElementById('website_required_star');
+    const inactiveBcEntity = document.getElementById('inactive_bpc_entity');
 
     function toggleSupplierFields() {
       const supplier = supplierType.value;
@@ -426,6 +427,7 @@
       mediaVehicleSection.style.display = 'none';
       mandatevendorwebsite.style.display = 'none';
       nonmandatevendorwebsite.style.display = 'none';
+      inactiveBcEntity.style.display = 'none';
     }
 
     function toggleBasedOnGroup() {
@@ -435,16 +437,23 @@
   vendorWebsiteSection.style.display = 'none';
   vendorWebsiteInput.required = false;
   websiteStar.style.display = 'none';
+  inactiveBcEntity.style.display = 'none';
 
   if (grp === 'MEDIA') {
     mediaVehicleSection.style.display = 'block';
     vendorWebsiteSection.style.display = 'block';
     vendorWebsiteInput.required = true;
     websiteStar.style.display = 'inline';
-  } else if (['NONMEDIA','HOUSE','INTCO','TAXSS'].includes(grp)) {
+  } else if (['NONMEDIA','HOUSE','TAXSS'].includes(grp)) {
     vendorWebsiteSection.style.display = 'block';
     vendorWebsiteInput.required = false;
     websiteStar.style.display = 'none';
+  }
+      else if (['INTCO'].includes(grp)) {
+    vendorWebsiteSection.style.display = 'block';
+    vendorWebsiteInput.required = false;
+    websiteStar.style.display = 'none';
+    inactiveBcEntity.style.display = 'block';
   }
 }
 
