@@ -59,7 +59,7 @@
   <!-- Natural Person Fields -->
   <div id="natural_person_fields" style="display: none;">
     <label>Vendor created by dentsu:<span style="color: red;">*</span></label>
-  <select name="vendor_created_by_dentsu" required>
+  <select name="vendor_created_by_dentsu" id = "vendor_created_by_dentsu" required>
     <option value="">--Select--</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
@@ -391,6 +391,13 @@
     <option value="FOR_UE">FOR_UE</option>
     <option value="FOR_XUE">FOR_XUE</option>
   </select>
+
+    <label for="dentsu_contact_email">dentsu Contact Email Address:<span style="color: red;">*</span></label>
+  <input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
+
+  <label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
+  <input type="email" id="vendor_email" name="vendor_email" />
+    
   </div>
   
   <!-- Legal Person Fields -->
@@ -421,6 +428,7 @@
     const websiteStar = document.getElementById('website_required_star');
     const inactiveBcEntity = document.getElementById('inactive_bpc_entity');
     const vatGroup = document.getElementById('vat_group');
+    const vendorCreatedByDentsu = document.getElementById('vendor_created_by_dentsu');
 
     function toggleSupplierFields() {
       const supplier = supplierType.value;
@@ -438,7 +446,16 @@
       nonmandatevendorwebsite.style.display = 'none';
       inactiveBcEntity.style.display = 'none';
     }
-
+    function toggleBasedOnVatGroup(){
+      const grp = vatGroup.value;
+      const pref = vendorCreatedByDentsu.value;
+      mediaVehicleSection.style.display = 'none';
+      vendorWebsiteSection.style.display = 'none';
+      vendorWebsiteInput.required = false;
+      websiteStar.style.display = 'none';
+      inactiveBcEntity.style.display = 'none';
+      
+    }
     function toggleBasedOnMediaGroup() {
   const grp = mediagroupSelector.value;
 
