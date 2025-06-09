@@ -531,7 +531,7 @@
 
     supplierType.addEventListener('change', toggleSupplierFields);
     mediagroupSelector.addEventListener('change', toggleBasedOnMediaGroup);
-    vatGroup.addEventListner('change', toggleBasedOnVatGroupNaturalPerson);
+    vatGroup.addEventListener('change', toggleBasedOnVatGroupNaturalPerson);
 
     // Initial load
     toggleSupplierFields();
