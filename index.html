@@ -491,6 +491,64 @@
   <label>Payment Terms Attachments:<span style="color: red;">*</span></label>
   <input type="file" name="payment_terms_attachments" />
    </fieldset>
+
+  <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
+  <legend style="font-weight: bold; font-size: 18px;">4. Supplier Bank Account Information</legend>
+
+    <div id= "bank_name_section" style="display: none;">
+     <label for="bank_name">Bank Name:<span id="bank_name_required_star" style="color: red; display: none;">*</span></label>
+    <input type="text" id="bank_name" name="bank_name" />
+  </div>
+
+    <div id= "bank_address_section" style="display: none;">
+  <label for="bank_address">Bank Address:<span id="bank_address_required_star" style="color: red; display: none;">*</span></label>
+  <input type="text" id="bank_address" name="bank_address" />
+    </div>
+
+    <div id= "account_holder_section" style="display: none;">
+  <label for="account_holder">Account Holder:<span id="account_holder_required_star" style="color: red; display: none;">*</span></label>
+  <input type="text" id="account_holder" name="account_holder" />
+  </div>
+
+    <div id= "account_number_section" style="display: none;">
+  <label for="account_number">Account Number:<span id="account_number_required_star" style="color: red; display: none;">*</span></label>
+  <input type="text" id="account_number" name="account_number" />
+  </div>
+
+    <div id= "currency_section" style="display: none;">
+  <label>Currency:<span id="currency_required_star" style="color: red; display: none;">*</span></label>
+  <select name="currency" id="currency" required>
+    <option value="">--Select--</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+    <option value="GBP">GBP</option>
+  </select>
+  </div>
+
+    <div id= "iban_code_section" style="display: none;">
+  <label for="iban_code">IBAN Code:<span id="iban_code_required_star" style="color: red; display: none;">*</span></label>
+  <input type="text" id="iban_code" name="iban_code" />
+  </div>
+    
+   <div id= "cin_section" style="display: none;">
+  <label>CIN:<span id="cin_required_star" style="color: red; display: none;">*</span></label>
+  <select name="cin" required>
+    <option value="">--Select--</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+  </select>
+  </div>
+
+    <div id= "swift_code_section" style="display: none;">
+  <label for="swift_code">SWIFT Code:<span id="swift_code_required_star" style="color: red; display: none;">*</span></label>
+  <input type="text" id="swift_code" name="swift_code" />
+  </div>
+
+    <div id= "bank_detail_attachment_section" style="display: none;">
+  <label>Bank Details Attachment:<span id="bank_details_attachment_required_star" style="color: red; display: none;">*</span></label>
+  <input type="file" name="bank_details_attachment" />
+  </div>
+ </fieldset> 
     
 </div>
   
@@ -558,6 +616,15 @@
         supplierFiscalCodeSection.style.display = 'none';
         supplierFiscalCodeInput.required = false;
         supplierFiscalCodeStar.style.display = 'none';
+    }
+    function toggleBasedOnVendorCreatedByDentsu() {
+      if (vendorCreatedByDentsu.value === 'Yes'){
+        
+      } else if (vendorCreatedByDentsu.value === 'No' && vatGroup.value === 'FOR_ITA'){
+        
+      } else {
+        
+      }
     }
     function toggleBasedOnProfessionalNaturalPerson() {
       if (professionalValue.value === 'Yes'){
