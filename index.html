@@ -531,10 +531,12 @@
 
     supplierType.addEventListener('change', toggleSupplierFields);
     mediagroupSelector.addEventListener('change', toggleBasedOnMediaGroup);
+    vatGroup.addEventListner('change', toggleBasedOnVatGroupNaturalPerson);
 
     // Initial load
     toggleSupplierFields();
     toggleBasedOnMediaGroup();
+    toggleBasedOnVatGroupNaturalPerson();
   });
 </script>
 </body>
