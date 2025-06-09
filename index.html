@@ -237,7 +237,6 @@
       <option value="">--Select--</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
-      <option value="Other">Other</option>
     </select>
 
     <label for="address">Address:<span style="color: red;">*</span></label>
@@ -413,7 +412,7 @@
   <input type="text" id="supplier_fiscal_code" name="supplier_fiscal_code">
 </div>
     
-  </div>
+</div>
   
   <!-- Legal Person Fields -->
   <div id="legal_person_fields" style="display: none;">
@@ -444,6 +443,9 @@
     const inactiveBcEntity = document.getElementById('inactive_bpc_entity');
     const vatGroup = document.getElementById('vat_group');
     const vendorCreatedByDentsu = document.getElementById('vendor_created_by_dentsu');
+
+
+    
 
     function toggleSupplierFields() {
       const supplier = supplierType.value;
