@@ -455,6 +455,36 @@
   <label>Attachment Identity card:<span style="color: red;">*</span></label>
   <input type="file" name="attachment_identity_card" />
 
+    <label>Payment Term (Days):<span style="color: red;">*</span></label>
+<select name="payment_term_days" required>
+  <option value="">--Select--</option>
+  <option value="CM+30">CM+30 - CURRENT MONTH + 30 days</option>
+  <option value="CM+45">CM+45 - CURRENT MONTH + 45 days</option>
+  <option value="CM+60">CM+60 - CURRENT MONTH + 60 days</option>
+  <option value="CM+75">CM+75 - CURRENT MONTH + 75 days</option>
+  <option value="CM+90">CM+90 - CURRENT MONTH + 90 days</option>
+  <option value="CM+120">CM+120 - CURRENT MONTH + 120 days</option>
+  <option value="CM+150">CM+150 - CURRENT MONTH + 150 days</option>
+  <option value="CM+180">CM+180 - CURRENT MONTH + 180 days</option>
+  <option value="N00">N00 - Immediate payment</option>
+  <option value="N15">N15 - 15 Days - Net</option>
+  <option value="N30">N30 - 30 Days - Net</option>
+  <option value="N60">N60 - 60 Days - Net</option>
+  <option value="N75">N75 - 75 Days - Net</option>
+  <option value="N90">N90 - 90 Days - Net</option>
+  <option value="N120">N120 - 120 Days - Net</option>
+  <option value="N150">N150 - 150 Days - Net</option>
+</select>
+
+
+  <label>Payment Method:<span style="color: red;">*</span></label>
+  <select name="payment_method" required>
+    <option value="">--Select--</option>
+    <option value="EFT">EFT</option>
+  </select>
+
+  <label>Payment Terms Attachments:<span style="color: red;">*</span></label>
+  <input type="file" name="payment_terms_attachments" />
     
 </div>
   
