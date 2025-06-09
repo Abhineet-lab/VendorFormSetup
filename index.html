@@ -443,7 +443,14 @@
     const inactiveBcEntity = document.getElementById('inactive_bpc_entity');
     const vatGroup = document.getElementById('vat_group');
     const vendorCreatedByDentsu = document.getElementById('vendor_created_by_dentsu');
-
+    const pecSection = document.getElementById('pec_section');
+    const supplierVatNumberSection = document.getElementById('supplier_vat_number_section');
+    const supplierFiscalCodeSection = document.getElementById('supplier_fiscal_code_section');
+    const supplierVatNumberInput = document.getElementById('supplier_vat_number');
+    const pecInput = document.getElementById('pec');
+    const supplierFiscalCodeInput = document.getElementById('supplier_fiscal_code');
+    const supplierVatNumberStar = document.getElementById('supplier_vat_number_required_star');
+    const supplierFiscalCodeStar = document.getElementById('supplier_fiscal_code_required_star');
 
     
 
@@ -471,7 +478,22 @@
       vendorWebsiteInput.required = false;
       websiteStar.style.display = 'none';
       inactiveBcEntity.style.display = 'none';
-      
+
+      if ( grp === 'FOR_ITA') {
+        pecSection.style.display = 'block';
+        pecInput.required = true;
+        supplierVatNumberSection.style.display = 'block';
+        supplierVatNumberInput.required = true;
+        supplierFiscalCodeSection.style.display = 'block';
+        supplierFiscalCodeInput.required = true;
+        supplierFiscalCodeStar.style.display = 'inline';
+      } else if (grp === 'FOR_UE'){
+        supplierFiscalCodeSection.style.display = 'block';
+        supplierFiscalCodeInput.required = true;
+        supplierVatNumberSection.style.display = 'block';
+        supplierVatNumberInput.required = true;
+        supplierVatNumberStar.style.display = 'inline';
+      }
     }
     function toggleBasedOnMediaGroup() {
   const grp = mediagroupSelector.value;
