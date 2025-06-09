@@ -391,24 +391,52 @@
     <option value="FOR_XUE">FOR_XUE</option>
   </select>
 
+     <div id = "pec_section" style="display: none;">
+    <label for="pec">PEC:</label>
+  <input type="email" id="pec" name="pec" />
+    </div>
+    
     <label for="dentsu_contact_email">dentsu Contact Email Address:<span style="color: red;">*</span></label>
   <input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
 
   <label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
   <input type="email" id="vendor_email" name="vendor_email" />
 
-    <div id = "pec_section" style="display: none;">
-    <label for="pec">PEC:</label>
-  <input type="email" id="pec" name="pec" />
-    </div>
 
+    <label>Professional:</label>
+  <select name="professional" required>
+    <option value="">--Select--</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+
+  <label for="withholding_tax">Withholding tax:</label>
+<select name="withholding_tax" id="withholding_tax" required>
+  <option value="">--Select--</option>
+  <option value="E25 L.111/2011 Regime agevolato">E25 L.111/2011 Regime agevolato</option>
+  <option value="E26 Legge 111/2011 Reg. agev. ENPALS 33%">E26 Legge 111/2011 Reg. agev. ENPALS 33%</option>
+  <option value="P01 Compensi Professionisti 20%">P01 Compensi Professionisti 20%</option>
+  <option value="P10 Compensi Lavoro autonomo 20%">P10 Compensi Lavoro autonomo 20%</option>
+  <option value="P15 Compensi Prestazioni Occasionali 20%">P15 Compensi Prestazioni Occasionali 20%</option>
+  <option value="P24 Diritti d'autore/marchi 75%">P24 Diritti d'autore/marchi 75%</option>
+  <option value="P25 Diritti d'autore/marchi 60%">P25 Diritti d'autore/marchi 60%</option>
+  <option value="P32 RA Provvigioni 23% su 50%">P32 RA Provvigioni 23% su 50%</option>
+  <option value="P33 RA Provvigioni 23% su 20%">P33 RA Provvigioni 23% su 20%</option>
+  <option value="P36 RA Provvigioni Proc.Affari 23% su 50%">P36 RA Provvigioni Proc.Affari 23% su 50%</option>
+  <option value="P55 Lavoro autonomo 20% - ENPALS 33">P55 Lavoro autonomo 20% - ENPALS 33</option>
+  <option value="00%">00%</option>
+  <option value="P56 Lavoro autonomo 20% - ENPALS 35">P56 Lavoro autonomo 20% - ENPALS 35</option>
+  <option value="70%">70%</option>
+</select>
+
+    
     <div id="supplier_vat_number_section" style="display: none;">
   <label for="supplier_vat_number">Supplier VAT Number:<span id="supplier_vat_number_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="supplier_vat_number" name="supplier_vat_number">
 </div>
 
     <div id="supplier_fiscal_code_section" style="display: none;">
-  <label for="supplier_fiscal_code">Supplier VAT Number:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
+  <label for="supplier_fiscal_code">Supplier Fiscal Code:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="supplier_fiscal_code" name="supplier_fiscal_code">
 </div>
     
