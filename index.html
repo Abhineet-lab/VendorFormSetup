@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -532,7 +533,7 @@
     
    <div id= "cin_section" style="display: none;">
   <label>CIN:<span id="cin_required_star" style="color: red; display: none;">*</span></label>
-  <select name="cin" required>
+  <select name="cin" id = "cin" required>
     <option value="">--Select--</option>
     <option value="A">A</option>
     <option value="B">B</option>
@@ -546,7 +547,7 @@
 
     <div id= "bank_detail_attachment_section" style="display: none;">
   <label>Bank Details Attachment:<span id="bank_details_attachment_required_star" style="color: red; display: none;">*</span></label>
-  <input type="file" name="bank_details_attachment" />
+  <input type="file" id = "bank_details_attachment" name="bank_details_attachment" />
   </div>
  </fieldset> 
     
@@ -600,14 +601,26 @@
     const bankAddressInput = document.getElementById('bank_address');
     const bankAddressStar = document.getElementById('bank_address_required_star');
     const accountHolderSection = document.getElementById('account_holder_section');
-    const accountHolderInput = document.getElementById('account_holder_name');
+    const accountHolderInput = document.getElementById('account_holder');
     const accountHolderStar = document.getElementById('account_holder_required_star');
     const accountNumberSection = document.getElementById('account_number_section');
-    const accountNumberInput = document.getElementById('account_number_name');
+    const accountNumberInput = document.getElementById('account_number');
     const accountNumberStar = document.getElementById('account_number_required_star');
     const currencySection = document.getElementById('currency_section');
-    const currencyInput = document.getElementById('currency_name');
+    const currencyInput = document.getElementById('currency');
     const currencyStar = document.getElementById('currency_required_star');
+    const ibanCodeSection = document.getElementById('iban_code_section');
+    const ibanCodeInput = document.getElementById('iban_code');
+    const ibanCodeStar = document.getElementById('iban_code_required_star');
+    const cinSection = document.getElementById('cin_section');
+    const cinInput = document.getElementById('cin');
+    const cinStar = document.getElementById('cin_required_star');
+    const swiftCodeSection = document.getElementById('swift_code_section');
+    const swiftCodeInput = document.getElementById('swift_code');
+    const swiftCodeStar = document.getElementById('swift_code_required_star');
+    const bankDetailsAttachmentSection = document.getElementById('bank_detail_attachment_section');
+    const bankDetailsAttachmentInput = document.getElementById('bank_details_attachment');
+    const bankDetailsAttachmentStar = document.getElementById('bank_details_attachment_required_star');
 
     function toggleSupplierFields() {
       const supplier = supplierType.value;
