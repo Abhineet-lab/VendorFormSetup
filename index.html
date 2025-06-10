@@ -471,7 +471,7 @@
 
     <!-- supplier fiscal code -->
     <div id="supplier_fiscal_code_section" style="display: none;">
-  <label for="supplier_fiscal_code">Supplier Fiscal Code:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
+  <label for="supplier_fiscal_code">Supplier Fiscal Code Number:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="supplier_fiscal_code" name="supplier_fiscal_code">
 </div>
 
@@ -486,8 +486,301 @@
     <!-- attachment identity card -->
   <label>Attachment Identity card:<span style="color: red;">*</span></label>
   <input type="file" name="attachment_identity_card" />
-    </di
-v>
+    </div>
+
+    <!-- Legal Person Fields -->
+  <div id="legal_person_fields" style="display: none;">
+
+    <!-- vendor created by Dentsu -->
+    <label>Vendor created by dentsu:<span style="color: red;">*</span></label>
+  <select name="vendor_created_by_dentsu" id = "vendor_created_by_dentsu" required>
+    <option value="">--Select--</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+
+    <!-- supplier company name -->
+    <label for="supplier_company_name">Supplier Company Name:<span style="color: red;">*</span></label>
+  <input type="text" id="supplier_company_name" name="supplier_company_name" required />
+
+    <!-- Inside legal_person_fields -->
+<div id="group_wrapper" style="display: none;">
+
+  <!-- Group(D365) -->
+  <label>Group (D365):<span style="color: red;">*</span></label>
+  <select name="group_d365" id="group_d365" required>
+    <option value="">--Select--</option>
+    <option value="MEDIA">MEDIA</option>
+    <option value="NONMEDIA">NONMEDIA</option>
+    <option value="HOUSE">HOUSE</option>
+    <option value="INTCO">INTCO</option>
+    <option value="TAXSS">TAXSS</option>
+  </select>
+</div>
+    <!-- Influencer -->
+    <label>Influencer (D365) promoter:</label>
+  <select name="influencer_d365" required>
+    <option value="">--Select--</option>
+    <option value="Nessuno / None">Nessuno / None</option>
+    <option value="Influencer">Influencer</option>
+  </select>
+
+    <!-- vendor website -->
+    <div id="vendor_website_section" style="display: none;">
+  <label for="vendor_website">Vendor Website:<span id="website_required_star" style="color: red; display: none;">*</span></label>
+  <input type="url" id="vendor_website" name="vendor_website">
+</div>
+
+    <!-- inactive bpc entity -->
+     <div id="inactive_bpc_entity" style="display: none;">
+    <label for="inactive_bpc_entity">Inactive BPC entity (email):</label>
+  <input type="email" id="inactive_bpc_entity" name="inactive_bpc_entity" />
+</div>
+  
+      <!-- Media Vehicle Section (conditional) -->
+  <div id="media_vehicle_section" style="display: none;">
+    <label>Media Vehicle (indicate the name of the vehicle):</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="media_vehicle" value="INTERNET" /> INTERNET</label>
+      <label><input type="checkbox" name="media_vehicle" value="STAMPA" /> INTERNET STAMPA</label>
+      <label><input type="checkbox" name="media_vehicle" value="STAMPA TV" /> STAMPA TV</label>
+      <label><input type="checkbox" name="media_vehicle" value="TV OOH" /> TV OOH</label>
+      <label><input type="checkbox" name="media_vehicle" value="OOH MEZZI DIVERSI" /> OOH MEZZI DIVERSI</label>
+      <label><input type="checkbox" name="media_vehicle" value="MEZZI DIVERSI DIGITAL" /> MEZZI DIVERSI DIGITAL</label>
+      <label><input type="checkbox" name="media_vehicle" value="DIGITAL RADIO" /> DIGITAL RADIO</label>
+      <label><input type="checkbox" name="media_vehicle" value="RADIO" /> RADIO</label>
+    </div>
+  </div>
+
+    <!-- address -->
+    <label for="address">Address:<span style="color: red;">*</span></label>
+  <input type="text" id="address" name="address" />
+
+    <!-- N -->
+  <label for="n">N:<span style="color: red;">*</span></label>
+  <input type="text" id="n" name="n" />
+
+    <!-- postal code -->
+  <label for="postal_code">Postal Code:<span style="color: red;">*</span></label>
+  <input type="text" id="postal_code" name="postal_code" />
+
+    <!-- country -->
+  <label>Country:<span style="color: red;">*</span></label>
+<select name="country" required>
+  <option value="">--Select--</option>
+  <option value="AFG">Afghanistan</option>
+  <option value="ALA">Åland Islands</option>
+  <option value="ALB">Albania</option>
+  <option value="DZA">Algeria</option>
+  <option value="ASM">American Samoa</option>
+  <option value="AND">Andorra</option>
+  <option value="AGO">Angola</option>
+  <option value="AIA">Anguilla</option>
+  <option value="ATA">Antarctica</option>
+  <option value="ATG">Antigua and Barbuda</option>
+  <option value="ARG">Argentina</option>
+  <option value="ARM">Armenia</option>
+  <option value="ABW">Aruba</option>
+  <option value="AUS">Australia</option>
+  <option value="AUT">Austria</option>
+  <option value="AZE">Azerbaijan</option>
+  <option value="BHS">Bahamas</option>
+  <option value="BHR">Bahrain</option>
+  <option value="BLM">Saint Barthélemy</option>
+  <option value="BGD">Bangladesh</option>
+  <option value="BRB">Barbados</option>
+  <option value="BLR">Belarus</option>
+  <option value="BEL">Belgium</option>
+  <option value="BLZ">Belize</option>
+  <option value="BEN">Benin</option>
+  <option value="BMU">Bermuda</option>
+  <option value="BTN">Bhutan</option>
+  <option value="BOL">Bolivia</option>
+  <option value="BIH">Bosnia and Herzegovina</option>
+  <option value="BWA">Botswana</option>
+  <option value="BVT">Bouvet Island</option>
+  <option value="BRA">Brazil</option>
+  <option value="IOT">British Indian Ocean Territory</option>
+  <option value="BRN">Brunei</option>
+  <option value="BGR">Bulgaria</option>
+  <option value="BFA">Burkina Faso</option>
+  <option value="BDI">Burundi</option>
+  <option value="KHM">Cambodia</option>
+  <option value="CMR">Cameroon</option>
+  <option value="CAN">Canada</option>
+  <option value="CPV">Cape Verde</option>
+  <option value="CYM">Cayman Islands</option>
+  <option value="CAF">Central African Republic</option>
+  <option value="TCD">Chad</option>
+  <option value="CHL">Chile</option>
+  <option value="CHN">China</option>
+  <option value="CXR">Christmas Island</option>
+  <option value="CCK">Cocos (Keeling) Islands</option>
+  <option value="COL">Colombia</option>
+  <option value="COM">Comoros</option>
+  <option value="COG">Congo</option>
+  <option value="COD">Congo (DRC)</option>
+  <option value="COK">Cook Islands</option>
+  <option value="CRI">Costa Rica</option>
+  <option value="CIV">Côte d’Ivoire</option>
+  <option value="HRV">Croatia</option>
+  <option value="CUB">Cuba</option>
+  <option value="CYP">Cyprus</option>
+  <option value="CZE">Czech Republic</option>
+  <option value="DNK">Denmark</option>
+  <option value="DJI">Djibouti</option>
+  <option value="DMA">Dominica</option>
+  <option value="DOM">Dominican Republic</option>
+  <option value="ECU">Ecuador</option>
+  <option value="EGY">Egypt</option>
+  <option value="SLV">El Salvador</option>
+  <option value="GNQ">Equatorial Guinea</option>
+  <option value="ERI">Eritrea</option>
+  <option value="EST">Estonia</option>
+  <option value="ETH">Ethiopia</option>
+  <option value="FLK">Falkland Islands (Islas Malvinas)</option>
+  <option value="FRO">Faroe Islands</option>
+  <option value="FJI">Fiji</option>
+  <option value="FIN">Finland</option>
+  <option value="FRA">France</option>
+  <option value="GUF">French Guiana</option>
+  <option value="PYF">French Polynesia</option>
+  <option value="ATF">French Southern and Antarctic Lands</option>
+  <option value="GAB">Gabon</option>
+  <option value="GMB">Gambia</option>
+  <option value="GEO">Georgia</option>
+  <option value="DEU">Germany</option>
+  <option value="GHA">Ghana</option>
+  <option value="GIB">Gibraltar</option>
+  <option value="GRC">Greece</option>
+  <option value="GRL">Greenland</option>
+  <option value="GRD">Grenada</option>
+  <option value="GLP">Guadeloupe</option>
+  <option value="GUM">Guam</option>
+  <option value="GTM">Guatemala</option>
+  <option value="GGY">Guernsey</option>
+  <option value="GIN">Guinea</option>
+  <option value="GNB">Guinea-Bissau</option>
+  <option value="GUY">Guyana</option>
+  <option value="HTI">Haiti</option>
+  <option value="HMD">Heard Island and McDonald Islands</option>
+  <option value="HND">Honduras</option>
+  <option value="HKG">Hong Kong SAR</option>
+  <option value="HUN">Hungary</option>
+  <option value="ISL">Iceland</option>
+  <option value="IND">India</option>
+  <option value="IDN">Indonesia</option>
+  <option value="IRN">Iran</option>
+  <option value="IRQ">Iraq</option>
+  <option value="IRL">Ireland</option>
+  <option value="IMN">Isle of Man</option>
+  <option value="ISR">Israel</option>
+  <option value="ITA">Italy</option>
+  <option value="JPN">Japan</option>
+  <option value="USA">United States</option>
+  <option value="UMI">United States Minor Outlying Islands</option>
+  <option value="URY">Uruguay</option>
+  <option value="UZB">Uzbekistan</option>
+  <option value="VUT">Vanuatu</option>
+  <option value="VAT">Vatican City</option>
+  <option value="VEN">Venezuela</option>
+  <option value="VNM">Vietnam</option>
+  <option value="VGB">British Virgin Islands</option>
+  <option value="VIR">U.S. Virgin Islands</option>
+  <option value="WLF">Wallis and Futuna</option>
+  <option value="ESH">Western Sahara</option>
+  <option value="YEM">Yemen</option>
+  <option value="ZMB">Zambia</option>
+  <option value="ZWE">Zimbabwe</option>
+</select>
+
+    <!-- city -->
+  <label for="city">City:<span style="color: red;">*</span></label>
+  <input type="text" id="city" name="city" />
+
+    <!-- telephone number -->
+  <label for="telephone_number">Telephone Number:<span style="color: red;">*</span></label>
+  <input type="text" id="telephone_number" name="telephone_number" />
+
+     <!-- vat group -->
+    <label>VAT Group:<span style="color: red;">*</span></label>
+  <select name="vat_group" id="vat_group" required>
+    <option value="">--Select--</option>
+    <option value="FOR_ITA">FOR_ITA</option>
+    <option value="FOR_UE">FOR_UE</option>
+    <option value="FOR_XUE">FOR_XUE</option>
+  </select>
+
+    <!-- pec -->
+     <div id = "pec_section" style="display: none;">
+    <label for="pec">PEC:</label>
+  <input type="email" id="pec" name="pec" />
+    </div>
+
+    <!-- dentsu contact email -->
+    <label for="dentsu_contact_email">dentsu Contact Email Address:<span style="color: red;">*</span></label>
+  <input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
+
+    <!-- vendor email -->
+  <label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
+  <input type="email" id="vendor_email" name="vendor_email" />
+
+
+    <!-- professional -->
+    <label>Professional:<span style="color: red;">*</span></label>
+  <select name="professional" id = "professional" required>
+    <option value="">--Select--</option>
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+
+    <!-- withholding tax -->
+    <div id="witholding_tax_section_natural_person" style="display: none;">
+  <label for="withholding_tax">Withholding tax:<span id="witholding_tax_required_star" style="color: red; display: none;">*</span></label>
+<select name="withholding_tax" id="withholding_tax" required>
+  <option value="">--Select--</option>
+  <option value="E25 L.111/2011 Regime agevolato">E25 L.111/2011 Regime agevolato</option>
+  <option value="E26 Legge 111/2011 Reg. agev. ENPALS 33%">E26 Legge 111/2011 Reg. agev. ENPALS 33%</option>
+  <option value="P01 Compensi Professionisti 20%">P01 Compensi Professionisti 20%</option>
+  <option value="P10 Compensi Lavoro autonomo 20%">P10 Compensi Lavoro autonomo 20%</option>
+  <option value="P15 Compensi Prestazioni Occasionali 20%">P15 Compensi Prestazioni Occasionali 20%</option>
+  <option value="P24 Diritti d'autore/marchi 75%">P24 Diritti d'autore/marchi 75%</option>
+  <option value="P25 Diritti d'autore/marchi 60%">P25 Diritti d'autore/marchi 60%</option>
+  <option value="P32 RA Provvigioni 23% su 50%">P32 RA Provvigioni 23% su 50%</option>
+  <option value="P33 RA Provvigioni 23% su 20%">P33 RA Provvigioni 23% su 20%</option>
+  <option value="P36 RA Provvigioni Proc.Affari 23% su 50%">P36 RA Provvigioni Proc.Affari 23% su 50%</option>
+  <option value="P55 Lavoro autonomo 20% - ENPALS 33">P55 Lavoro autonomo 20% - ENPALS 33</option>
+  <option value="00%">00%</option>
+  <option value="P56 Lavoro autonomo 20% - ENPALS 35">P56 Lavoro autonomo 20% - ENPALS 35</option>
+  <option value="70%">70%</option>
+</select>
+</div>
+
+    <!-- supplier vat number -->
+    <div id="supplier_vat_number_section" style="display: none;">
+  <label for="supplier_vat_number">Supplier VAT Number:<span id="supplier_vat_number_required_star" style="color: red; display: none;">*</span></label>
+  <input type="text" id="supplier_vat_number" name="supplier_vat_number">
+</div>
+
+    <!-- supplier fiscal code -->
+    <div id="supplier_fiscal_code_section" style="display: none;">
+  <label for="supplier_fiscal_code">Supplier Fiscal Code Number:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
+  <input type="text" id="supplier_fiscal_code" name="supplier_fiscal_code">
+</div>
+
+    <!-- treatment type vat -->
+    <label for="treatment_type_vat">Treatment type VAT / Jurisprudence:</label>
+  <input type="text" id="treatment_type_vat" name="treatment_type_vat" />
+
+     <!-- Number of inscription in the Business Register (CCIAA) -->
+    <label for="business_register_number">Number of inscription in the Business Register (CCIAA):<span style="color: red;">*</span></label>
+    <input type="text" id="business_register_number" name="business_register_number" />
+
+     <!-- Attachment Chambre of commerce certification -->
+    <label>Attachment Chambre of commerce certification:</label>
+    <input type="file" name="attachment_chamber_of_commerce" />
+    
+  </div>
    </fieldset>
 
     <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
