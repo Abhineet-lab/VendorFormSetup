@@ -1181,8 +1181,11 @@
     mediagroupSelector.addEventListener('change', toggleBasedOnMediaGroup);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
     vendorCreatedByDentsu.addEventListener('change', toogleBasedOnAttachmentChambre);
-    vatGroup.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
+    vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVatGroupNaturalPerson);
     professionalValue.addEventListener('change' , toggleBasedOnProfessionalNaturalPerson);
+    vatGroupLegal.addEventListener('change', toggleBasedOnVatGroupLegalPerson);
+    vatGroup.addEventListener('change' , toggleBasedOnVatGroupNaturalPerson);
+    vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVatGroupLegalPerson);
 
     // Initial load
     toggleSupplierFields();
@@ -1191,6 +1194,7 @@
     toggleBasedOnProfessionalNaturalPerson();
     toggleBasedOnVendorCreatedByDentsu();
     toogleBasedOnAttachmentChambre();
+    toggleBasedOnVatGroupLegalPerson();
   });
 </script>
 </body>
