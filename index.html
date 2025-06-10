@@ -1154,6 +1154,7 @@
     supplierType.addEventListener('change', toggleSupplierFields);
     mediagroupSelector.addEventListener('change', toggleBasedOnMediaGroup);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
+    vendorCreatedByDentsu.addEventListener('change', toogleBasedOnAttachmentChambre);
     vatGroup.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
     professionalValue.addEventListener('change' , toggleBasedOnProfessionalNaturalPerson);
 
@@ -1163,6 +1164,7 @@
     toggleBasedOnVatGroupNaturalPerson();
     toggleBasedOnProfessionalNaturalPerson();
     toggleBasedOnVendorCreatedByDentsu();
+    toogleBasedOnAttachmentChambre();
   });
 </script>
 </body>
