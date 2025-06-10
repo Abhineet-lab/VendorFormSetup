@@ -702,9 +702,9 @@
   <label for="telephone_number">Telephone Number:<span style="color: red;">*</span></label>
   <input type="text" id="telephone_number" name="telephone_number" />
 
-     <!-- vat group -->
+     <!-- vat group Legal -->
     <label>VAT Group:<span style="color: red;">*</span></label>
-  <select name="vat_group" id="vat_group" required>
+  <select name="vat_group_legal" id="vat_group_legal" required>
     <option value="">--Select--</option>
     <option value="FOR_ITA">FOR_ITA</option>
     <option value="FOR_UE">FOR_UE</option>
@@ -755,16 +755,16 @@
 </select>
 </div>
 
-    <!-- supplier vat number -->
-    <div id="supplier_vat_number_section" style="display: none;">
-  <label for="supplier_vat_number">Supplier VAT Number:<span id="supplier_vat_number_required_star" style="color: red; display: none;">*</span></label>
-  <input type="text" id="supplier_vat_number" name="supplier_vat_number">
+    <!-- supplier vat number legal -->
+    <div id="supplier_vat_number_legal_section" style="display: none;">
+  <label for="supplier_vat_number_legal">Supplier VAT Number:<span id="supplier_vat_number_legal_required_star" style="color: red; display: none;">*</span></label>
+  <input type="text" id="supplier_vat_number_legal" name="supplier_vat_number_legal">
 </div>
 
-    <!-- supplier fiscal code -->
-    <div id="supplier_fiscal_code_section" style="display: none;">
-  <label for="supplier_fiscal_code">Supplier Fiscal Code Number:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
-  <input type="text" id="supplier_fiscal_code" name="supplier_fiscal_code">
+    <!-- supplier fiscal code legal -->
+    <div id="supplier_fiscal_code_legal_section" style="display: none;">
+  <label for="supplier_fiscal_code_legal">Supplier Fiscal Code Number:<span id="supplier_fiscal_code_legal_required_star" style="color: red; display: none;">*</span></label>
+  <input type="text" id="supplier_fiscal_code_legal" name="supplier_fiscal_code_legal">
 </div>
 
     <!-- treatment type vat -->
@@ -907,15 +907,22 @@
     const websiteStar = document.getElementById('website_required_star');
     const inactiveBcEntity = document.getElementById('inactive_bpc_entity');
     const vatGroup = document.getElementById('vat_group');
+    const vatGroupLegal = document.getElementById('vat_group_legal');
     const vendorCreatedByDentsu = document.getElementById('vendor_created_by_dentsu');
     const pecSection = document.getElementById('pec_section');
     const supplierVatNumberSection = document.getElementById('supplier_vat_number_section');
     const supplierFiscalCodeSection = document.getElementById('supplier_fiscal_code_section');
     const supplierVatNumberInput = document.getElementById('supplier_vat_number');
+    const supplierVatNumberLegalSection = document.getElementById('supplier_vat_number_legal_section');
+    const supplierFiscalCodeLegalSection = document.getElementById('supplier_fiscal_code_legal_section');
+    const supplierVatNumberLegalInput = document.getElementById('supplier_vat_number_legal');
     const pecInput = document.getElementById('pec');
     const supplierFiscalCodeInput = document.getElementById('supplier_fiscal_code');
     const supplierVatNumberStar = document.getElementById('supplier_vat_number_required_star');
     const supplierFiscalCodeStar = document.getElementById('supplier_fiscal_code_required_star');
+    const supplierFiscalCodeLegalInput = document.getElementById('supplier_fiscal_legal_code');
+    const supplierVatNumberLegalStar = document.getElementById('supplier_vat_number_legal_required_star');
+    const supplierFiscalCodeLegalStar = document.getElementById('supplier_fiscal_code_legal_required_star');
     const withholdingTaxNaturalPersonSection = document.getElementById('witholding_tax_section_natural_person');
     const withholdingTaxInputNaturalPerson = document.getElementById('withholding_tax');
     const withholdingTaxStarNaturalPerson = document.getElementById('witholding_tax_required_star');
