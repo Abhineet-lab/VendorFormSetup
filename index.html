@@ -1124,6 +1124,32 @@
         supplierVatNumberStar.style.display = 'inline';
       }
     }
+    function toggleBasedOnVatGroupLegalPerson(){
+      const grp = vatGroupLegal.value;
+      const pref = vendorCreatedByDentsu.value;
+      mediaVehicleSection.style.display = 'none';
+      vendorWebsiteSection.style.display = 'none';
+      vendorWebsiteInput.required = false;
+      websiteStar.style.display = 'none';
+      inactiveBcEntity.style.display = 'none';
+
+      if ( grp === 'FOR_ITA') {
+        pecSection.style.display = 'block';
+        pecInput.required = true;
+        supplierVatNumberLegalSection.style.display = 'block';
+        supplierVatNumberLegalInput.required = true;
+        supplierVatNumberLegalStar.style.display = 'inline';
+        supplierFiscalCodeLegalSection.style.display = 'block';
+        supplierFiscalCodeLegalInput.required = true;
+        supplierFiscalCodeLegalStar.style.display = 'inline';
+      } else if (grp === 'FOR_UE'){
+        supplierFiscalCodeLegalSection.style.display = 'block';
+        supplierFiscalCodeLegalInput.required = true;
+        supplierVatNumberLegalSection.style.display = 'block';
+        supplierVatNumberLegalInput.required = true;
+        supplierVatNumberLegalStar.style.display = 'inline';
+      }
+    }
     function toggleBasedOnMediaGroup() {
   const grp = mediagroupSelector.value;
 
