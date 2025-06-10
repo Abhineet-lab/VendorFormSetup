@@ -64,6 +64,8 @@
 
   <!-- Natural Person Fields -->
   <div id="natural_person_fields" style="display: none;">
+
+    <!-- vendor created by Dentsu -->
     <label>Vendor created by dentsu:<span style="color: red;">*</span></label>
   <select name="vendor_created_by_dentsu" id = "vendor_created_by_dentsu" required>
     <option value="">--Select--</option>
@@ -72,6 +74,8 @@
   </select>
     <!-- Inside natural_person_fields -->
 <div id="group_wrapper" style="display: none;">
+
+  <!-- Group(D365) -->
   <label>Group (D365):<span style="color: red;">*</span></label>
   <select name="group_d365" id="group_d365" required>
     <option value="">--Select--</option>
@@ -82,17 +86,21 @@
     <option value="TAXSS">TAXSS</option>
   </select>
 </div>
+    <!-- Influencer -->
     <label>Influencer (D365) promoter:</label>
   <select name="influencer_d365" required>
     <option value="">--Select--</option>
     <option value="Nessuno / None">Nessuno / None</option>
     <option value="Influencer">Influencer</option>
   </select>
-    
+
+    <!-- vendor website -->
     <div id="vendor_website_section" style="display: none;">
   <label for="vendor_website">Vendor Website:<span id="website_required_star" style="color: red; display: none;">*</span></label>
   <input type="url" id="vendor_website" name="vendor_website">
 </div>
+
+    <!-- inactive bpc entity -->
      <div id="inactive_bpc_entity" style="display: none;">
     <label for="inactive_bpc_entity">Inactive BPC entity (email):</label>
   <input type="email" id="inactive_bpc_entity" name="inactive_bpc_entity" />
@@ -112,15 +120,20 @@
       <label><input type="checkbox" name="media_vehicle" value="RADIO" /> RADIO</label>
     </div>
   </div>
+
+    <!-- first name -->
     <label for="first_name">First Name:<span style="color: red;">*</span></label>
     <input type="text" id="first_name" name="first_name" />
 
+    <!-- last name -->
     <label for="last_name">Last Name:<span style="color: red;">*</span></label>
     <input type="text" id="last_name" name="last_name" />
 
+    <!-- birth place -->
     <label for="birth_place">Birth Place:<span style="color: red;">*</span></label>
     <input type="text" id="birth_place" name="birth_place" />
 
+    <!-- birth county -->
     <label>Birth County:<span style="color: red;">*</span></label>
 <select name="birth_county" id="birth_county">
   <option value="">--Select--</option>
@@ -234,10 +247,11 @@
   <option value="VV">VV - Vibo Valentia</option>
 </select>
 
-
+    <!-- birth date -->
     <label for="birth_date">Birth Date:<span style="color: red;">*</span></label>
     <input type="date" id="birth_date" name="birth_date" />
 
+    <!-- gender -->
     <label>Gender:<span style="color: red;">*</span></label>
     <select name="gender" id="gender">
       <option value="">--Select--</option>
@@ -245,15 +259,19 @@
       <option value="Female">Female</option>
     </select>
 
+    <!-- address -->
     <label for="address">Address:<span style="color: red;">*</span></label>
   <input type="text" id="address" name="address" />
 
+    <!-- N -->
   <label for="n">N:<span style="color: red;">*</span></label>
   <input type="text" id="n" name="n" />
 
+    <!-- postal code -->
   <label for="postal_code">Postal Code:<span style="color: red;">*</span></label>
   <input type="text" id="postal_code" name="postal_code" />
 
+    <!-- country -->
   <label>Country:<span style="color: red;">*</span></label>
 <select name="country" required>
   <option value="">--Select--</option>
@@ -383,12 +401,15 @@
   <option value="ZWE">Zimbabwe</option>
 </select>
 
+    <!-- city -->
   <label for="city">City:<span style="color: red;">*</span></label>
   <input type="text" id="city" name="city" />
 
+    <!-- telephone number -->
   <label for="telephone_number">Telephone Number:<span style="color: red;">*</span></label>
   <input type="text" id="telephone_number" name="telephone_number" />
 
+    <!-- vat group -->
     <label>VAT Group:<span style="color: red;">*</span></label>
   <select name="vat_group" id="vat_group" required>
     <option value="">--Select--</option>
@@ -397,18 +418,22 @@
     <option value="FOR_XUE">FOR_XUE</option>
   </select>
 
+    <!-- pec -->
      <div id = "pec_section" style="display: none;">
     <label for="pec">PEC:</label>
   <input type="email" id="pec" name="pec" />
     </div>
-    
+
+    <!-- dentsu contact email -->
     <label for="dentsu_contact_email">dentsu Contact Email Address:<span style="color: red;">*</span></label>
   <input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
 
+    <!-- vendor email -->
   <label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
   <input type="email" id="vendor_email" name="vendor_email" />
 
 
+    <!-- professional -->
     <label>Professional:<span style="color: red;">*</span></label>
   <select name="professional" id = "professional" required>
     <option value="">--Select--</option>
@@ -416,6 +441,7 @@
     <option value="No">No</option>
   </select>
 
+    <!-- withholding tax -->
     <div id="witholding_tax_section_natural_person" style="display: none;">
   <label for="withholding_tax">Withholding tax:<span id="witholding_tax_required_star" style="color: red; display: none;">*</span></label>
 <select name="withholding_tax" id="withholding_tax" required>
@@ -437,29 +463,35 @@
 </select>
 </div>
 
-    
+    <!-- supplier vat number -->
     <div id="supplier_vat_number_section" style="display: none;">
   <label for="supplier_vat_number">Supplier VAT Number:<span id="supplier_vat_number_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="supplier_vat_number" name="supplier_vat_number">
 </div>
 
+    <!-- supplier fiscal code -->
     <div id="supplier_fiscal_code_section" style="display: none;">
   <label for="supplier_fiscal_code">Supplier Fiscal Code:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="supplier_fiscal_code" name="supplier_fiscal_code">
 </div>
 
+    <!-- attachment fiscal code -->
    <label>Attachment fiscal code:<span style="color: red;">*</span></label>
   <input type="file" name="attachment_fiscal_code" />
 
+    <!-- treatment type vat -->
     <label for="treatment_type_vat">Treatment type VAT / Jurisprudence:</label>
   <input type="text" id="treatment_type_vat" name="treatment_type_vat" />
-    
+
+    <!-- attachment identity card -->
   <label>Attachment Identity card:<span style="color: red;">*</span></label>
   <input type="file" name="attachment_identity_card" />
    </fieldset>
 
     <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">3. Terms of Payment</legend>
+
+      <!-- payment terms days -->
     <label>Payment Term (Days):<span style="color: red;">*</span></label>
 <select name="payment_term_days" required>
   <option value="">--Select--</option>
@@ -481,13 +513,14 @@
   <option value="N150">N150 - 150 Days - Net</option>
 </select>
 
-
+<!-- payment method -->
   <label>Payment Method:<span style="color: red;">*</span></label>
   <select name="payment_method" required>
     <option value="">--Select--</option>
     <option value="EFT">EFT</option>
   </select>
 
+      <!-- payment term attachment -->
   <label>Payment Terms Attachments:<span style="color: red;">*</span></label>
   <input type="file" name="payment_terms_attachments" />
    </fieldset>
@@ -495,26 +528,31 @@
   <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">4. Supplier Bank Account Information</legend>
 
+    <!-- bank name -->
     <div id= "bank_name_section" style="display: none;">
      <label for="bank_name">Bank Name:<span id="bank_name_required_star" style="color: red; display: none;">*</span></label>
     <input type="text" id="bank_name" name="bank_name" />
   </div>
 
+    <!-- bank address -->
     <div id= "bank_address_section" style="display: none;">
   <label for="bank_address">Bank Address:<span id="bank_address_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="bank_address" name="bank_address" />
     </div>
 
+    <!-- account holder -->
     <div id= "account_holder_section" style="display: none;">
   <label for="account_holder">Account Holder:<span id="account_holder_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="account_holder" name="account_holder" />
   </div>
 
+    <!-- account number -->
     <div id= "account_number_section" style="display: none;">
   <label for="account_number">Account Number:<span id="account_number_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="account_number" name="account_number" />
   </div>
 
+    <!-- currency -->
     <div id= "currency_section" style="display: none;">
   <label>Currency:<span id="currency_required_star" style="color: red; display: none;">*</span></label>
   <select name="currency" id="currency" required>
@@ -525,11 +563,13 @@
   </select>
   </div>
 
+    <!-- iban code -->
     <div id= "iban_code_section" style="display: none;">
   <label for="iban_code">IBAN Code:<span id="iban_code_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="iban_code" name="iban_code" />
   </div>
-    
+
+    <!-- cin -->
    <div id= "cin_section" style="display: none;">
   <label>CIN:<span id="cin_required_star" style="color: red; display: none;">*</span></label>
   <select name="cin" id = "cin" required>
@@ -539,11 +579,13 @@
   </select>
   </div>
 
+    <!-- swift code -->
     <div id= "swift_code_section" style="display: none;">
   <label for="swift_code">SWIFT Code:<span id="swift_code_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="swift_code" name="swift_code" />
   </div>
 
+    <!-- bank details attachment -->
     <div id= "bank_detail_attachment_section" style="display: none;">
   <label>Bank Details Attachment:<span id="bank_details_attachment_required_star" style="color: red; display: none;">*</span></label>
   <input type="file" id = "bank_details_attachment" name="bank_details_attachment" />
