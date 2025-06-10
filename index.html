@@ -1024,7 +1024,10 @@
         bankDetailsAttachmentSection.style.display = 'block';
         bankDetailsAttachmentInput.required = true;
         bankDetailsAttachmentStar.style.display = 'none';
-      } else if (vendorCreatedByDentsu.value === 'No' && vatGroup.value === 'FOR_ITA'){
+      } else if (
+  vendorCreatedByDentsu.value === 'No' &&
+  (vatGroup.value === 'FOR_ITA' || vatGroupLegal.value === 'FOR_ITA')
+){
         bankNameSection.style.display = 'block';
         bankNameInput.required = true;
         bankNameStar.style.display = 'inline';
@@ -1185,6 +1188,8 @@
     professionalValue.addEventListener('change' , toggleBasedOnProfessionalNaturalPerson);
     vatGroupLegal.addEventListener('change', toggleBasedOnVatGroupLegalPerson);
     vatGroup.addEventListener('change' , toggleBasedOnVatGroupNaturalPerson);
+    vatGroupLegal.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
+    vatGroup.addEventListener('change' , toggleBasedOnVendorCreatedByDentsu);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVatGroupLegalPerson);
 
     // Initial load
