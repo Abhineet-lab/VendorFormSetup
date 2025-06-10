@@ -776,8 +776,10 @@
     <input type="text" id="business_register_number" name="business_register_number" />
 
      <!-- Attachment Chambre of commerce certification -->
-    <label>Attachment Chambre of commerce certification:</label>
-    <input type="file" name="attachment_chamber_of_commerce" />
+    <div id="attachment_chambre_section" style="display: none;">
+    <label for="attachment_chambre">Attachment Chambre of commerce certification:<span id="attachment_chambre_required_star" style="color: red; display: none;">*</span></label>
+    <input type="file" id = "attachment_chambre" name="attachment_chamber_of_commerce" />
+    </div>
     
   </div>
    </fieldset>
@@ -885,15 +887,6 @@
   <input type="file" id = "bank_details_attachment" name="bank_details_attachment" />
   </div>
  </fieldset>
-  
-  <!-- Legal Person Fields -->
-  <div id="legal_person_fields" style="display: none;">
-    <label for="business_register_number">Number of inscription in the Business Register (CCIAA):<span style="color: red;">*</span></label>
-    <input type="text" id="business_register_number" name="business_register_number" />
-
-    <label>Attachment Chambre of commerce certification:</label>
-    <input type="file" name="attachment_chamber_of_commerce" />
-  </div>
 
   <button type="submit">Submit</button>
 </form>
@@ -954,6 +947,9 @@
     const bankDetailsAttachmentSection = document.getElementById('bank_detail_attachment_section');
     const bankDetailsAttachmentInput = document.getElementById('bank_details_attachment');
     const bankDetailsAttachmentStar = document.getElementById('bank_details_attachment_required_star');
+    const attachmentChambreSection = document.getElementById('attachment_chambre_section');
+    const attachmentChambreInput = document.getElementById('attachment_chambre');
+    const attachmentChambreStar = document.getElementById('attachment_chambre_required_star');
 
     function toggleSupplierFields() {
       const supplier = supplierType.value;
@@ -977,6 +973,17 @@
         supplierFiscalCodeSection.style.display = 'none';
         supplierFiscalCodeInput.required = false;
         supplierFiscalCodeStar.style.display = 'none';
+    }
+    function toogleBasedOnAttachmentChambre(){
+      if(vendorCreatedByDentsu.value === 'Yes') {
+        attachmentChambreSection.style.display = 'block';
+        attachmentChambreInput.required = true;
+        attachmentChambreStar.style.display = 'none';
+      } else if (vendorCreatedByDentsu.value === 'No') {
+        attachmentChambreSection.style.display = 'block';
+        attachmentChambreInput.required = true;
+        attachmentChambreStar.style.display = 'inline';
+      }
     }
     function toggleBasedOnVendorCreatedByDentsu() {
       if (vendorCreatedByDentsu.value === 'Yes'){
