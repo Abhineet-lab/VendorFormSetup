@@ -120,17 +120,14 @@
     <option value="Legal Person">Legal Person</option>
   </select>
 
-  <!-- Natural Person Fields -->
-  <div id="natural_person_fields" style="display: none;">
-
-    <!-- vendor created by Dentsu -->
+ <!-- vendor created by Dentsu -->
     <label>Vendor created by dentsu:<span style="color: red;">*</span></label>
   <select name="vendor_created_by_dentsu" id = "vendor_created_by_dentsu" required>
     <option value="">--Select--</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
   </select>
-    <!-- Inside natural_person_fields -->
+  
 <div id="group_wrapper" style="display: none;">
 
   <!-- Group(D365) -->
@@ -178,6 +175,9 @@
       <label><input type="checkbox" name="media_vehicle" value="RADIO" /> RADIO</label>
     </div>
   </div>
+    
+    <!-- Natural Person Fields -->
+  <div id="natural_person_fields" style="display: none;">
 
     <!-- first name -->
     <label for="first_name">First Name:<span style="color: red;">*</span></label>
@@ -317,7 +317,20 @@
       <option value="Female">Female</option>
     </select>
 
-    <!-- address -->
+    <!-- attachment fiscal code -->
+   <label>Attachment fiscal code:<span style="color: red;">*</span></label>
+  <input type="file" name="attachment_fiscal_code" />
+
+    <!-- treatment type vat -->
+    <label for="treatment_type_vat">Treatment type VAT / Jurisprudence:</label>
+  <input type="text" id="treatment_type_vat" name="treatment_type_vat" />
+
+    <!-- attachment identity card -->
+  <label>Attachment Identity card:<span style="color: red;">*</span></label>
+  <input type="file" name="attachment_identity_card" />
+    </div>
+
+   <!-- address -->
     <label for="address">Address:<span style="color: red;">*</span></label>
   <input type="text" id="address" name="address" />
 
@@ -535,20 +548,7 @@
   <label for="supplier_fiscal_code">Supplier Fiscal Code Number:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="supplier_fiscal_code" name="supplier_fiscal_code">
 </div>
-
-    <!-- attachment fiscal code -->
-   <label>Attachment fiscal code:<span style="color: red;">*</span></label>
-  <input type="file" name="attachment_fiscal_code" />
-
-    <!-- treatment type vat -->
-    <label for="treatment_type_vat">Treatment type VAT / Jurisprudence:</label>
-  <input type="text" id="treatment_type_vat" name="treatment_type_vat" />
-
-    <!-- attachment identity card -->
-  <label>Attachment Identity card:<span style="color: red;">*</span></label>
-  <input type="file" name="attachment_identity_card" />
-    </div>
-  </fieldset>
+</fieldset>
 
     <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">3. Terms of Payment</legend>
