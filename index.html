@@ -85,7 +85,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made By:<span style="color: red;">*</span>
+  Request made by:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First Name &amp; Last Name</span>
@@ -317,19 +317,6 @@
       <option value="Female">Female</option>
     </select>
 
-    <!-- attachment fiscal code -->
-   <label>Attachment fiscal code:<span style="color: red;">*</span></label>
-  <input type="file" name="attachment_fiscal_code" />
-
-    <!-- treatment type vat -->
-    <label for="treatment_type_vat">Treatment type VAT / Jurisprudence:</label>
-  <input type="text" id="treatment_type_vat" name="treatment_type_vat" />
-
-    <!-- attachment identity card -->
-  <label>Attachment Identity card:<span style="color: red;">*</span></label>
-  <input type="file" name="attachment_identity_card" />
-    </div>
-
    <!-- address -->
     <label for="address">Address:<span style="color: red;">*</span></label>
   <input type="text" id="address" name="address" />
@@ -547,6 +534,37 @@
     <div id="supplier_fiscal_code_section" style="display: none;">
   <label for="supplier_fiscal_code">Supplier Fiscal Code Number:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="supplier_fiscal_code" name="supplier_fiscal_code">
+</div>
+
+    <!-- End-of-Supplier-Type Specific Fields -->
+<div id="natural_person_fields_end" style="display: none;">
+  <!-- attachment fiscal code -->
+  <label>Attachment fiscal code:<span style="color: red;">*</span></label>
+  <input type="file" name="attachment_fiscal_code" />
+
+  <!-- treatment type vat -->
+  <label for="treatment_type_vat">Treatment type VAT / Jurisprudence:</label>
+  <input type="text" id="treatment_type_vat" name="treatment_type_vat" />
+
+  <!-- attachment identity card -->
+  <label>Attachment Identity card:<span style="color: red;">*</span></label>
+  <input type="file" name="attachment_identity_card" />
+</div>
+
+<div id="legal_person_fields_end" style="display: none;">
+  <!-- treatment type vat legal -->
+  <label for="treatment_type_vat_legal">Treatment type VAT / Jurisprudence:</label>
+  <input type="text" id="treatment_type_vat_legal" name="treatment_type_vat_legal" />
+
+  <!-- Business register number -->
+  <label for="business_register_number">Number of inscription in the Business Register (CCIAA):</label>
+  <input type="text" id="business_register_number" name="business_register_number" />
+
+  <!-- attachment chambre -->
+  <div id="attachment_chambre_section" style="display: none;">
+    <label for="attachment_chambre">Attachment Chambre of Commerce certification:<span id="attachment_chambre_required_star" style="color: red; display: none;">*</span></label>
+    <input type="file" id="attachment_chambre" name="attachment_chambre" />
+  </div>
 </div>
 </fieldset>
 
@@ -949,28 +967,34 @@
   }
 }
     function toggleSupplierFields() {
-      const supplier = supplierType.value;
+  const supplier = supplierType.value;
 
-      // Show the right block
-      naturalFields.style.display = supplier === 'Natural Person' ? 'block' : 'none';
-      legalFields.style.display = supplier === 'Legal Person' ? 'block' : 'none';
+  // Main top field groups
+  naturalFields.style.display = supplier === 'Natural Person' ? 'block' : 'none';
+  legalFields.style.display = supplier === 'Legal Person' ? 'block' : 'none';
 
-      // Hide group section initially
-      mediagroupWrapper.style.display = supplier === 'Natural Person' ? 'block' : 'none';
-      mediagroupSelector.value = '';
-      // Hide everything else
-      mediaVehicleSection.style.display = 'none';
-      mandatevendorwebsite.style.display = 'none';
-      nonmandatevendorwebsite.style.display = 'none';
-      inactiveBcEntity.style.display = 'none';
-      pecSection.style.display = 'none';
-        pecInput.required = false;
-        supplierVatNumberSection.style.display = 'none';
-        supplierVatNumberInput.required = false;
-        supplierFiscalCodeSection.style.display = 'none';
-        supplierFiscalCodeInput.required = false;
-        supplierFiscalCodeStar.style.display = 'none';
-    }
+  // End-of-section specific fields
+  document.getElementById('natural_person_fields_end').style.display = supplier === 'Natural Person' ? 'block' : 'none';
+  document.getElementById('legal_person_fields_end').style.display = supplier === 'Legal Person' ? 'block' : 'none';
+
+  // Group-related toggling
+  mediagroupWrapper.style.display = supplier === 'Natural Person' ? 'block' : 'none';
+  mediagroupSelector.value = '';
+
+  // Reset shared sections
+  mediaVehicleSection.style.display = 'none';
+  vendorWebsiteSection.style.display = 'none';
+  vendorWebsiteInput.required = false;
+  websiteStar.style.display = 'none';
+  inactiveBcEntity.style.display = 'none';
+  pecSection.style.display = 'none';
+  pecInput.required = false;
+  supplierVatNumberSection.style.display = 'none';
+  supplierVatNumberInput.required = false;
+  supplierFiscalCodeSection.style.display = 'none';
+  supplierFiscalCodeInput.required = false;
+  supplierFiscalCodeStar.style.display = 'none';
+}
     function toogleBasedOnAttachmentChambre(){
       if(vendorCreatedByDentsu.value === 'Yes') {
         attachmentChambreSection.style.display = 'block';
