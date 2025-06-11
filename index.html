@@ -85,7 +85,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made By:<span style="color: red;">*</span>
+  Request made by:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First Name &amp; Last Name</span>
@@ -879,10 +879,10 @@
     const supplierType = document.getElementById('supplier_legal_personality');
     const naturalFields = document.getElementById('natural_person_fields');
     const legalFields = document.getElementById('legal_person_fields');
-
+    const naturalFieldsEnd = document.getElementById('natural_person_fields_end');
+    const legalFieldsEnd = document.getElementById('legal_person_fields_end');
     const mediagroupWrapper = document.getElementById('group_wrapper');
     const mediagroupSelector = document.getElementById('group_d365');
-
     const mediaVehicleSection = document.getElementById('media_vehicle_section');
     const vendorWebsiteSection = document.getElementById('vendor_website_section');
     const vendorWebsiteInput = document.getElementById('vendor_website');
@@ -967,7 +967,7 @@
     if (errorSpan) errorSpan.style.display = 'none';
   }
 }
-    function toggleSupplierFields() {
+    ffunction toggleSupplierFields() {
   const supplier = supplierType.value;
 
   // Main top field groups
@@ -975,14 +975,12 @@
   legalFields.style.display = supplier === 'Legal Person' ? 'block' : 'none';
 
   // End-of-section specific fields
-  document.getElementById('natural_person_fields_end').style.display = supplier === 'Natural Person' ? 'block' : 'none';
-  document.getElementById('legal_person_fields_end').style.display = supplier === 'Legal Person' ? 'block' : 'none';
+  naturalFieldsEnd.style.display = supplier === 'Natural Person' ? 'block' : 'none';
+  legalFieldsEnd.style.display = supplier === 'Legal Person' ? 'block' : 'none';
 
-  // Group-related toggling
+  // Other shared sections (no change here)
   mediagroupWrapper.style.display = supplier === 'Natural Person' ? 'block' : 'none';
   mediagroupSelector.value = '';
-
-  // Reset shared sections
   mediaVehicleSection.style.display = 'none';
   vendorWebsiteSection.style.display = 'none';
   vendorWebsiteInput.required = false;
