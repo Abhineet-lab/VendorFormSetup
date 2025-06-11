@@ -85,7 +85,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made By:<span style="color: red;">*</span>
+  Request made by:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First Name &amp; Last Name</span>
@@ -983,6 +983,7 @@
   const professional = professionalInput.value;
 
   // Always show professional and withholding tax section
+  professionalSection.style.display = 'block';
   withholdingTaxSection.style.display = 'block';
 
   if (supplier === 'Natural Person') {
@@ -1222,7 +1223,7 @@
     supplierType.addEventListener('change', toggleBasedOnVatGroup);
     supplierType.addEventListener('change', toggleBasedOnProfessional);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnProfessional);
-    professionalValue.addEventListener('change', toggleBasedOnProfessional);
+    professionalInput.addEventListener('change', toggleBasedOnProfessional);
 
     // Initial load
     toggleSupplierFields();
