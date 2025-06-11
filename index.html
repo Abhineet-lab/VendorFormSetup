@@ -18,6 +18,37 @@
     }
     .attachments input { margin-top: 10px; }
     button { margin-top: 20px; padding: 10px 15px; font-size: 16px; }
+
+    /* Tooltip styles */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 5px;
+    color: #007BFF;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 6px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 13px;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
   </style>
 </head>
 <body>
@@ -32,8 +63,13 @@
   <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
-  <label for="request_by">Request made by:<span style="color: red;">*</span></label>
-  <input type="email" id="request_by" name="request_by" required />
+  <label for="request_by">
+  Request made by:<span style="color: red;">*</span>
+  <span class="tooltip">ℹ️
+    <span class="tooltiptext">First Name &amp; Last Name</span>
+  </span>
+</label>
+<input type="text" id="request_by" name="request_by" required />
 
   <!-- Company: -->
   <label>Company:<span style="color: red;">*</span></label>
