@@ -85,7 +85,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made By:<span style="color: red;">*</span>
+  Request made by:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First Name &amp; Last Name</span>
@@ -1043,7 +1043,7 @@
         bankDetailsAttachmentSection.style.display = 'block';
         bankDetailsAttachmentInput.required = true;
         bankDetailsAttachmentStar.style.display = 'none';
-      } else if (vendorCreatedByDentsu.value === 'No' && (vatGroup.value === 'FOR_ITA' )){
+      } else if (vendorCreatedByDentsu.value === 'No' && vatGroup.value === 'FOR_ITA'){
         bankNameSection.style.display = 'block';
         bankNameInput.required = true;
         bankNameStar.style.display = 'inline';
@@ -1186,7 +1186,6 @@
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVatGroupNaturalPerson);
     professionalValue.addEventListener('change' , toggleBasedOnProfessionalNaturalPerson);
     vatGroup.addEventListener('change' , toggleBasedOnVatGroupNaturalPerson);
-    vatGroupLegal.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
     vatGroup.addEventListener('change' , toggleBasedOnVendorCreatedByDentsu);
     ibanCodeInput.addEventListener('input', validateIBAN);
     pecInput.addEventListener('input', validateEmail);
