@@ -1088,11 +1088,12 @@
   </select>
   </div>
 
-    <!-- iban code -->
-    <div id= "iban_code_section" style="display: none;">
+   <!-- IBAN Code Section -->
+<div id="iban_code_section" style="display: none;">
   <label for="iban_code">IBAN Code:<span id="iban_code_required_star" style="color: red; display: none;">*</span></label>
-  <input type="text" id="iban_code" name="iban_code" />
-  </div>
+  <input type="text" id="iban_code" name="iban_code" onblur="validateIBAN()" />
+  <span id="iban_error" style="color: red; font-size: 13px; display: none;">Please ensure IBAN code is correct</span>
+</div>
 
     <!-- cin -->
    <div id= "cin_section" style="display: none;">
@@ -1211,6 +1212,22 @@
     const attachmentChambreInput = document.getElementById('attachment_chambre');
     const attachmentChambreStar = document.getElementById('attachment_chambre_required_star');
 
+    function validateIBAN() {
+    const ibanInput = document.getElementById("iban_code");
+    const errorMsg = document.getElementById("iban_error");
+    const ibanValue = ibanInput.value.trim();
+
+    // Remove any whitespace for validation check
+    const noSpaces = ibanValue.replace(/\s/g, '');
+
+    if (noSpaces.length !== 27 || /\s/.test(ibanValue)) {
+      errorMsg.style.display = "block";
+      ibanInput.style.borderColor = "red";
+    } else {
+      errorMsg.style.display = "none";
+      ibanInput.style.borderColor = "";
+    }
+  }
     function toggleSupplierFields() {
       const supplier = supplierType.value;
 
