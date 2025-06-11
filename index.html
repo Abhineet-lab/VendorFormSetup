@@ -772,21 +772,21 @@
   </select>
     
    <!-- PEC -->
-<div id="pec_section" style="display: none;">
-  <label for="pec">PEC:</label>
-  <input type="email" id="pec" name="pec" />
-  <span id="pec_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
+<div id="pec_legal_section" style="display: none;">
+  <label for="pec_legal">PEC:</label>
+  <input type="email" id="pec_legal" name="pec_legal" />
+  <span id="pec_error_legal" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
 </div>
 
 <!-- dentsu contact email -->
-<label for="dentsu_contact_email">dentsu Contact Email Address:<span style="color: red;">*</span></label>
-<input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
-<span id="dentsu_contact_email_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
+<label for="dentsu_contact_email_legal">dentsu Contact Email Address:<span style="color: red;">*</span></label>
+<input type="email" id="dentsu_contact_email_legal" name="dentsu_contact_email" />
+<span id="dentsu_contact_email_error_legal" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
 
 <!-- vendor email -->
-<label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
-<input type="email" id="vendor_email" name="vendor_email" />
-<span id="vendor_email_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
+<label for="vendor_email_legal">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
+<input type="email" id="vendor_email_legal" name="vendor_email" />
+<span id="vendor_email_error_legal" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
 
 
     <!-- professional -->
@@ -1170,6 +1170,7 @@
     const vatGroupLegal = document.getElementById('vat_group_legal');
     const vendorCreatedByDentsu = document.getElementById('vendor_created_by_dentsu');
     const pecSection = document.getElementById('pec_section');
+    const pecLegalSection = document.getElementById('pec_legal_section');
     const supplierVatNumberSection = document.getElementById('supplier_vat_number_section');
     const supplierFiscalCodeSection = document.getElementById('supplier_fiscal_code_section');
     const supplierVatNumberInput = document.getElementById('supplier_vat_number');
@@ -1177,6 +1178,7 @@
     const supplierFiscalCodeLegalSection = document.getElementById('supplier_fiscal_code_legal_section');
     const supplierVatNumberLegalInput = document.getElementById('supplier_vat_number_legal');
     const pecInput = document.getElementById('pec');
+    const pecLegalInput = document.getElementById('pec_legal');
     const supplierFiscalCodeInput = document.getElementById('supplier_fiscal_code');
     const supplierVatNumberStar = document.getElementById('supplier_vat_number_required_star');
     const supplierFiscalCodeStar = document.getElementById('supplier_fiscal_code_required_star');
@@ -1436,8 +1438,8 @@
       inactiveBcEntity.style.display = 'none';
 
       if ( grp === 'FOR_ITA') {
-        pecSection.style.display = 'block';
-        pecInput.required = true;
+        pecLegalSection.style.display = 'block';
+        pecLegalInput.required = true;
         supplierVatNumberLegalSection.style.display = 'block';
         supplierVatNumberLegalInput.required = true;
         supplierVatNumberLegalStar.style.display = 'inline';
