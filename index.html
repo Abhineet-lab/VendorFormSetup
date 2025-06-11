@@ -770,7 +770,7 @@
     <option value="FOR_UE">FOR_UE</option>
     <option value="FOR_XUE">FOR_XUE</option>
   </select>
-
+    
    <!-- PEC -->
 <div id="pec_section" style="display: none;">
   <label for="pec">PEC:</label>
@@ -1233,17 +1233,21 @@
       ibanInput.style.borderColor = "";
     }
   }
-    function validateEmail(inputId) {
-  const emailInput = document.getElementById(inputId);
+    function validateEmail(event) {
+  const emailInput = event.target;
   const email = emailInput.value.trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+  const errorSpan = document.getElementById(`${emailInput.id}_error`);
+
   if (email !== '' && !emailRegex.test(email)) {
     emailInput.style.borderColor = 'red';
-    emailInput.setCustomValidity('Please enter a valid email address.');
+    emailInput.setCustomValidity('Invalid email address.');
+    if (errorSpan) errorSpan.style.display = 'inline';
   } else {
     emailInput.style.borderColor = '';
     emailInput.setCustomValidity('');
+    if (errorSpan) errorSpan.style.display = 'none';
   }
 }
     function toggleSupplierFields() {
@@ -1477,9 +1481,10 @@
     vatGroup.addEventListener('change' , toggleBasedOnVendorCreatedByDentsu);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVatGroupLegalPerson);
     ibanCodeInput.addEventListener('input', validateIBAN);
-    pecInput.addEventListener('input', () => validateEmail('pec'));
-    document.getElementById('dentsu_contact_email').addEventListener('input', () => validateEmail('dentsu_contact_email'));
-    document.getElementById('vendor_email').addEventListener('input', () => validateEmail('vendor_email'));
+    pecInput.addEventListener('input', validateEmail);
+    document.getElementById('dentsu_contact_email').addEventListener('input', validateEmail);
+    document.getElementById('vendor_email').addEventListener('input', validateEmail);
+
 
 
     // Initial load
