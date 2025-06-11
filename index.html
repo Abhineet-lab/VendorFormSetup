@@ -85,7 +85,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made by:<span style="color: red;">*</span>
+  Request made By:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First Name &amp; Last Name</span>
@@ -318,7 +318,11 @@
     </select>
   </div>
 
-    <div id="legal_person_fields" style="display: none;"></div>
+    <div id="legal_person_fields" style="display: none;">
+      <!-- supplier company name -->
+    <label for="supplier_company_name">Supplier Company Name:<span style="color: red;">*</span></label>
+  <input type="text" id="supplier_company_name" name="supplier_company_name" required />
+    </div>
 
    <!-- address -->
     <label for="address">Address:<span style="color: red;">*</span></label>
