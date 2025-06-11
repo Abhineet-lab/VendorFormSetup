@@ -85,7 +85,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made by:<span style="color: red;">*</span>
+  Request made By:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First Name &amp; Last Name</span>
@@ -1118,12 +1118,9 @@
         withholdingTaxStarNaturalPerson.style.display = 'none';
       }
     }
-    function toggleBasedOnVatGroupNaturalPerson(){
+    function toggleBasedOnVatGroup(){
   const grp = vatGroup.value;
   const pref = vendorCreatedByDentsu.value;
-
-  // Add condition to run only for Natural Person
-  if (supplierType.value !== 'Natural Person') return;
 
   // Reset all first
   pecSection.style.display = 'none';
@@ -1183,7 +1180,7 @@
     mediagroupSelector.addEventListener('change', toggleBasedOnMediaGroup);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
     vendorCreatedByDentsu.addEventListener('change', toogleBasedOnAttachmentChambre);
-    vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVatGroupNaturalPerson);
+    vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVatGroup);
     professionalValue.addEventListener('change' , toggleBasedOnProfessionalNaturalPerson);
     vatGroup.addEventListener('change' , toggleBasedOnVatGroupNaturalPerson);
     vatGroup.addEventListener('change' , toggleBasedOnVendorCreatedByDentsu);
@@ -1191,7 +1188,7 @@
     pecInput.addEventListener('input', validateEmail);
     document.getElementById('dentsu_contact_email').addEventListener('input', validateEmail);
     document.getElementById('vendor_email').addEventListener('input', validateEmail);
-    supplierType.addEventListener('change', toggleBasedOnVatGroupNaturalPerson);
+    supplierType.addEventListener('change', toggleBasedOnVatGroup);
 
 
 
@@ -1201,7 +1198,7 @@
     toggleBasedOnProfessionalNaturalPerson();
     toggleBasedOnVendorCreatedByDentsu();
     toogleBasedOnAttachmentChambre();
-    toggleBasedOnVatGroupNaturalPerson();
+    toggleBasedOnVatGroup();
   });
 </script>
 </body>
