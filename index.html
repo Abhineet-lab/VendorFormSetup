@@ -1091,7 +1091,7 @@
    <!-- IBAN Code Section -->
 <div id="iban_code_section" style="display: none;">
   <label for="iban_code">IBAN Code:<span id="iban_code_required_star" style="color: red; display: none;">*</span></label>
-  <input type="text" id="iban_code" name="iban_code" onblur="validateIBAN()" />
+  <input type="text" id="iban_code" name="iban_code" oninput="validateIBAN()" />
   <span id="iban_error" style="color: red; font-size: 13px; display: none;">Please ensure IBAN code is correct</span>
 </div>
 
