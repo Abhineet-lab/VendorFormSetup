@@ -32,9 +32,9 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 18px;
-  height: 18px;
-  background-color: grey;
+  width: 14px;
+  height: 14px;
+  background-color: #d3d3d3;
   color: black;
   border-radius: 50%;
   font-size: 12px;
@@ -45,7 +45,7 @@
 }
 
 .tooltip .tooltip-icon:hover {
-  background-color: #666;
+  background-color: #b0b0b0;
 }
 
 .tooltip .tooltiptext {
@@ -85,10 +85,10 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made by:<span style="color: red;">*</span>
+  Request made By:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
-    <span class="tooltiptext">First Name &amp; Last Name</span>
+    <span class="tooltiptext">First and last name of the person who fills in the form</span>
   </span>
 </label>
 <input type="email" id="request_by" name="request_by" required />
@@ -96,42 +96,77 @@
   <!-- Company: -->
   <label>Company:<span style="color: red;">*</span></label>
   <div class="checkbox-group">
-    <label><input type="checkbox" name="company" value="DENTSU ITALIA SPA" /> DENTSU ITALIA SPA</label>
-    <label><input type="checkbox" name="company" value="CARAT ITALIA SPA" /> CARAT ITALIA SPA</label>
-    <label><input type="checkbox" name="company" value="iPROSPECT ITALIA SPA" /> iPROSPECT ITALIA SPA</label>
+    <label><input type="checkbox" name="company" value="DENTSU ITALIA SPA SB" /> DENTSU ITALIA SPA SB</label>
+    <label><input type="checkbox" name="company" value="CARAT ITALIA SPA SB" /> CARAT ITALIA SPA SB</label>
+    <label><input type="checkbox" name="company" value="IPROSPECT ITALIA SPA SB" /> IPROSPECT ITALIA SPA SB</label>
     <label><input type="checkbox" name="company" value="DENTSU DIGITAL SRL" /> DENTSU DIGITAL SRL</label>
     <label><input type="checkbox" name="company" value="DENTSU CREATIVE SRL SB" /> DENTSU CREATIVE SRL SB</label>
-    <label><input type="checkbox" name="company" value="AMNET ITALIA SRL" /> AMNET ITALIA SRL</label>
-    <label><input type="checkbox" name="company" value="SIMPLE AGENCY SRL" /> SIMPLE AGENCY SRL</label>
-    <label><input type="checkbox" name="company" value="DENTSU TECH & SERVICES SRL" /> DENTSU TECH & SERVICES SRL</label>
-    <label><input type="checkbox" name="company" value="DENTSU X SRL" /> DENTSU X SRL</label>
-    <label><input type="checkbox" name="company" value="MERKLE ITALIA SRL (NEW LEGAL)" /> MERKLE ITALIA SRL (NEW LEGAL)</label>
-    <label><input type="checkbox" name="company" value="MMA TECHNOLOGIES LTD ITALIAN BRANCH" /> MMA TECHNOLOGIES LTD ITALIAN BRANCH</label>
+    <label><input type="checkbox" name="company" value="DENTSU TECH & SERVICES SRL" /> DENTSU TECH&SERVICES SRL</label>
+    <label><input type="checkbox" name="company" value="DENTSU X SRL SB" /> DENTSU X SRL SB</label>
+    <label><input type="checkbox" name="company" value="MERKLE ITALIA SRL" /> MERKLE ITALIA SRL</label>
+    <label><input type="checkbox" name="company" value="MMA TECHNOLOGIES LTD" /> MMA TECHNOLOGIES LTD</label>
   </div>
   </fieldset>
 
   <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">2. Supplier Information</legend>
-  <!-- Supplier Legal Personality -->
-  <label>Supplier Legal Personality:<span style="color: red;">*</span></label>
-  <select name="supplier_legal_personality" id="supplier_legal_personality" required>
-    <option value="">--Select--</option>
-    <option value="Natural Person">Natural Person</option>
-    <option value="Legal Person">Legal Person</option>
-  </select>
 
- <!-- vendor created by Dentsu -->
-    <label>Vendor created by dentsu:<span style="color: red;">*</span></label>
-  <select name="vendor_created_by_dentsu" id = "vendor_created_by_dentsu" required>
-    <option value="">--Select--</option>
-    <option value="Yes">Yes</option>
-    <option value="No">No</option>
-  </select>
+    <!-- Supplier Legal Personality -->
+<label>
+  Supplier Legal Personality:<span style="color: red;">*</span>
+  <!-- Tooltip Icon -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">
+      Select "Natural Person" (Persona Fisica) for individuals or "Legal Person" (Società o Ditta) for registered entities like companies or firms.
+    </span>
+  </span>
+</label>
+<select name="supplier_legal_personality" id="supplier_legal_personality" required>
+  <option value="">--Select--</option>
+  <option value="Natural Person">Natural Person</option>
+  <option value="Legal Person">Legal Person</option>
+</select>
+
+
+<!-- vendor created by Dentsu -->
+<label>
+  Vendor created by dentsu:<span style="color: red;">*</span>
+
+  <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">
+      Campo ad uso esclusivo da parte del personale Dentsu / Exclusive use of Dentsu staff
+    </span>
+  </span>
+</label>
+
+<select name="vendor_created_by_dentsu" id="vendor_created_by_dentsu" required>
+  <option value="">--Select--</option>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+
   
 <div id="group_wrapper" style="display: none;">
-
   <!-- Group(D365) -->
-  <label>Group (D365):<span style="color: red;">*</span></label>
+  <label>
+    Group (D365):<span style="color: red;">*</span>
+
+    <!-- Tooltip Icon -->
+    <span class="tooltip">
+      <span class="tooltip-icon">i</span>
+      <span class="tooltiptext">
+        <strong>MEDIA</strong>: se siete fornitori concessionari spazi pubblicitari<br>
+        <strong>NONMEDIA</strong>: se siete fornitori di servizi collegati al business ma non siete concessionari o rivenditori di spazi pubblicitari<br>
+        <strong>HOUSE</strong>: se siete fornitori di servizi non direttamente collegati al business e ai servizi forniti ai nostri clienti<br>
+        <strong>INTCO</strong>: se siete fornitori intercompany<br>
+        <strong>TAXSS</strong>: se siete fondi previdenziali
+      </span>
+    </span>
+  </label>
+
   <select name="group_d365" id="group_d365" required>
     <option value="">--Select--</option>
     <option value="MEDIA">MEDIA</option>
@@ -141,6 +176,7 @@
     <option value="TAXSS">TAXSS</option>
   </select>
 </div>
+
     <!-- Influencer -->
     <label>Influencer (D365) promoter:</label>
   <select name="influencer_d365" required>
@@ -191,8 +227,17 @@
     <label for="birth_place">Birth Place:<span style="color: red;">*</span></label>
     <input type="text" id="birth_place" name="birth_place" />
 
-    <!-- birth county -->
-    <label>Birth County:<span style="color: red;">*</span></label>
+   <!-- birth county -->
+<label>
+  Birth County:<span style="color: red;">*</span>
+
+  <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">Provincia di nascita</span>
+  </span>
+</label>
+
 <select name="birth_county" id="birth_county">
   <option value="">--Select--</option>
   <option value="AG">AG - Agrigento</option>
@@ -304,6 +349,7 @@
   <option value="VT">VT - Viterbo</option>
   <option value="VV">VV - Vibo Valentia</option>
 </select>
+
 
     <!-- birth date -->
     <label for="birth_date">Birth Date:<span style="color: red;">*</span></label>
@@ -474,14 +520,29 @@
   <label for="telephone_number">Telephone Number:<span style="color: red;">*</span></label>
   <input type="text" id="telephone_number" name="telephone_number" />
 
-    <!-- vat group -->
-    <label>VAT Group:<span style="color: red;">*</span></label>
-  <select name="vat_group" id="vat_group" required>
-    <option value="">--Select--</option>
-    <option value="FOR_ITA">FOR_ITA</option>
-    <option value="FOR_UE">FOR_UE</option>
-    <option value="FOR_XUE">FOR_XUE</option>
-  </select>
+  <!-- vat group -->
+<label>
+  VAT Group:<span style="color: red;">*</span>
+
+  <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">
+      Please select the type of VAT:<br>
+      <strong>ITA</strong> – Italy<br>
+      <strong>UE</strong> – European Union<br>
+      <strong>XUE</strong> – Outside of European Union
+    </span>
+  </span>
+</label>
+
+<select name="vat_group" id="vat_group" required>
+  <option value="">--Select--</option>
+  <option value="FOR_ITA">FOR_ITA</option>
+  <option value="FOR_UE">FOR_UE</option>
+  <option value="FOR_XUE">FOR_XUE</option>
+</select>
+
 
     <!-- PEC -->
 <div id="pec_section" style="display: none;">
@@ -491,9 +552,21 @@
 </div>
 
 <!-- dentsu contact email -->
-<label for="dentsu_contact_email">dentsu Contact Email Address:<span style="color: red;">*</span></label>
+<label for="dentsu_contact_email">
+  dentsu Contact Email Address:<span style="color: red;">*</span>
+
+  <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">Email address of the dentsu contact person</span>
+  </span>
+</label>
+
 <input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
-<span id="dentsu_contact_email_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
+<span id="dentsu_contact_email_error" style="color: red; font-size: 13px; display: none;">
+  Please enter a valid email address
+</span>
+
 
 <!-- vendor email -->
 <label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
@@ -511,77 +584,169 @@
   </select>
     </div>
 
-    <!-- withholding tax -->
-    <div id="witholding_tax_section" style="display: none;">
-  <label for="withholding_tax">Withholding tax:<span id="witholding_tax_required_star" style="color: red; display: none;">*</span></label>
-<select name="withholding_tax" id="withholding_tax" required>
-  <option value="">--Select--</option>
-  <option value="E25 L.111/2011 Regime agevolato">E25 L.111/2011 Regime agevolato</option>
-  <option value="E26 Legge 111/2011 Reg. agev. ENPALS 33%">E26 Legge 111/2011 Reg. agev. ENPALS 33%</option>
-  <option value="P01 Compensi Professionisti 20%">P01 Compensi Professionisti 20%</option>
-  <option value="P10 Compensi Lavoro autonomo 20%">P10 Compensi Lavoro autonomo 20%</option>
-  <option value="P15 Compensi Prestazioni Occasionali 20%">P15 Compensi Prestazioni Occasionali 20%</option>
-  <option value="P24 Diritti d'autore/marchi 75%">P24 Diritti d'autore/marchi 75%</option>
-  <option value="P25 Diritti d'autore/marchi 60%">P25 Diritti d'autore/marchi 60%</option>
-  <option value="P32 RA Provvigioni 23% su 50%">P32 RA Provvigioni 23% su 50%</option>
-  <option value="P33 RA Provvigioni 23% su 20%">P33 RA Provvigioni 23% su 20%</option>
-  <option value="P36 RA Provvigioni Proc.Affari 23% su 50%">P36 RA Provvigioni Proc.Affari 23% su 50%</option>
-  <option value="P55 Lavoro autonomo 20% - ENPALS 33">P55 Lavoro autonomo 20% - ENPALS 33</option>
-  <option value="00%">00%</option>
-  <option value="P56 Lavoro autonomo 20% - ENPALS 35">P56 Lavoro autonomo 20% - ENPALS 35</option>
-  <option value="70%">70%</option>
-</select>
+   <!-- withholding tax -->
+<div id="witholding_tax_section" style="display: none;">
+  <label for="withholding_tax">
+    Withholding tax:<span id="witholding_tax_required_star" style="color: red; display: none;">*</span>
+
+    <!-- Tooltip -->
+    <span class="tooltip">
+      <span class="tooltip-icon">i</span>
+      <span class="tooltiptext">Ritenuta d'acconto</span>
+    </span>
+  </label>
+
+  <select name="withholding_tax" id="withholding_tax" required>
+    <option value="">--Select--</option>
+    <option value="E25 L.111/2011 Regime agevolato">E25 L.111/2011 Regime agevolato</option>
+    <option value="E26 Legge 111/2011 Reg. agev. ENPALS 33%">E26 Legge 111/2011 Reg. agev. ENPALS 33%</option>
+    <option value="P01 Compensi Professionisti 20%">P01 Compensi Professionisti 20%</option>
+    <option value="P10 Compensi Lavoro autonomo 20%">P10 Compensi Lavoro autonomo 20%</option>
+    <option value="P15 Compensi Prestazioni Occasionali 20%">P15 Compensi Prestazioni Occasionali 20%</option>
+    <option value="P24 Diritti d'autore/marchi 75%">P24 Diritti d'autore/marchi 75%</option>
+    <option value="P25 Diritti d'autore/marchi 60%">P25 Diritti d'autore/marchi 60%</option>
+    <option value="P32 RA Provvigioni 23% su 50%">P32 RA Provvigioni 23% su 50%</option>
+    <option value="P33 RA Provvigioni 23% su 20%">P33 RA Provvigioni 23% su 20%</option>
+    <option value="P36 RA Provvigioni Proc.Affari 23% su 50%">P36 RA Provvigioni Proc.Affari 23% su 50%</option>
+    <option value="P55 Lavoro autonomo 20% - ENPALS 33">P55 Lavoro autonomo 20% - ENPALS 33</option>
+    <option value="00%">00%</option>
+    <option value="P56 Lavoro autonomo 20% - ENPALS 35">P56 Lavoro autonomo 20% - ENPALS 35</option>
+    <option value="70%">70%</option>
+  </select>
 </div>
 
-    <!-- supplier vat number -->
-    <div id="supplier_vat_number_section" style="display: none;">
-  <label for="supplier_vat_number">Supplier VAT Number:<span id="supplier_vat_number_required_star" style="color: red; display: none;">*</span></label>
+
+   <!-- supplier vat number -->
+<div id="supplier_vat_number_section" style="display: none;">
+  <label for="supplier_vat_number">
+    Supplier VAT Number:<span id="supplier_vat_number_required_star" style="color: red; display: none;">*</span>
+
+    <!-- Tooltip -->
+    <span class="tooltip">
+      <span class="tooltip-icon">i</span>
+      <span class="tooltiptext">VAT number / Partita IVA</span>
+    </span>
+  </label>
+
   <input type="text" id="supplier_vat_number" name="supplier_vat_number">
 </div>
 
-    <!-- supplier fiscal code -->
-    <div id="supplier_fiscal_code_section" style="display: none;">
-  <label for="supplier_fiscal_code">Supplier Fiscal Code Number:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span></label>
+
+   <!-- supplier fiscal code -->
+<div id="supplier_fiscal_code_section" style="display: none;">
+  <label for="supplier_fiscal_code">
+    Supplier Fiscal Code Number:<span id="supplier_fiscal_code_required_star" style="color: red; display: none;">*</span>
+
+    <!-- Tooltip -->
+    <span class="tooltip">
+      <span class="tooltip-icon">i</span>
+      <span class="tooltiptext">Codice Fiscale</span>
+    </span>
+  </label>
+
   <input type="text" id="supplier_fiscal_code" name="supplier_fiscal_code">
 </div>
+
 
     <!-- End-of-Supplier-Type Specific Fields -->
 <div id="natural_person_fields_end" style="display: none;">
   <!-- attachment fiscal code -->
-  <label>Attachment fiscal code:<span style="color: red;">*</span></label>
-  <input type="file" name="attachment_fiscal_code" />
+<label>
+  Attachment fiscal code:<span style="color: red;">*</span>
+
+  <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">Copy of fiscal code</span>
+  </span>
+</label>
+
+<input type="file" name="attachment_fiscal_code" />
 
   <!-- treatment type vat -->
-  <label for="treatment_type_vat">Treatment type VAT / Jurisprudence:</label>
-  <input type="text" id="treatment_type_vat" name="treatment_type_vat" />
+<label for="treatment_type_vat">
+  Treatment type VAT / Jurisprudence:
 
-  <!-- attachment identity card -->
-  <label>Attachment Identity card:<span style="color: red;">*</span></label>
-  <input type="file" name="attachment_identity_card" />
+  <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">Regime fiscale applicabile (ordinario, regimi minimi, ecc.)</span>
+  </span>
+</label>
+
+<input type="text" id="treatment_type_vat" name="treatment_type_vat" />
+
+
+<!-- attachment identity card -->
+<label>
+  Attachment Identity card:<span style="color: red;">*</span>
+
+  <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">Copy of carta d’identità</span>
+  </span>
+</label>
+
+<input type="file" name="attachment_identity_card" />
+
 </div>
 
 <div id="legal_person_fields_end" style="display: none;">
-  <!-- treatment type vat legal -->
-  <label for="treatment_type_vat_legal">Treatment type VAT / Jurisprudence:</label>
-  <input type="text" id="treatment_type_vat_legal" name="treatment_type_vat_legal" />
+ <!-- treatment type vat -->
+<label for="treatment_type_vat">
+  Treatment type VAT / Jurisprudence:
+
+  <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">Regime fiscale applicabile (ordinario, regimi minimi, ecc.)</span>
+  </span>
+</label>
+
+<input type="text" id="treatment_type_vat" name="treatment_type_vat" />
+
 
   <!-- Business register number -->
   <label for="business_register_number">Number of inscription in the Business Register (CCIAA):</label>
   <input type="text" id="business_register_number" name="business_register_number" />
 
   <!-- attachment chambre -->
-  <div id="attachment_chambre_section" style="display: none;">
-    <label for="attachment_chambre">Attachment Chambre of Commerce certification:<span id="attachment_chambre_required_star" style="color: red; display: none;">*</span></label>
-    <input type="file" id="attachment_chambre" name="attachment_chambre" />
-  </div>
+<div id="attachment_chambre_section" style="display: none;">
+  <label for="attachment_chambre">
+    Attachment Chambre of Commerce certification:
+    <span id="attachment_chambre_required_star" style="color: red; display: none;">*</span>
+
+    <!-- Tooltip -->
+    <span class="tooltip">
+      <span class="tooltip-icon">i</span>
+      <span class="tooltiptext">Scanned copy of Visura camerale</span>
+    </span>
+  </label>
+
+  <input type="file" id="attachment_chambre" name="attachment_chambre" />
+</div>
+
 </div>
 </fieldset>
 
     <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">3. Terms of Payment</legend>
 
-      <!-- payment terms days -->
-    <label>Payment Term (Days):<span style="color: red;">*</span></label>
+    <!-- payment terms days -->
+<label>
+  Payment Term (Days):<span style="color: red;">*</span>
+
+  <!-- Tooltip Icon -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">
+      <strong>N + NR GIORNI</strong>: es. 30 giorni dalla data fattura<br>
+      <strong>CM + NR GIORNI</strong>: es. 30 giorni dalla fine del mese della data fattura
+    </span>
+  </span>
+</label>
+
 <select name="payment_term_days" required>
   <option value="">--Select--</option>
   <option value="CM+30">CM+30 - CURRENT MONTH + 30 days</option>
@@ -602,16 +767,44 @@
   <option value="N150">N150 - 150 Days - Net</option>
 </select>
 
+
 <!-- payment method -->
   <label>Payment Method:<span style="color: red;">*</span></label>
   <select name="payment_method" required>
     <option value="">--Select--</option>
     <option value="EFT">EFT</option>
-  </select>
+  </select><!-- payment method -->
+<label>
+  Payment Method:<span style="color: red;">*</span>
 
-      <!-- payment term attachment -->
-  <label>Payment Terms Attachments:<span style="color: red;">*</span></label>
-  <input type="file" name="payment_terms_attachments" />
+  <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">Bonifico bancario SEPA / SEPA bank transfer</span>
+  </span>
+</label>
+
+<select name="payment_method" required>
+  <option value="">--Select--</option>
+  <option value="EFT">EFT</option>
+</select>
+
+
+     <!-- payment term attachment -->
+<label>
+  Payment Terms Attachments:<span style="color: red;">*</span>
+
+  <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">
+      Copia del contratto, ordine che riporti gli accordi di pagamento presi con le nostre società nel caso sia presente
+    </span>
+  </span>
+</label>
+
+<input type="file" name="payment_terms_attachments" />
+
    </fieldset>
 
   <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
@@ -871,11 +1064,24 @@
   <input type="text" id="swift_code" name="swift_code" />
   </div>
 
-    <!-- bank details attachment -->
-    <div id= "bank_detail_attachment_section" style="display: none;">
-  <label>Bank Details Attachment:<span id="bank_details_attachment_required_star" style="color: red; display: none;">*</span></label>
-  <input type="file" id = "bank_details_attachment" name="bank_details_attachment" />
-  </div>
+  <!-- bank details attachment -->
+<div id="bank_detail_attachment_section" style="display: none;">
+  <label>
+    Bank Details Attachment:
+    <span id="bank_details_attachment_required_star" style="color: red; display: none;">*</span>
+
+    <!-- Tooltip -->
+    <span class="tooltip">
+      <span class="tooltip-icon">i</span>
+      <span class="tooltiptext">
+        Documenti bancari: dichiarazione rilasciata dalla banca del fornitore che attesti che i dati riportati nel form sono corretti ed identificano il fornitore medesimo; oppure documento equipollente che possa identificare gli stessi (copia di un estratto conto bancario dal quale si evincono i dati riportati).
+      </span>
+    </span>
+  </label>
+
+  <input type="file" id="bank_details_attachment" name="bank_details_attachment" />
+</div>
+
  </fieldset>
 
   <button type="submit">Submit</button>
