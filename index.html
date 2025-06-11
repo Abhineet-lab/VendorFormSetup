@@ -1392,27 +1392,31 @@
         withholdingTaxStarNaturalPerson.style.display = 'none';
       }
     }
-    function toggleBasedOnVatGroupNaturalPerson() {
-    if (!vatGroupNatural || !supplierType) return;
-    const value = vatGroupNatural.value;
+    function toggleBasedOnVatGroupNaturalPerson(){
+      const grp = vatGroup.value;
+      const pref = vendorCreatedByDentsu.value;
+      mediaVehicleSection.style.display = 'none';
+      vendorWebsiteSection.style.display = 'none';
+      vendorWebsiteInput.required = false;
+      websiteStar.style.display = 'none';
+      inactiveBcEntity.style.display = 'none';
 
-    pecSection.style.display = value === "FOR_ITA" ? "block" : "none";
-    pecInput.required = value === "FOR_ITA";
-
-    if (value === "FOR_ITA" || value === "FOR_UE") {
-      supplierVatNumberSection.style.display = "block";
-      supplierVatNumberInput.required = true;
-      supplierFiscalCodeSection.style.display = "block";
-      supplierFiscalCodeInput.required = true;
-      supplierFiscalCodeStar.style.display = "inline";
-    } else {
-      supplierVatNumberSection.style.display = "none";
-      supplierVatNumberInput.required = false;
-      supplierFiscalCodeSection.style.display = "none";
-      supplierFiscalCodeInput.required = false;
-      supplierFiscalCodeStar.style.display = "none";
+      if ( grp === 'FOR_ITA') {
+        pecSection.style.display = 'block';
+        pecInput.required = true;
+        supplierVatNumberSection.style.display = 'block';
+        supplierVatNumberInput.required = true;
+        supplierFiscalCodeSection.style.display = 'block';
+        supplierFiscalCodeInput.required = true;
+        supplierFiscalCodeStar.style.display = 'inline';
+      } else if (grp === 'FOR_UE'){
+        supplierFiscalCodeSection.style.display = 'block';
+        supplierFiscalCodeInput.required = true;
+        supplierVatNumberSection.style.display = 'block';
+        supplierVatNumberInput.required = true;
+        supplierVatNumberStar.style.display = 'inline';
+      }
     }
-  }
     function toggleBasedOnVatGroupLegalPerson() {
     if (!vatGroupLegal || !vendorCreatedByDentsu) return;
     const grp = vatGroupLegal.value;
