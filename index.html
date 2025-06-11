@@ -21,34 +21,46 @@
 
     /* Tooltip styles */
   .tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    margin-left: 5px;
-    color: #007BFF;
-  }
+  position: relative;
+  display: inline-block;
+  margin-left: 8px;
+}
 
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 180px;
-    background-color: #333;
-    color: #fff;
-    text-align: left;
-    padding: 6px;
-    border-radius: 5px;
-    position: absolute;
-    z-index: 1;
-    top: -5px;
-    left: 110%;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 13px;
-  }
+.tooltip .tooltip-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: grey;
+  color: black;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 180px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 6px;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 130%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 13px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
   </style>
 </head>
 <body>
@@ -65,11 +77,12 @@
   <!-- Request made by -->
   <label for="request_by">
   Request made by:<span style="color: red;">*</span>
-  <span class="tooltip">ℹ️
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First Name &amp; Last Name</span>
   </span>
 </label>
-<input type="text" id="request_by" name="request_by" required />
+<input type="email" id="request_by" name="request_by" required />
 
   <!-- Company: -->
   <label>Company:<span style="color: red;">*</span></label>
