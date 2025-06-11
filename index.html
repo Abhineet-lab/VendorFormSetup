@@ -85,7 +85,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made By:<span style="color: red;">*</span>
+  Request made by:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First Name &amp; Last Name</span>
@@ -973,6 +973,43 @@
     if (errorSpan) errorSpan.style.display = 'none';
   }
 }
+    function toggleBasedOnProfessional() {
+  const supplier = supplierType.value;
+  const vendorCreated = vendorCreatedByDentsu.value;
+  const professional = professionalValue.value;
+
+  // Always show professional and withholding tax section
+  withholdingTaxSection.style.display = 'block';
+
+  if (supplier === 'Natural Person') {
+    if (vendorCreated === 'Yes') {
+      professionalValue.required = true;
+
+      if (professional === 'Yes') {
+        withholdingTaxInput.required = true;
+        withholdingTaxStar.style.display = 'inline';
+      } else if (professional === 'No') {
+        withholdingTaxInput.required = false;
+        withholdingTaxStar.style.display = 'none';
+      } else {
+        // if no professional selected yet
+        withholdingTaxInput.required = false;
+        withholdingTaxStar.style.display = 'none';
+      }
+
+    } else {
+      // Dentsu == No
+      professionalValue.required = false;
+      withholdingTaxInput.required = false;
+      withholdingTaxStar.style.display = 'none';
+    }
+  } else {
+    // Legal Person
+    professionalValue.required = false;
+    withholdingTaxInput.required = false;
+    withholdingTaxStar.style.display = 'none';
+  }
+}
     function toggleSupplierFields() {
   const supplier = supplierType.value;
 
@@ -1107,17 +1144,6 @@
         bankDetailsAttachmentStar.style.display = 'inline';
       }
     }
-    function toggleBasedOnProfessional() {
-      if (professionalValue.value === 'Yes' && supplierType.value === 'Natural Person'){
-        withholdingTaxNaturalPersonSection.style.display = 'block';
-        withholdingTaxInputNaturalPerson.required = true;
-        withholdingTaxStarNaturalPerson.style.display = 'inline';
-      } else {
-        withholdingTaxNaturalPersonSection.style.display = 'block';
-        withholdingTaxInputNaturalPerson.required = true;
-        withholdingTaxStarNaturalPerson.style.display = 'none';
-      }
-    }
     function toggleBasedOnVatGroup(){
   const grp = vatGroup.value;
   const pref = vendorCreatedByDentsu.value;
@@ -1181,8 +1207,6 @@
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
     vendorCreatedByDentsu.addEventListener('change', toogleBasedOnAttachmentChambre);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVatGroup);
-    professionalValue.addEventListener('change' , toggleBasedOnProfessional);
-    supplierType.addEventListener('change' , toggleBasedOnProfessional);
     vatGroup.addEventListener('change' , toggleBasedOnVatGroup);
     vatGroup.addEventListener('change' , toggleBasedOnVendorCreatedByDentsu);
     ibanCodeInput.addEventListener('input', validateIBAN);
@@ -1190,11 +1214,13 @@
     document.getElementById('dentsu_contact_email').addEventListener('input', validateEmail);
     document.getElementById('vendor_email').addEventListener('input', validateEmail);
     supplierType.addEventListener('change', toggleBasedOnVatGroup);
-
-
+    supplierType.addEventListener('change', toggleBasedOnProfessional);
+    vendorCreatedByDentsu.addEventListener('change', toggleBasedOnProfessional);
+    professionalValue.addEventListener('change', toggleBasedOnProfessional);
 
     // Initial load
     toggleSupplierFields();
+    toggleBasedOnProfessional();
     toggleBasedOnMediaGroup();
     toggleBasedOnProfessional();
     toggleBasedOnVendorCreatedByDentsu();
