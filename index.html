@@ -85,7 +85,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made By:<span style="color: red;">*</span>
+  Request made by:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First Name &amp; Last Name</span>
@@ -510,7 +510,7 @@
   </select>
 
     <!-- withholding tax -->
-    <div id="witholding_tax_section_natural_person" style="display: none;">
+    <div id="witholding_tax_section_person" style="display: none;">
   <label for="withholding_tax">Withholding tax:<span id="witholding_tax_required_star" style="color: red; display: none;">*</span></label>
 <select name="withholding_tax" id="withholding_tax" required>
   <option value="">--Select--</option>
@@ -905,9 +905,9 @@
     const supplierFiscalCodeInput = document.getElementById('supplier_fiscal_code');
     const supplierVatNumberStar = document.getElementById('supplier_vat_number_required_star');
     const supplierFiscalCodeStar = document.getElementById('supplier_fiscal_code_required_star');
-     const withholdingTaxNaturalPersonSection = document.getElementById('witholding_tax_section_natural_person');
-    const withholdingTaxInputNaturalPerson = document.getElementById('withholding_tax');
-    const withholdingTaxStarNaturalPerson = document.getElementById('witholding_tax_required_star');
+     const withholdingTaxSection = document.getElementById('witholding_tax_section_person');
+    const withholdingTaxInput = document.getElementById('withholding_tax');
+    const withholdingTaxStar = document.getElementById('witholding_tax_required_star');
     const professionalValue = document.getElementById('professional');
     const bankNameSection = document.getElementById('bank_name_section');
     const bankNameInput = document.getElementById('bank_name');
@@ -1107,7 +1107,7 @@
         bankDetailsAttachmentStar.style.display = 'inline';
       }
     }
-    function toggleBasedOnProfessionalNaturalPerson() {
+    function toggleBasedOnProfessional() {
       if (professionalValue.value === 'Yes' && supplierType.value === 'Natural Person'){
         withholdingTaxNaturalPersonSection.style.display = 'block';
         withholdingTaxInputNaturalPerson.required = true;
@@ -1181,7 +1181,7 @@
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
     vendorCreatedByDentsu.addEventListener('change', toogleBasedOnAttachmentChambre);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVatGroup);
-    professionalValue.addEventListener('change' , toggleBasedOnProfessionalNaturalPerson);
+    professionalValue.addEventListener('change' , toggleBasedOnProfessional);
     vatGroup.addEventListener('change' , toggleBasedOnVatGroup);
     vatGroup.addEventListener('change' , toggleBasedOnVendorCreatedByDentsu);
     ibanCodeInput.addEventListener('input', validateIBAN);
@@ -1195,7 +1195,7 @@
     // Initial load
     toggleSupplierFields();
     toggleBasedOnMediaGroup();
-    toggleBasedOnProfessionalNaturalPerson();
+    toggleBasedOnProfessional();
     toggleBasedOnVendorCreatedByDentsu();
     toogleBasedOnAttachmentChambre();
     toggleBasedOnVatGroup();
