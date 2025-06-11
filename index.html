@@ -1330,6 +1330,7 @@
   }
 }
     function toggleBasedOnVatGroupLegalPerson(){
+      if (supplierType.value !== 'Legal Person') return;
       const grp = vatGroupLegal.value;
       const pref = vendorCreatedByDentsu.value;
       mediaVehicleSection.style.display = 'none';
