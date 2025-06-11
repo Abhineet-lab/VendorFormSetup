@@ -85,7 +85,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made by:<span style="color: red;">*</span>
+  Request made By:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First Name &amp; Last Name</span>
@@ -502,15 +502,17 @@
 
 
     <!-- professional -->
-    <label>Professional:<span style="color: red;">*</span></label>
+    <div id="professional_section" style="display: none;">
+    <label>Professional:<span id="professional_required_star" style="color: red; display: none;">*</span></label>
   <select name="professional" id = "professional" required>
     <option value="">--Select--</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
   </select>
+    </div>
 
     <!-- withholding tax -->
-    <div id="witholding_tax_section_person" style="display: none;">
+    <div id="witholding_tax_section" style="display: none;">
   <label for="withholding_tax">Withholding tax:<span id="witholding_tax_required_star" style="color: red; display: none;">*</span></label>
 <select name="withholding_tax" id="withholding_tax" required>
   <option value="">--Select--</option>
@@ -905,10 +907,12 @@
     const supplierFiscalCodeInput = document.getElementById('supplier_fiscal_code');
     const supplierVatNumberStar = document.getElementById('supplier_vat_number_required_star');
     const supplierFiscalCodeStar = document.getElementById('supplier_fiscal_code_required_star');
-     const withholdingTaxSection = document.getElementById('witholding_tax_section_person');
+     const withholdingTaxSection = document.getElementById('witholding_tax_section');
     const withholdingTaxInput = document.getElementById('withholding_tax');
     const withholdingTaxStar = document.getElementById('witholding_tax_required_star');
-    const professionalValue = document.getElementById('professional');
+    const professionalInput = document.getElementById('professional');
+    const professionalSection = document.getElementById('professional_section');
+    const professionalStar = document.getElementById('professional_required_star');
     const bankNameSection = document.getElementById('bank_name_section');
     const bankNameInput = document.getElementById('bank_name');
     const bankNameStar = document.getElementById('bank_name_required_star');
@@ -976,14 +980,15 @@
     function toggleBasedOnProfessional() {
   const supplier = supplierType.value;
   const vendorCreated = vendorCreatedByDentsu.value;
-  const professional = professionalValue.value;
+  const professional = professionalInput.value;
 
   // Always show professional and withholding tax section
   withholdingTaxSection.style.display = 'block';
 
   if (supplier === 'Natural Person') {
     if (vendorCreated === 'Yes') {
-      professionalValue.required = true;
+      professionalInput.required = true;
+      professionalStar.style.display = 'inline';
 
       if (professional === 'Yes') {
         withholdingTaxInput.required = true;
@@ -999,13 +1004,14 @@
 
     } else {
       // Dentsu == No
-      professionalValue.required = false;
+      professionalInput.required = false;
       withholdingTaxInput.required = false;
+      professionalStar.style.display = 'none';
       withholdingTaxStar.style.display = 'none';
     }
   } else {
     // Legal Person
-    professionalValue.required = false;
+    professionalInput.required = false;
     withholdingTaxInput.required = false;
     withholdingTaxStar.style.display = 'none';
   }
