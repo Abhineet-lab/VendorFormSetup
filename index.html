@@ -85,7 +85,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made By:<span style="color: red;">*</span>
+  Request made by:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First and last name of the person who fills in the form</span>
@@ -1402,35 +1402,70 @@
         bankDetailsAttachmentStar.style.display = 'inline';
       }
     }
-    function toggleBasedOnVatGroup(){
+    function toggleBasedOnVatGroup() {
+  const supplierTypeValue = supplierType.value; // 'Natural Person' or 'Legal Person'
   const grp = vatGroup.value;
-  const pref = vendorCreatedByDentsu.value;
 
-  // Reset all first
+  // Hide and reset all fields
   pecSection.style.display = 'none';
   pecInput.required = false;
+
   supplierVatNumberSection.style.display = 'none';
   supplierVatNumberInput.required = false;
   supplierVatNumberStar.style.display = 'none';
+
   supplierFiscalCodeSection.style.display = 'none';
   supplierFiscalCodeInput.required = false;
   supplierFiscalCodeStar.style.display = 'none';
 
-  // Apply conditions
   if (grp === 'FOR_ITA') {
+    // Show PEC for both types, never required
     pecSection.style.display = 'block';
-    pecInput.required = true;
-    supplierVatNumberSection.style.display = 'block';
-    supplierVatNumberInput.required = true;
-    supplierFiscalCodeSection.style.display = 'block';
-    supplierFiscalCodeInput.required = true;
-    supplierFiscalCodeStar.style.display = 'inline';
+    pecInput.required = false;
+
+    if (supplierTypeValue === 'Natural Person') {
+      supplierVatNumberSection.style.display = 'block';
+      supplierVatNumberInput.required = false;
+      supplierVatNumberStar.style.display = 'none';
+
+      supplierFiscalCodeSection.style.display = 'block';
+      supplierFiscalCodeInput.required = true;
+      supplierFiscalCodeStar.style.display = 'inline';
+
+    } else if (supplierTypeValue === 'Legal Person') {
+      supplierVatNumberSection.style.display = 'block';
+      supplierVatNumberInput.required = true;
+      supplierVatNumberStar.style.display = 'inline';
+
+      supplierFiscalCodeSection.style.display = 'block';
+      supplierFiscalCodeInput.required = true;
+      supplierFiscalCodeStar.style.display = 'inline';
+    }
+
   } else if (grp === 'FOR_UE') {
-    supplierFiscalCodeSection.style.display = 'block';
-    supplierFiscalCodeInput.required = true;
-    supplierVatNumberSection.style.display = 'block';
-    supplierVatNumberInput.required = true;
-    supplierVatNumberStar.style.display = 'none';
+    // PEC is hidden for both types
+    if (supplierTypeValue === 'Natural Person') {
+      supplierVatNumberSection.style.display = 'block';
+      supplierVatNumberInput.required = false;
+      supplierVatNumberStar.style.display = 'none';
+
+      supplierFiscalCodeSection.style.display = 'block';
+      supplierFiscalCodeInput.required = false;
+      supplierFiscalCodeStar.style.display = 'none';
+
+    } else if (supplierTypeValue === 'Legal Person') {
+      supplierVatNumberSection.style.display = 'block';
+      supplierVatNumberInput.required = true;
+      supplierVatNumberStar.style.display = 'inline';
+
+      supplierFiscalCodeSection.style.display = 'block';
+      supplierFiscalCodeInput.required = false;
+      supplierFiscalCodeStar.style.display = 'none';
+    }
+
+  } else if (grp === 'FOR_XUE') {
+    // For both types, nothing shown
+    // All fields stay hidden and not required
   }
 }
     function toggleBasedOnMediaGroup() {
