@@ -616,7 +616,7 @@
 </div>
 
 
-   <!-- supplier vat number -->
+  <!-- supplier vat number -->
 <div id="supplier_vat_number_section" style="display: none;">
   <label for="supplier_vat_number">
     Supplier VAT Number:<span id="supplier_vat_number_required_star" style="color: red; display: none;">*</span>
@@ -628,8 +628,12 @@
     </span>
   </label>
 
-  <input type="text" id="supplier_vat_number" name="supplier_vat_number">
+  <input type="text" id="supplier_vat_number" name="supplier_vat_number" oninput="validateVATNumber()" />
+  <span id="vat_error" style="color: red; font-size: 13px; display: none;">
+    Please enter a valid 11-digit VAT number (only numbers).
+  </span>
 </div>
+
 
 
    <!-- supplier fiscal code -->
@@ -828,11 +832,18 @@
   <input type="text" id="account_holder" name="account_holder" />
   </div>
 
-    <!-- account number -->
-    <div id= "account_number_section" style="display: none;">
-  <label for="account_number">Account Number:<span id="account_number_required_star" style="color: red; display: none;">*</span></label>
-  <input type="text" id="account_number" name="account_number" />
-  </div>
+   <!-- account number -->
+<div id="account_number_section" style="display: none;">
+  <label for="account_number">
+    Account Number:<span id="account_number_required_star" style="color: red; display: none;">*</span>
+  </label>
+
+  <input type="text" id="account_number" name="account_number" oninput="validateAccountNumber()"/>
+  <span id="account_number_error" style="color: red; font-size: 13px; display: none;">
+    Please enter a valid 12-digit account number.
+  </span>
+</div>
+
 
     <!-- currency -->
     <div id= "currency_section" style="display: none;">
@@ -1150,6 +1161,40 @@
     const attachmentChambreInput = document.getElementById('attachment_chambre');
     const attachmentChambreStar = document.getElementById('attachment_chambre_required_star');
 
+    function validateAccountNumber() {
+  const accountInput = document.getElementById("account_number");
+  const accountValue = accountInput.value.trim();
+  const accountError = document.getElementById("account_number_error");
+
+  const isValid = /^\d{12}$/.test(accountValue);
+
+  if (!isValid) {
+    accountInput.style.borderColor = "red";
+    accountInput.setCustomValidity("Invalid account number. Must be exactly 12 digits.");
+    if (accountError) accountError.style.display = "inline";
+  } else {
+    accountInput.style.borderColor = "";
+    accountInput.setCustomValidity("");
+    if (accountError) accountError.style.display = "none";
+  }
+}
+    function validateVATNumber() {
+  const vatInput = document.getElementById("supplier_vat_number");
+  const vatValue = vatInput.value.trim();
+  const vatError = document.getElementById("vat_error");
+
+  const isValid = /^\d{11}$/.test(vatValue);
+
+  if (!isValid) {
+    vatInput.style.borderColor = "red";
+    vatInput.setCustomValidity("Invalid VAT number. Must be exactly 11 digits.");
+    if (vatError) vatError.style.display = "inline";
+  } else {
+    vatInput.style.borderColor = "";
+    vatInput.setCustomValidity("");
+    if (vatError) vatError.style.display = "none";
+  }
+}
     function validateIBAN() {
     const ibanInput = document.getElementById("iban_code");
     const errorMsg = document.getElementById("iban_error");
@@ -1430,6 +1475,10 @@
     supplierType.addEventListener('change', toggleBasedOnProfessional);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnProfessional);
     professionalInput.addEventListener('change', toggleBasedOnProfessional);
+    supplierVatNumberInput.addEventListener('input', validateVATNumber);
+    accountNumberInput.addEventListener("input", validateAccountNumber);
+
+
 
     // Initial load
     toggleSupplierFields();
