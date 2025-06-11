@@ -18,57 +18,6 @@
     }
     .attachments input { margin-top: 10px; }
     button { margin-top: 20px; padding: 10px 15px; font-size: 16px; }
-
-    /* Tooltip styles */
-  .tooltip {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 6px;
-}
-
-.tooltip .tooltip-icon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 18px;
-  height: 18px;
-  background-color: grey;
-  color: black;
-  border-radius: 50%;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  line-height: 1;
-  transition: background-color 0.3s;
-}
-
-.tooltip .tooltip-icon:hover {
-  background-color: #666;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 180px;
-  background-color: #333;
-  color: #fff;
-  text-align: left;
-  padding: 6px;
-  border-radius: 5px;
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 130%;
-  transform: translateY(-50%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  font-size: 13px;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
   </style>
 </head>
 <body>
@@ -83,14 +32,8 @@
   <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
- <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made by:<span style="color: red;">*</span>
-  <span class="tooltip">
-    <span class="tooltip-icon">i</span>
-    <span class="tooltiptext">First Name &amp; Last Name</span>
-  </span>
-</label>
-<input type="email" id="request_by" name="request_by" required />
+  <label for="request_by">Request made by:<span style="color: red;">*</span></label>
+  <input type="email" id="request_by" name="request_by" required />
 
   <!-- Company: -->
   <label>Company:<span style="color: red;">*</span></label>
@@ -475,22 +418,19 @@
     <option value="FOR_XUE">FOR_XUE</option>
   </select>
 
-    <!-- PEC -->
-<div id="pec_section" style="display: none;">
-  <label for="pec">PEC:</label>
+    <!-- pec -->
+     <div id = "pec_section" style="display: none;">
+    <label for="pec">PEC:</label>
   <input type="email" id="pec" name="pec" />
-  <span id="pec_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
-</div>
+    </div>
 
-<!-- dentsu contact email -->
-<label for="dentsu_contact_email">dentsu Contact Email Address:<span style="color: red;">*</span></label>
-<input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
-<span id="dentsu_contact_email_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
+    <!-- dentsu contact email -->
+    <label for="dentsu_contact_email">dentsu Contact Email Address:<span style="color: red;">*</span></label>
+  <input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
 
-<!-- vendor email -->
-<label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
-<input type="email" id="vendor_email" name="vendor_email" />
-<span id="vendor_email_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
+    <!-- vendor email -->
+  <label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
+  <input type="email" id="vendor_email" name="vendor_email" />
 
 
     <!-- professional -->
@@ -770,23 +710,20 @@
     <option value="FOR_UE">FOR_UE</option>
     <option value="FOR_XUE">FOR_XUE</option>
   </select>
-    
-   <!-- PEC -->
-<div id="pec_section" style="display: none;">
-  <label for="pec">PEC:</label>
+
+    <!-- pec -->
+     <div id = "pec_section" style="display: none;">
+    <label for="pec">PEC:</label>
   <input type="email" id="pec" name="pec" />
-  <span id="pec_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
-</div>
+    </div>
 
-<!-- dentsu contact email -->
-<label for="dentsu_contact_email">dentsu Contact Email Address:<span style="color: red;">*</span></label>
-<input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
-<span id="dentsu_contact_email_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
+    <!-- dentsu contact email -->
+    <label for="dentsu_contact_email">dentsu Contact Email Address:<span style="color: red;">*</span></label>
+  <input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
 
-<!-- vendor email -->
-<label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
-<input type="email" id="vendor_email" name="vendor_email" />
-<span id="vendor_email_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
+    <!-- vendor email -->
+  <label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
+  <input type="email" id="vendor_email" name="vendor_email" />
 
 
     <!-- professional -->
@@ -1094,12 +1031,11 @@
   </select>
   </div>
 
-   <!-- IBAN Code Section -->
-<div id="iban_code_section" style="display: none;">
+    <!-- iban code -->
+    <div id= "iban_code_section" style="display: none;">
   <label for="iban_code">IBAN Code:<span id="iban_code_required_star" style="color: red; display: none;">*</span></label>
-  <input type="text" id="iban_code" name="iban_code" oninput="validateIBAN()" />
-  <span id="iban_error" style="color: red; font-size: 13px; display: none;">Please ensure IBAN code is correct</span>
-</div>
+  <input type="text" id="iban_code" name="iban_code" />
+  </div>
 
     <!-- cin -->
    <div id= "cin_section" style="display: none;">
@@ -1218,39 +1154,6 @@
     const attachmentChambreInput = document.getElementById('attachment_chambre');
     const attachmentChambreStar = document.getElementById('attachment_chambre_required_star');
 
-    function validateIBAN() {
-    const ibanInput = document.getElementById("iban_code");
-    const errorMsg = document.getElementById("iban_error");
-    const ibanValue = ibanInput.value.trim();
-
-    // Remove any whitespace for validation check
-    const noSpaces = ibanValue.replace(/\s/g, '');
-
-    if (noSpaces.length !== 27 || /\s/.test(ibanValue)) {
-      errorMsg.style.display = "block";
-      ibanInput.style.borderColor = "red";
-    } else {
-      errorMsg.style.display = "none";
-      ibanInput.style.borderColor = "";
-    }
-  }
-    function validateEmail(event) {
-  const emailInput = event.target;
-  const email = emailInput.value.trim();
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const errorSpan = document.getElementById(`${emailInput.id}_error`);
-
-  if (email !== '' && !emailRegex.test(email)) {
-    emailInput.style.borderColor = 'red';
-    emailInput.setCustomValidity('Invalid email address.');
-    if (errorSpan) errorSpan.style.display = 'inline';
-  } else {
-    emailInput.style.borderColor = '';
-    emailInput.setCustomValidity('');
-    if (errorSpan) errorSpan.style.display = 'none';
-  }
-}
     function toggleSupplierFields() {
       const supplier = supplierType.value;
 
@@ -1481,25 +1384,15 @@
     vatGroupLegal.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
     vatGroup.addEventListener('change' , toggleBasedOnVendorCreatedByDentsu);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVatGroupLegalPerson);
-    ibanCodeInput.addEventListener('input', validateIBAN);
-    pecInput.addEventListener('input', validateEmail);
-    document.getElementById('dentsu_contact_email').addEventListener('input', validateEmail);
-    document.getElementById('vendor_email').addEventListener('input', validateEmail);
-
-
 
     // Initial load
     toggleSupplierFields();
     toggleBasedOnMediaGroup();
+    toggleBasedOnVatGroupNaturalPerson();
     toggleBasedOnProfessionalNaturalPerson();
     toggleBasedOnVendorCreatedByDentsu();
     toogleBasedOnAttachmentChambre();
-
-    if (supplierType.value === 'Natural Person') {
-    toggleBasedOnVatGroupNaturalPerson();
-  } else if (supplierType.value === 'Legal Person') {
     toggleBasedOnVatGroupLegalPerson();
-  }
   });
 </script>
 </body>
