@@ -84,7 +84,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made by:<span style="color: red;">*</span>
+  Request made By:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First and last name of the person who fills in the form</span>
@@ -1544,8 +1544,6 @@
   naturalFieldsEnd.style.display = supplier === 'Natural Person' ? 'block' : 'none';
   legalFieldsEnd.style.display = supplier === 'Legal Person' ? 'block' : 'none';
 
-  // Other shared sections (no change here)
-  mediagroupWrapper.style.display = supplier === 'Natural Person' ? 'block' : 'none';
   mediagroupSelector.value = '';
   mediaVehicleSection.style.display = 'none';
   vendorWebsiteSection.style.display = 'none';
