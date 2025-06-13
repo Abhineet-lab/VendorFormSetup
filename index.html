@@ -79,40 +79,46 @@
   <h2 style="margin: 0; color: white; font-size: 45px;">NEW VENDOR FORM</h2>
 </header>
 
-<form action="http://10.19.244.10:5000/submit" method="POST" enctype="multipart/form-data">
+<form id="vendor_form" action="http://10.19.244.10:5000/submit" method="POST" enctype="multipart/form-data">
 
   <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made by:<span style="color: red;">*</span>
+  Request made By:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First and last name of the person who fills in the form</span>
   </span>
 </label>
-<input type="email" id="request_by" name="request_by" required />
+<input type="text" id="request_by" name="request_by" required />
+<span id="request_by_error" class="error-msg" style="color: red; display: none;">Please enter the request made by details.</span>
 
-  <!-- Company: -->
-  <label>Company:<span style="color: red;">*</span></label>
-  <div class="checkbox-group">
-    <label><input type="checkbox" name="company" value="DENTSU ITALIA SPA SB" /> DENTSU ITALIA SPA SB</label>
-    <label><input type="checkbox" name="company" value="CARAT ITALIA SPA SB" /> CARAT ITALIA SPA SB</label>
-    <label><input type="checkbox" name="company" value="IPROSPECT ITALIA SPA SB" /> IPROSPECT ITALIA SPA SB</label>
-    <label><input type="checkbox" name="company" value="DENTSU DIGITAL SRL" /> DENTSU DIGITAL SRL</label>
-    <label><input type="checkbox" name="company" value="DENTSU CREATIVE SRL SB" /> DENTSU CREATIVE SRL SB</label>
-    <label><input type="checkbox" name="company" value="DENTSU TECH & SERVICES SRL" /> DENTSU TECH&SERVICES SRL</label>
-    <label><input type="checkbox" name="company" value="DENTSU X SRL SB" /> DENTSU X SRL SB</label>
-    <label><input type="checkbox" name="company" value="MERKLE ITALIA SRL" /> MERKLE ITALIA SRL</label>
-    <label><input type="checkbox" name="company" value="MMA TECHNOLOGIES LTD" /> MMA TECHNOLOGIES LTD</label>
-  </div>
+ <!-- Company -->
+<label>Company:<span style="color: red;">*</span></label>
+
+<div class="checkbox-group" data-required="true" id="company_checkbox_group">
+  <label><input type="checkbox" name="company" value="DENTSU ITALIA SPA SB" /> DENTSU ITALIA SPA SB</label><br>
+  <label><input type="checkbox" name="company" value="CARAT ITALIA SPA SB" /> CARAT ITALIA SPA SB</label><br>
+  <label><input type="checkbox" name="company" value="IPROSPECT ITALIA SPA SB" /> IPROSPECT ITALIA SPA SB</label><br>
+  <label><input type="checkbox" name="company" value="DENTSU DIGITAL SRL" /> DENTSU DIGITAL SRL</label><br>
+  <label><input type="checkbox" name="company" value="DENTSU CREATIVE SRL SB" /> DENTSU CREATIVE SRL SB</label><br>
+  <label><input type="checkbox" name="company" value="DENTSU TECH & SERVICES SRL" /> DENTSU TECH & SERVICES SRL</label><br>
+  <label><input type="checkbox" name="company" value="DENTSU X SRL SB" /> DENTSU X SRL SB</label><br>
+  <label><input type="checkbox" name="company" value="MERKLE ITALIA SRL" /> MERKLE ITALIA SRL</label><br>
+  <label><input type="checkbox" name="company" value="MMA TECHNOLOGIES LTD" /> MMA TECHNOLOGIES LTD</label><br>
+
+  <!-- Inline error message -->
+  <span class="error-msg" style="color: red; display: none;">Please select at least one company.</span>
+</div>
+
   </fieldset>
 
   <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">2. Supplier Information</legend>
 
-    <!-- Supplier Legal Personality -->
-<label>
+   <!-- Supplier Legal Personality -->
+<label for="supplier_legal_personality" style="display: flex; align-items: center; gap: 8px;">
   Supplier Legal Personality:<span style="color: red;">*</span>
   <!-- Tooltip Icon -->
   <span class="tooltip">
@@ -122,16 +128,22 @@
     </span>
   </span>
 </label>
+
 <select name="supplier_legal_personality" id="supplier_legal_personality" required>
   <option value="">--Select--</option>
   <option value="Natural Person">Natural Person</option>
   <option value="Legal Person">Legal Person</option>
 </select>
 
+<!-- Inline error message -->
+<span id="supplier_legal_personality_error" class="error-msg" style="color: red; display: none;">
+  Please select the supplier legal personality.
+</span>
 
-<!-- vendor created by Dentsu -->
-<label>
-  Vendor created by dentsu:<span style="color: red;">*</span>
+
+<!-- Vendor created by Dentsu -->
+<label for="vendor_created_by_dentsu" style="display: flex; align-items: center; gap: 8px;">
+  Vendor created by Dentsu:<span style="color: red;">*</span>
 
   <!-- Tooltip -->
   <span class="tooltip">
@@ -148,10 +160,15 @@
   <option value="No">No</option>
 </select>
 
+<!-- Inline error message -->
+<span id="vendor_created_by_dentsu_error" class="error-msg" style="color: red; display: none;">
+  Please indicate whether the vendor was created by Dentsu.
+</span>
+
   
 <div id="group_wrapper" style="display: none;">
-  <!-- Group(D365) -->
-  <label>
+  <!-- Group (D365) -->
+  <label for="group_d365" style="display: flex; align-items: center; gap: 8px;">
     Group (D365):<span style="color: red;">*</span>
 
     <!-- Tooltip Icon -->
@@ -175,49 +192,99 @@
     <option value="INTCO">INTCO</option>
     <option value="TAXSS">TAXSS</option>
   </select>
+
+  <!-- Inline error message -->
+  <span id="group_d365_error" class="error-msg" style="color: red; display: none;">
+    Please select a Group (D365) option.
+  </span>
 </div>
 
-    <!-- Influencer -->
-    <label>Influencer (D365) promoter:</label>
-  <select name="influencer_d365" required>
-    <option value="">--Select--</option>
-    <option value="Nessuno / None">Nessuno / None</option>
-    <option value="Influencer">Influencer</option>
-  </select>
+   <!-- Influencer (D365) promoter -->
+<label for="influencer_d365" style="display: flex; align-items: center; gap: 8px;">
+  Influencer (D365) promoter:<span style="color: red;">*</span>
+</label>
 
-    <!-- vendor website -->
-    <div id="vendor_website_section" style="display: none;">
-  <label for="vendor_website">Vendor Website:<span id="website_required_star" style="color: red; display: none;">*</span></label>
-  <input type="url" id="vendor_website" name="vendor_website">
+<select name="influencer_d365" id="influencer_d365" required>
+  <option value="">--Select--</option>
+  <option value="Nessuno / None">Nessuno / None</option>
+  <option value="Influencer">Influencer</option>
+</select>
+
+<!-- Inline error message -->
+<span id="influencer_d365_error" class="error-msg" style="color: red; display: none;">
+  Please select an option for Influencer (D365) promoter.
+</span>
+
+
+   <!-- Vendor Website -->
+<div id="vendor_website_section" style="display: none;">
+  <label for="vendor_website" style="display: flex; align-items: center; gap: 8px;">
+    Vendor Website:<span id="website_required_star" style="color: red; display: none;">*</span>
+  </label>
+
+  <input type="url" id="vendor_website" name="vendor_website" />
+
+  <!-- Inline error message -->
+  <span id="vendor_website_error" class="error-msg" style="color: red; display: none;">
+    Please enter a valid website URL.
+  </span>
 </div>
 
-    <!-- inactive bpc entity -->
-     <div id="inactive_bpc_entity" style="display: none;">
-    <label for="inactive_bpc_entity">Inactive BPC entity (email):</label>
+
+    <!-- Inactive BPC entity (email) -->
+<div id="inactive_bpc_entity" style="display: none;">
+  <label for="inactive_bpc_entity" style="display: flex; align-items: center; gap: 8px;">
+    Inactive BPC entity (email):
+  </label>
+
   <input type="email" id="inactive_bpc_entity" name="inactive_bpc_entity" />
+
+  <!-- Inline error message -->
+  <span id="inactive_bpc_entity_error" class="error-msg" style="color: red; display: none;">
+    Please enter a valid email address for the inactive BPC entity.
+  </span>
 </div>
+
   
       <!-- Media Vehicle Section (conditional) -->
-  <div id="media_vehicle_section" style="display: none;">
-    <label>Media Vehicle (indicate the name of the vehicle):</label>
-    <div class="checkbox-group">
-      <label><input type="checkbox" name="media_vehicle" value="INTERNET" /> INTERNET</label>
-      <label><input type="checkbox" name="media_vehicle" value="STAMPA" /> INTERNET STAMPA</label>
-      <label><input type="checkbox" name="media_vehicle" value="STAMPA TV" /> STAMPA TV</label>
-      <label><input type="checkbox" name="media_vehicle" value="TV OOH" /> TV OOH</label>
-      <label><input type="checkbox" name="media_vehicle" value="OOH MEZZI DIVERSI" /> OOH MEZZI DIVERSI</label>
-      <label><input type="checkbox" name="media_vehicle" value="MEZZI DIVERSI DIGITAL" /> MEZZI DIVERSI DIGITAL</label>
-      <label><input type="checkbox" name="media_vehicle" value="DIGITAL RADIO" /> DIGITAL RADIO</label>
-      <label><input type="checkbox" name="media_vehicle" value="RADIO" /> RADIO</label>
-    </div>
+<div id="media_vehicle_section" style="display: none;">
+  <label style="display: flex; align-items: center; gap: 8px;">
+    Media Vehicle (indicate the name of the vehicle):<span style="color: red;">*</span>
+  </label>
+
+  <div class="checkbox-group" data-required="true">
+    <label><input type="checkbox" name="media_vehicle" value="INTERNET" /> INTERNET</label><br>
+    <label><input type="checkbox" name="media_vehicle" value="STAMPA" /> INTERNET STAMPA</label><br>
+    <label><input type="checkbox" name="media_vehicle" value="STAMPA TV" /> STAMPA TV</label><br>
+    <label><input type="checkbox" name="media_vehicle" value="TV OOH" /> TV OOH</label><br>
+    <label><input type="checkbox" name="media_vehicle" value="OOH MEZZI DIVERSI" /> OOH MEZZI DIVERSI</label><br>
+    <label><input type="checkbox" name="media_vehicle" value="MEZZI DIVERSI DIGITAL" /> MEZZI DIVERSI DIGITAL</label><br>
+    <label><input type="checkbox" name="media_vehicle" value="DIGITAL RADIO" /> DIGITAL RADIO</label><br>
+    <label><input type="checkbox" name="media_vehicle" value="RADIO" /> RADIO</label><br>
+
+    <!-- Inline error message -->
+    <span class="error-msg" style="color: red; display: none;">
+      Please select at least one media vehicle.
+    </span>
   </div>
+</div>
+
     
     <!-- Natural Person Fields -->
   <div id="natural_person_fields" style="display: none;">
 
-    <!-- first name -->
-    <label for="first_name">First Name:<span style="color: red;">*</span></label>
-    <input type="text" id="first_name" name="first_name" />
+  <!-- First Name -->
+<label for="first_name" style="display: flex; align-items: center; gap: 8px;">
+  First Name:<span style="color: red;">*</span>
+</label>
+
+<input type="text" id="first_name" name="first_name" />
+
+<!-- Inline error message -->
+<span id="first_name_error" class="error-msg" style="color: red; display: none;">
+  Please enter the first name.
+</span>
+
 
     <!-- last name -->
     <label for="last_name">Last Name:<span style="color: red;">*</span></label>
@@ -367,20 +434,20 @@
     <div id="legal_person_fields" style="display: none;">
       <!-- supplier company name -->
     <label for="supplier_company_name">Supplier Company Name:<span style="color: red;">*</span></label>
-  <input type="text" id="supplier_company_name" name="supplier_company_name" required />
+  <input type="text" id="supplier_company_name" name="supplier_company_name" />
     </div>
 
    <!-- address -->
     <label for="address">Address:<span style="color: red;">*</span></label>
-  <input type="text" id="address" name="address" />
+  <input type="text" id="address" name="address" required/>
 
     <!-- N -->
   <label for="n">N:<span style="color: red;">*</span></label>
-  <input type="text" id="n" name="n" />
+  <input type="text" id="n" name="n" required/>
 
     <!-- postal code -->
   <label for="postal_code">Postal Code:<span style="color: red;">*</span></label>
-  <input type="text" id="postal_code" name="postal_code" />
+  <input type="text" id="postal_code" name="postal_code" required/>
 
     <!-- country -->
   <label>Country:<span style="color: red;">*</span></label>
@@ -514,11 +581,11 @@
 
     <!-- city -->
   <label for="city">City:<span style="color: red;">*</span></label>
-  <input type="text" id="city" name="city" />
+  <input type="text" id="city" name="city" required/>
 
     <!-- telephone number -->
   <label for="telephone_number">Telephone Number:<span style="color: red;">*</span></label>
-  <input type="text" id="telephone_number" name="telephone_number" />
+  <input type="text" id="telephone_number" name="telephone_number" required/>
 
   <!-- vat group -->
 <label>
@@ -577,7 +644,7 @@
     <!-- professional -->
     <div id="professional_section" style="display: none;">
     <label>Professional:<span id="professional_required_star" style="color: red; display: none;">*</span></label>
-  <select name="professional" id = "professional" required>
+  <select name="professional" id = "professional">
     <option value="">--Select--</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
@@ -596,7 +663,7 @@
     </span>
   </label>
 
-  <select name="withholding_tax" id="withholding_tax" required>
+  <select name="withholding_tax" id="withholding_tax">
     <option value="">--Select--</option>
     <option value="E25 L.111/2011 Regime agevolato">E25 L.111/2011 Regime agevolato</option>
     <option value="E26 Legge 111/2011 Reg. agev. ENPALS 33%">E26 Legge 111/2011 Reg. agev. ENPALS 33%</option>
@@ -796,7 +863,7 @@
 
      <!-- payment term attachment -->
 <label>
-  Payment Terms Attachments:<span style="color: red;">*</span>
+  Payment Terms Attachments:
 
   <!-- Tooltip -->
   <span class="tooltip">
@@ -848,7 +915,7 @@
     <!-- currency -->
     <div id= "currency_section" style="display: none;">
   <label>Currency:<span id="currency_required_star" style="color: red; display: none;">*</span></label>
-  <select name="currency" id="currency" required>
+  <select name="currency" id="currency">
     <option value="">--Select--</option>
     <option value="AED">AED - USD</option>
   <option value="AFN">AFN - Afghani</option>
@@ -1038,7 +1105,7 @@
     <!-- cin -->
    <div id= "cin_section" style="display: none;">
   <label>CIN:<span id="cin_required_star" style="color: red; display: none;">*</span></label>
-  <select name="cin" id = "cin" required>
+  <select name="cin" id = "cin" >
     <option value="">--Select--</option>
    <option value="A">A</option>
     <option value="B">B</option>
@@ -1177,6 +1244,44 @@
     accountInput.setCustomValidity("");
     if (accountError) accountError.style.display = "none";
   }
+}
+    function validateFormFields(form) {
+  let isValid = true;
+
+  // Clear all previous error messages
+  form.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+
+  // 1. Validate visible required fields
+  const requiredFields = form.querySelectorAll('[required]');
+  requiredFields.forEach(field => {
+    const isHidden = field.offsetParent === null;
+    if (!isHidden && !field.value.trim()) {
+      field.style.borderColor = 'red';
+      field.setCustomValidity('This field is required.');
+      const errorSpan = document.getElementById(`${field.id}_error`);
+      if (errorSpan) errorSpan.style.display = 'inline';
+      isValid = false;
+    } else {
+      field.style.borderColor = '';
+      field.setCustomValidity('');
+    }
+  });
+
+  // 2. Validate checkbox groups marked as required
+  const checkboxGroups = form.querySelectorAll('.checkbox-group[data-required="true"]');
+  checkboxGroups.forEach(group => {
+    const checkboxes = group.querySelectorAll('input[type="checkbox"]');
+    const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
+    const errorMsg = group.querySelector('.error-msg');
+    if (!anyChecked) {
+      if (errorMsg) errorMsg.style.display = 'inline';
+      isValid = false;
+    } else {
+      if (errorMsg) errorMsg.style.display = 'none';
+    }
+  });
+
+  return isValid;
 }
     function validateVATNumber() {
   const vatInput = document.getElementById("supplier_vat_number");
@@ -1523,6 +1628,16 @@
     toggleBasedOnVendorCreatedByDentsu();
     toogleBasedOnAttachmentChambre();
     toggleBasedOnVatGroup();
+   
+   document.getElementById('vendor_form').addEventListener('submit', function (e) {
+  const isValid = validateFormFields(this);
+
+  if (!isValid) {
+    e.preventDefault();
+    this.reportValidity();
+    alert('Please complete all required fields.');
+  }
+});
   });
 </script>
 </body>
