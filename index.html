@@ -722,7 +722,7 @@
   </span>
 </label>
 
-<input type="email" id="dentsu_contact_email" name="dentsu_contact_email" />
+<input type="email" id="dentsu_contact_email" name="dentsu_contact_email" required/>
 <span id="dentsu_contact_email_error" style="color: red; font-size: 13px; display: none;">
   Please enter a valid email address
 </span>
@@ -730,8 +730,9 @@
 
 <!-- vendor email -->
 <label for="vendor_email">Email del fornitore / Vendor’s email address:<span style="color: red;">*</span></label>
-<input type="email" id="vendor_email" name="vendor_email" />
+<input type="email" id="vendor_email" name="vendor_email" required/>
 <span id="vendor_email_error" style="color: red; font-size: 13px; display: none;">Please enter a valid email address</span>
+
 
 
     <!-- professional -->
@@ -742,6 +743,11 @@
     <option value="Yes">Yes</option>
     <option value="No">No</option>
   </select>
+
+      <!-- Error message -->
+<span id="professional_error" class="error-msg" style="color: red; display: none;">
+  Please select the professional value.
+</span>
     </div>
 
    <!-- withholding tax -->
@@ -773,6 +779,11 @@
     <option value="P56 Lavoro autonomo 20% - ENPALS 35">P56 Lavoro autonomo 20% - ENPALS 35</option>
     <option value="70%">70%</option>
   </select>
+
+  <!-- Error message -->
+<span id="withholding_tax_error" class="error-msg" style="color: red; display: none;">
+  Please select the withholding tax value.
+</span>
 </div>
 
 
@@ -789,7 +800,7 @@
   </label>
 
   <input type="text" id="supplier_vat_number" name="supplier_vat_number" oninput="validateVATNumber()" />
-  <span id="vat_error" style="color: red; font-size: 13px; display: none;">
+  <span id="supplier_vat_number_error" class="error-msg" style="color: red; font-size: 13px; display: none;">
     Please enter a valid 11-digit VAT number (only numbers).
   </span>
 </div>
@@ -852,7 +863,12 @@
   </span>
 </label>
 
-<input type="file" name="attachment_identity_card" />
+<input type="file" name="attachment_identity_card" id="attachment_identity_card" />
+
+  <!-- Error message -->
+<span id="attachment_identity_card_error" class="error-msg" style="color: red; display: none;">
+  Please upload the attachment identity card file.
+</span>
 
 </div>
 
@@ -874,6 +890,10 @@
   <!-- Business register number -->
   <label for="business_register_number">Number of inscription in the Business Register (CCIAA):</label>
   <input type="text" id="business_register_number" name="business_register_number" />
+  <!-- Error message -->
+<span id="business_register_number_error" class="error-msg" style="color: red; display: none;">
+  Please select the business register number value.
+</span>
 
   <!-- attachment chambre -->
 <div id="attachment_chambre_section" style="display: none;">
@@ -889,6 +909,10 @@
   </label>
 
   <input type="file" id="attachment_chambre" name="attachment_chambre" />
+  <!-- Error message -->
+<span id="attachment_chambre_error" class="error-msg" style="color: red; display: none;">
+  Please upload the attachment chambre file.
+</span>
 </div>
 
 </div>
@@ -911,7 +935,7 @@
   </span>
 </label>
 
-<select name="payment_term_days" required>
+<select name="payment_term_days" id="payment_term_days" required>
   <option value="">--Select--</option>
   <option value="CM+30">CM+30 - CURRENT MONTH + 30 days</option>
   <option value="CM+45">CM+45 - CURRENT MONTH + 45 days</option>
@@ -931,13 +955,19 @@
   <option value="N150">N150 - 150 Days - Net</option>
 </select>
 
+      <!-- Error message -->
+<span id="payment_term_days_error" class="error-msg" style="color: red; display: none;">
+  Please select the payment term days value.
+</span>
 
 <!-- payment method -->
   <label>Payment Method:<span style="color: red;">*</span></label>
   <select name="payment_method" required>
     <option value="">--Select--</option>
     <option value="EFT">EFT</option>
-  </select><!-- payment method -->
+  </select>
+      
+      <!-- payment method -->
 <label>
   Payment Method:<span style="color: red;">*</span>
 
@@ -948,10 +978,15 @@
   </span>
 </label>
 
-<select name="payment_method" required>
+<select name="payment_method" id="payment_method" required>
   <option value="">--Select--</option>
   <option value="EFT">EFT</option>
 </select>
+
+      <!-- Error message -->
+<span id="payment_method_error" class="error-msg" style="color: red; display: none;">
+  Please select the payment method value.
+</span>
 
 
      <!-- payment term attachment -->
@@ -978,18 +1013,32 @@
     <div id= "bank_name_section" style="display: none;">
      <label for="bank_name">Bank Name:<span id="bank_name_required_star" style="color: red; display: none;">*</span></label>
     <input type="text" id="bank_name" name="bank_name" />
+      <!-- Error message -->
+<span id="bank_name_error" class="error-msg" style="color: red; display: none;">
+  Please enter the bank name value.
+</span>
   </div>
 
     <!-- bank address -->
     <div id= "bank_address_section" style="display: none;">
   <label for="bank_address">Bank Address:<span id="bank_address_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="bank_address" name="bank_address" />
+
+    <!-- Error message -->
+<span id="bank_address_error" class="error-msg" style="color: red; display: none;">
+  Please enter the bank address value.
+</span>
     </div>
 
     <!-- account holder -->
     <div id= "account_holder_section" style="display: none;">
   <label for="account_holder">Account Holder:<span id="account_holder_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="account_holder" name="account_holder" />
+
+      <!-- Error message -->
+<span id="account_holder_error" class="error-msg" style="color: red; display: none;">
+  Please enter the account holder value.
+</span>
   </div>
 
    <!-- account number -->
@@ -999,7 +1048,7 @@
   </label>
 
   <input type="text" id="account_number" name="account_number" oninput="validateAccountNumber()"/>
-  <span id="account_number_error" style="color: red; font-size: 13px; display: none;">
+  <span id="account_number_error" class="error-msg" style="color: red; font-size: 13px; display: none;">
     Please enter a valid 12-digit account number.
   </span>
 </div>
@@ -1186,13 +1235,17 @@
   <option value="ZMW">ZMW - Zambian Kwacha</option>
   <option value="ZWD">ZWD - Zimbabwe Dollar</option>
   </select>
+      <!-- Error message -->
+<span id="currency_error" class="error-msg" style="color: red; display: none;">
+  Please select the currency value.
+</span>
   </div>
 
    <!-- IBAN Code Section -->
 <div id="iban_code_section" style="display: none;">
   <label for="iban_code">IBAN Code:<span id="iban_code_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="iban_code" name="iban_code" oninput="validateIBAN()" />
-  <span id="iban_error" style="color: red; font-size: 13px; display: none;">Please ensure IBAN code is correct</span>
+  <span id="iban_code_error" class="error-msg" style="color: red; font-size: 13px; display: none;">Please ensure IBAN code is correct</span>
 </div>
 
     <!-- cin -->
@@ -1227,12 +1280,21 @@
     <option value="Y">Y</option>
     <option value="Z">Z</option>
   </select>
+
+     <!-- Error message -->
+<span id="cin_error" class="error-msg" style="color: red; display: none;">
+  Please select the cin value.
+</span>
   </div>
 
     <!-- swift code -->
     <div id= "swift_code_section" style="display: none;">
   <label for="swift_code">SWIFT Code:<span id="swift_code_required_star" style="color: red; display: none;">*</span></label>
   <input type="text" id="swift_code" name="swift_code" />
+      <!-- Error message -->
+<span id="swift_code_error" class="error-msg" style="color: red; display: none;">
+  Please enter the swift code value.
+</span>
   </div>
 
   <!-- bank details attachment -->
@@ -1251,6 +1313,11 @@
   </label>
 
   <input type="file" id="bank_details_attachment" name="bank_details_attachment" />
+
+  <!-- Error message -->
+<span id="bank_details_attachment_error" class="error-msg" style="color: red; display: none;">
+  Please upload the bank details attachment file
+</span>
 </div>
 
  </fieldset>
@@ -1379,7 +1446,7 @@
     function validateVATNumber() {
   const vatInput = document.getElementById("supplier_vat_number");
   const vatValue = vatInput.value.trim();
-  const vatError = document.getElementById("vat_error");
+  const vatError = document.getElementById("supplier_vat_number_error");
 
   const isValid = /^\d{11}$/.test(vatValue);
 
@@ -1395,7 +1462,7 @@
 }
     function validateIBAN() {
     const ibanInput = document.getElementById("iban_code");
-    const errorMsg = document.getElementById("iban_error");
+    const errorMsg = document.getElementById("iban_code_error");
     const ibanValue = ibanInput.value.trim();
 
     // Remove any whitespace for validation check
@@ -1513,8 +1580,8 @@
   // Hide and make all bank/payment fields non-mandatory
   const hideAndReset = (section, input, star) => {
     section.style.display = 'block';
-    input.required = false;
-    star.style.display = 'none';
+    input.required = true;
+    star.style.display = 'inline';
   };
 
   hideAndReset(bankNameSection, bankNameInput, bankNameStar);
