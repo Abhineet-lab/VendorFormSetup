@@ -84,7 +84,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made by:<span style="color: red;">*</span>
+  Request made By:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First and last name of the person who fills in the form</span>
@@ -1512,7 +1512,7 @@
     function resetBankFields() {
   // Hide and make all bank/payment fields non-mandatory
   const hideAndReset = (section, input, star) => {
-    section.style.display = 'none';
+    section.style.display = 'block';
     input.required = false;
     star.style.display = 'none';
   };
@@ -1535,39 +1535,39 @@ function toggleBasedOnVendorCreatedByDentsu() {
   if (isYes) {
     // YES case — Required, hide stars
     bankNameSection.style.display = 'block';
-    bankNameInput.required = true;
+    bankNameInput.required = false;
     bankNameStar.style.display = 'none';
 
     bankAddressSection.style.display = 'block';
-    bankAddressInput.required = true;
+    bankAddressInput.required = false;
     bankAddressStar.style.display = 'none';
 
     accountHolderSection.style.display = 'block';
-    accountHolderInput.required = true;
+    accountHolderInput.required = false;
     accountHolderStar.style.display = 'none';
 
     accountNumberSection.style.display = 'block';
-    accountNumberInput.required = true;
+    accountNumberInput.required = false;
     accountNumberStar.style.display = 'none';
 
     currencySection.style.display = 'block';
-    currencyInput.required = true;
+    currencyInput.required = false;
     currencyStar.style.display = 'none';
 
     ibanCodeSection.style.display = 'block';
-    ibanCodeInput.required = true;
+    ibanCodeInput.required = false;
     ibanCodeStar.style.display = 'none';
 
     cinSection.style.display = 'block';
-    cinInput.required = true;
+    cinInput.required = false;
     cinStar.style.display = 'none';
 
     swiftCodeSection.style.display = 'block';
-    swiftCodeInput.required = true;
+    swiftCodeInput.required = false;
     swiftCodeStar.style.display = 'none';
 
     bankDetailsAttachmentSection.style.display = 'block';
-    bankDetailsAttachmentInput.required = true;
+    bankDetailsAttachmentInput.required = false;
     bankDetailsAttachmentStar.style.display = 'none';
 
   } else if (isNoWithIta) {
@@ -1601,7 +1601,7 @@ function toggleBasedOnVendorCreatedByDentsu() {
     cinStar.style.display = 'inline';
 
     swiftCodeSection.style.display = 'block';
-    swiftCodeInput.required = true;
+    swiftCodeInput.required = false;
     swiftCodeStar.style.display = 'none'; // as per your original logic
 
     bankDetailsAttachmentSection.style.display = 'block';
