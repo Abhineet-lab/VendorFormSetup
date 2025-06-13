@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +84,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made By:<span style="color: red;">*</span>
+  Request made by:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First and last name of the person who fills in the form</span>
@@ -252,7 +251,7 @@
     Media Vehicle (indicate the name of the vehicle):<span style="color: red;">*</span>
   </label>
 
-  <div class="checkbox-group" data-required="true">
+  <div class="checkbox-group">
     <label><input type="checkbox" name="media_vehicle" value="INTERNET" /> INTERNET</label><br>
     <label><input type="checkbox" name="media_vehicle" value="STAMPA" /> INTERNET STAMPA</label><br>
     <label><input type="checkbox" name="media_vehicle" value="STAMPA TV" /> STAMPA TV</label><br>
@@ -286,16 +285,33 @@
 </span>
 
 
-    <!-- last name -->
-    <label for="last_name">Last Name:<span style="color: red;">*</span></label>
-    <input type="text" id="last_name" name="last_name" />
+   <!-- Last Name -->
+<label for="last_name" style="display: flex; align-items: center; gap: 8px;">
+  Last Name:<span style="color: red;">*</span>
+</label>
 
-    <!-- birth place -->
-    <label for="birth_place">Birth Place:<span style="color: red;">*</span></label>
-    <input type="text" id="birth_place" name="birth_place" />
+<input type="text" id="last_name" name="last_name" />
 
-   <!-- birth county -->
-<label>
+<!-- Inline error message -->
+<span id="last_name_error" class="error-msg" style="color: red; display: none;">
+  Please enter the last name.
+</span>
+
+<!-- Birth Place -->
+<label for="birth_place" style="display: flex; align-items: center; gap: 8px;">
+  Birth Place:<span style="color: red;">*</span>
+</label>
+
+<input type="text" id="birth_place" name="birth_place" />
+
+<!-- Inline error message -->
+<span id="birth_place_error" class="error-msg" style="color: red; display: none;">
+  Please enter the birth place.
+</span>
+
+
+  <!-- Birth County -->
+<label for="birth_county" style="display: flex; align-items: center; gap: 8px;">
   Birth County:<span style="color: red;">*</span>
 
   <!-- Tooltip -->
@@ -417,41 +433,97 @@
   <option value="VV">VV - Vibo Valentia</option>
 </select>
 
+<!-- Inline error message -->
+<span id="birth_county_error" class="error-msg" style="color: red; display: none;">
+  Please select your birth county.
+</span>
 
-    <!-- birth date -->
-    <label for="birth_date">Birth Date:<span style="color: red;">*</span></label>
-    <input type="date" id="birth_date" name="birth_date" />
 
-    <!-- gender -->
-    <label>Gender:<span style="color: red;">*</span></label>
-    <select name="gender" id="gender">
-      <option value="">--Select--</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
+   <!-- Birth Date -->
+<label for="birth_date" style="display: flex; align-items: center; gap: 8px;">
+  Birth Date:<span style="color: red;">*</span>
+</label>
+
+<input type="date" id="birth_date" name="birth_date" />
+
+<!-- Inline error message -->
+<span id="birth_date_error" class="error-msg" style="color: red; display: none;">
+  Please select your birth date.
+</span>
+
+<!-- Gender -->
+<label for="gender" style="display: flex; align-items: center; gap: 8px;">
+  Gender:<span style="color: red;">*</span>
+</label>
+
+<select name="gender" id="gender">
+  <option value="">--Select--</option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</select>
+
+<!-- Inline error message -->
+<span id="gender_error" class="error-msg" style="color: red; display: none;">
+  Please select your gender.
+</span>
+
   </div>
 
     <div id="legal_person_fields" style="display: none;">
-      <!-- supplier company name -->
-    <label for="supplier_company_name">Supplier Company Name:<span style="color: red;">*</span></label>
-  <input type="text" id="supplier_company_name" name="supplier_company_name" />
+      <!-- Supplier Company Name -->
+<label for="supplier_company_name" style="display: flex; align-items: center; gap: 8px;">
+  Supplier Company Name:<span style="color: red;">*</span>
+</label>
+
+<input type="text" id="supplier_company_name" name="supplier_company_name" required />
+
+<!-- Inline error message -->
+<span id="supplier_company_name_error" class="error-msg" style="color: red; display: none;">
+  Please enter the supplier company name.
+</span>
+
     </div>
 
-   <!-- address -->
-    <label for="address">Address:<span style="color: red;">*</span></label>
-  <input type="text" id="address" name="address" required/>
+   <!-- Address -->
+<label for="address" style="display: flex; align-items: center; gap: 8px;">
+  Address:<span style="color: red;">*</span>
+</label>
+<input type="text" id="address" name="address" required />
 
-    <!-- N -->
-  <label for="n">N:<span style="color: red;">*</span></label>
-  <input type="text" id="n" name="n" required/>
+<!-- Inline error message -->
+<span id="address_error" class="error-msg" style="color: red; display: none;">
+  Please enter the address.
+</span>
 
-    <!-- postal code -->
-  <label for="postal_code">Postal Code:<span style="color: red;">*</span></label>
-  <input type="text" id="postal_code" name="postal_code" required/>
+<!-- N -->
+<label for="n" style="display: flex; align-items: center; gap: 8px;">
+  N:<span style="color: red;">*</span>
+</label>
+<input type="text" id="n" name="n" required />
 
-    <!-- country -->
-  <label>Country:<span style="color: red;">*</span></label>
-<select name="country" required>
+<!-- Inline error message -->
+<span id="n_error" class="error-msg" style="color: red; display: none;">
+  Please enter the N value.
+</span>
+
+<!-- Postal Code -->
+<label for="postal_code" style="display: flex; align-items: center; gap: 8px;">
+  Postal Code:<span style="color: red;">*</span>
+</label>
+<input type="text" id="postal_code" name="postal_code" required />
+
+<!-- Inline error message -->
+<span id="postal_code_error" class="error-msg" style="color: red; display: none;">
+  Please enter the postal code.
+</span>
+
+
+   <!-- Country -->
+<label for="country" style="display: flex; align-items: center; gap: 8px;">
+  Country:<span style="color: red;">*</span>
+</label>
+
+<select name="country" id="country" required>
   <option value="">--Select--</option>
   <option value="AFG">Afghanistan</option>
   <option value="ALA">Åland Islands</option>
@@ -579,19 +651,35 @@
   <option value="ZWE">Zimbabwe</option>
 </select>
 
-    <!-- city -->
-  <label for="city">City:<span style="color: red;">*</span></label>
-  <input type="text" id="city" name="city" required/>
+<!-- Inline error message -->
+<span id="country_error" class="error-msg" style="color: red; display: none;">
+  Please select your country.
+</span>
+<!-- City -->
+<label for="city" style="display: flex; align-items: center; gap: 8px;">
+  City:<span style="color: red;">*</span>
+</label>
+<input type="text" id="city" name="city" required />
 
-    <!-- telephone number -->
-  <label for="telephone_number">Telephone Number:<span style="color: red;">*</span></label>
-  <input type="text" id="telephone_number" name="telephone_number" required/>
+<!-- Error message -->
+<span id="city_error" class="error-msg" style="color: red; display: none;">
+  Please enter your city.
+</span>
 
-  <!-- vat group -->
-<label>
+<!-- Telephone Number -->
+<label for="telephone_number" style="display: flex; align-items: center; gap: 8px;">
+  Telephone Number:<span style="color: red;">*</span>
+</label>
+<input type="text" id="telephone_number" name="telephone_number" required />
+
+<!-- Error message -->
+<span id="telephone_number_error" class="error-msg" style="color: red; display: none;">
+  Please enter your telephone number.
+</span>
+
+<!-- VAT Group -->
+<label for="vat_group" style="display: flex; align-items: center; gap: 8px;">
   VAT Group:<span style="color: red;">*</span>
-
-  <!-- Tooltip -->
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">
@@ -609,6 +697,11 @@
   <option value="FOR_UE">FOR_UE</option>
   <option value="FOR_XUE">FOR_XUE</option>
 </select>
+
+<!-- Error message -->
+<span id="vat_group_error" class="error-msg" style="color: red; display: none;">
+  Please select a VAT group.
+</span>
 
 
     <!-- PEC -->
@@ -1400,118 +1493,127 @@
   supplierFiscalCodeInput.required = false;
   supplierFiscalCodeStar.style.display = 'none';
 }
-    function toogleBasedOnAttachmentChambre(){
-      if(vendorCreatedByDentsu.value === 'Yes') {
-        attachmentChambreSection.style.display = 'block';
-        attachmentChambreInput.required = true;
-        attachmentChambreStar.style.display = 'none';
-      } else if (vendorCreatedByDentsu.value === 'No') {
-        attachmentChambreSection.style.display = 'block';
-        attachmentChambreInput.required = true;
-        attachmentChambreStar.style.display = 'inline';
-      }
-    }
-    function toggleBasedOnVendorCreatedByDentsu() {
-      if (vendorCreatedByDentsu.value === 'Yes'){
-        bankNameSection.style.display = 'block';
-        bankNameInput.required = true;
-        bankNameStar.style.display = 'none';
-        bankAddressSection.style.display = 'block';
-        bankAddressInput.required = true;
-        bankAddressStar.style.display = 'none';
-        accountHolderSection.style.display = 'block';
-        accountHolderInput.required = true;
-        accountHolderStar.style.display = 'none';
-        accountHolderSection.style.display = 'block';
-        accountHolderInput.required = true;
-        accountHolderStar.style.display = 'none';
-        accountNumberSection.style.display = 'block';
-        accountNumberInput.required = true;
-        accountNumberStar.style.display = 'none';
-        currencySection.style.display = 'block';
-        currencyInput.required = true;
-        currencyStar.style.display = 'none';
-        ibanCodeSection.style.display = 'block';
-        ibanCodeInput.required = true;
-        ibanCodeStar.style.display = 'none';
-        cinSection.style.display = 'block';
-        cinInput.required = true;
-        cinStar.style.display = 'none';
-        swiftCodeSection.style.display = 'block';
-        swiftCodeInput.required = true;
-        swiftCodeStar.style.display = 'none';
-        bankDetailsAttachmentSection.style.display = 'block';
-        bankDetailsAttachmentInput.required = true;
-        bankDetailsAttachmentStar.style.display = 'none';
-      } else if (vendorCreatedByDentsu.value === 'No' && vatGroup.value === 'FOR_ITA'){
-        bankNameSection.style.display = 'block';
-        bankNameInput.required = true;
-        bankNameStar.style.display = 'inline';
-        bankAddressSection.style.display = 'block';
-        bankAddressInput.required = true;
-        bankAddressStar.style.display = 'inline';
-        accountHolderSection.style.display = 'block';
-        accountHolderInput.required = true;
-        accountHolderStar.style.display = 'inline';
-        accountHolderSection.style.display = 'block';
-        accountHolderInput.required = true;
-        accountHolderStar.style.display = 'inline';
-        accountNumberSection.style.display = 'block';
-        accountNumberInput.required = true;
-        accountNumberStar.style.display = 'inline';
-        currencySection.style.display = 'block';
-        currencyInput.required = true;
-        currencyStar.style.display = 'inline';
-        ibanCodeSection.style.display = 'block';
-        ibanCodeInput.required = true;
-        ibanCodeStar.style.display = 'inline';
-        cinSection.style.display = 'block';
-        cinInput.required = true;
-        cinStar.style.display = 'inline';
-        swiftCodeSection.style.display = 'block';
-        swiftCodeInput.required = true;
-        swiftCodeStar.style.display = 'none';
-        bankDetailsAttachmentSection.style.display = 'block';
-        bankDetailsAttachmentInput.required = true;
-        bankDetailsAttachmentStar.style.display = 'inline';
-      } else {
-        bankNameSection.style.display = 'block';
-        bankNameInput.required = true;
-        bankNameStar.style.display = 'inline';
-        bankAddressSection.style.display = 'block';
-        bankAddressInput.required = true;
-        bankAddressStar.style.display = 'inline';
-        accountHolderSection.style.display = 'block';
-        accountHolderInput.required = true;
-        accountHolderStar.style.display = 'inline';
-        accountHolderSection.style.display = 'block';
-        accountHolderInput.required = true;
-        accountHolderStar.style.display = 'inline';
-        accountNumberSection.style.display = 'block';
-        accountNumberInput.required = true;
-        accountNumberStar.style.display = 'inline';
-        currencySection.style.display = 'block';
-        currencyInput.required = true;
-        currencyStar.style.display = 'inline';
-        ibanCodeSection.style.display = 'block';
-        ibanCodeInput.required = true;
-        ibanCodeStar.style.display = 'inline';
-        cinSection.style.display = 'block';
-        cinInput.required = true;
-        cinStar.style.display = 'inline';
-        swiftCodeSection.style.display = 'block';
-        swiftCodeInput.required = true;
-        swiftCodeStar.style.display = 'inline';
-        bankDetailsAttachmentSection.style.display = 'block';
-        bankDetailsAttachmentInput.required = true;
-        bankDetailsAttachmentStar.style.display = 'inline';
-      }
-    }
-    function toggleBasedOnVatGroup() {
-  const supplierTypeValue = supplierType.value; // 'Natural Person' or 'Legal Person'
-  const grp = vatGroup.value;
+    function toogleBasedOnAttachmentChambre() {
+  if (vendorCreatedByDentsu.value === 'Yes') {
+    attachmentChambreSection.style.display = 'block';
+    attachmentChambreInput.required = true;
+    attachmentChambreStar.style.display = 'none';
+  } else if (vendorCreatedByDentsu.value === 'No') {
+    attachmentChambreSection.style.display = 'block';
+    attachmentChambreInput.required = true;
+    attachmentChambreStar.style.display = 'inline';
+  } else {
+    // Fallback/reset: Hide and make non-mandatory
+    attachmentChambreSection.style.display = 'none';
+    attachmentChambreInput.required = false;
+    attachmentChambreStar.style.display = 'none';
+  }
+}
+    function resetBankFields() {
+  // Hide and make all bank/payment fields non-mandatory
+  const hideAndReset = (section, input, star) => {
+    section.style.display = 'none';
+    input.required = false;
+    star.style.display = 'none';
+  };
 
-  // Hide and reset all fields
+  hideAndReset(bankNameSection, bankNameInput, bankNameStar);
+  hideAndReset(bankAddressSection, bankAddressInput, bankAddressStar);
+  hideAndReset(accountHolderSection, accountHolderInput, accountHolderStar);
+  hideAndReset(accountNumberSection, accountNumberInput, accountNumberStar);
+  hideAndReset(currencySection, currencyInput, currencyStar);
+  hideAndReset(ibanCodeSection, ibanCodeInput, ibanCodeStar);
+  hideAndReset(cinSection, cinInput, cinStar);
+  hideAndReset(swiftCodeSection, swiftCodeInput, swiftCodeStar);
+  hideAndReset(bankDetailsAttachmentSection, bankDetailsAttachmentInput, bankDetailsAttachmentStar);
+}
+
+function toggleBasedOnVendorCreatedByDentsu() {
+  const isYes = vendorCreatedByDentsu.value === 'Yes';
+  const isNoWithIta = vendorCreatedByDentsu.value === 'No' && vatGroup.value === 'FOR_ITA';
+
+  if (isYes) {
+    // YES case — Required, hide stars
+    bankNameSection.style.display = 'block';
+    bankNameInput.required = true;
+    bankNameStar.style.display = 'none';
+
+    bankAddressSection.style.display = 'block';
+    bankAddressInput.required = true;
+    bankAddressStar.style.display = 'none';
+
+    accountHolderSection.style.display = 'block';
+    accountHolderInput.required = true;
+    accountHolderStar.style.display = 'none';
+
+    accountNumberSection.style.display = 'block';
+    accountNumberInput.required = true;
+    accountNumberStar.style.display = 'none';
+
+    currencySection.style.display = 'block';
+    currencyInput.required = true;
+    currencyStar.style.display = 'none';
+
+    ibanCodeSection.style.display = 'block';
+    ibanCodeInput.required = true;
+    ibanCodeStar.style.display = 'none';
+
+    cinSection.style.display = 'block';
+    cinInput.required = true;
+    cinStar.style.display = 'none';
+
+    swiftCodeSection.style.display = 'block';
+    swiftCodeInput.required = true;
+    swiftCodeStar.style.display = 'none';
+
+    bankDetailsAttachmentSection.style.display = 'block';
+    bankDetailsAttachmentInput.required = true;
+    bankDetailsAttachmentStar.style.display = 'none';
+
+  } else if (isNoWithIta) {
+    // NO + FOR_ITA — Required, show stars
+    bankNameSection.style.display = 'block';
+    bankNameInput.required = true;
+    bankNameStar.style.display = 'inline';
+
+    bankAddressSection.style.display = 'block';
+    bankAddressInput.required = true;
+    bankAddressStar.style.display = 'inline';
+
+    accountHolderSection.style.display = 'block';
+    accountHolderInput.required = true;
+    accountHolderStar.style.display = 'inline';
+
+    accountNumberSection.style.display = 'block';
+    accountNumberInput.required = true;
+    accountNumberStar.style.display = 'inline';
+
+    currencySection.style.display = 'block';
+    currencyInput.required = true;
+    currencyStar.style.display = 'inline';
+
+    ibanCodeSection.style.display = 'block';
+    ibanCodeInput.required = true;
+    ibanCodeStar.style.display = 'inline';
+
+    cinSection.style.display = 'block';
+    cinInput.required = true;
+    cinStar.style.display = 'inline';
+
+    swiftCodeSection.style.display = 'block';
+    swiftCodeInput.required = true;
+    swiftCodeStar.style.display = 'none'; // as per your original logic
+
+    bankDetailsAttachmentSection.style.display = 'block';
+    bankDetailsAttachmentInput.required = true;
+    bankDetailsAttachmentStar.style.display = 'inline';
+
+  } else {
+    // RESET everything
+    resetBankFields();
+  }
+}
+   function resetVatGroupFields() {
   pecSection.style.display = 'none';
   pecInput.required = false;
 
@@ -1522,11 +1624,18 @@
   supplierFiscalCodeSection.style.display = 'none';
   supplierFiscalCodeInput.required = false;
   supplierFiscalCodeStar.style.display = 'none';
+}
+
+function toggleBasedOnVatGroup() {
+  const supplierTypeValue = supplierType.value;
+  const grp = vatGroup.value;
+
+  // Always reset all VAT-related sections first
+  resetVatGroupFields();
 
   if (grp === 'FOR_ITA') {
-    // Show PEC for both types, never required
     pecSection.style.display = 'block';
-    pecInput.required = false;
+    pecInput.required = false; // explicitly non-required
 
     if (supplierTypeValue === 'Natural Person') {
       supplierVatNumberSection.style.display = 'block';
@@ -1536,8 +1645,9 @@
       supplierFiscalCodeSection.style.display = 'block';
       supplierFiscalCodeInput.required = true;
       supplierFiscalCodeStar.style.display = 'inline';
+    }
 
-    } else if (supplierTypeValue === 'Legal Person') {
+    if (supplierTypeValue === 'Legal Person') {
       supplierVatNumberSection.style.display = 'block';
       supplierVatNumberInput.required = true;
       supplierVatNumberStar.style.display = 'inline';
@@ -1548,7 +1658,8 @@
     }
 
   } else if (grp === 'FOR_UE') {
-    // PEC is hidden for both types
+    // PEC not shown
+
     if (supplierTypeValue === 'Natural Person') {
       supplierVatNumberSection.style.display = 'block';
       supplierVatNumberInput.required = false;
@@ -1557,8 +1668,9 @@
       supplierFiscalCodeSection.style.display = 'block';
       supplierFiscalCodeInput.required = false;
       supplierFiscalCodeStar.style.display = 'none';
+    }
 
-    } else if (supplierTypeValue === 'Legal Person') {
+    if (supplierTypeValue === 'Legal Person') {
       supplierVatNumberSection.style.display = 'block';
       supplierVatNumberInput.required = true;
       supplierVatNumberStar.style.display = 'inline';
@@ -1569,37 +1681,51 @@
     }
 
   } else if (grp === 'FOR_XUE') {
-    // For both types, nothing shown
-    // All fields stay hidden and not required
+    // No fields shown or required
+    resetVatGroupFields();
   }
 }
-    function toggleBasedOnMediaGroup() {
+   function toggleBasedOnMediaGroup() {
   const grp = mediagroupSelector.value;
 
+  // Reset all relevant sections
   mediaVehicleSection.style.display = 'none';
   vendorWebsiteSection.style.display = 'none';
   vendorWebsiteInput.required = false;
   websiteStar.style.display = 'none';
   inactiveBcEntity.style.display = 'none';
 
+  // Hide error initially
+  const mediaVehicleError = mediaVehicleSection.querySelector('.error-msg');
+  if (mediaVehicleError) mediaVehicleError.style.display = 'none';
+
   if (grp === 'MEDIA') {
     mediaVehicleSection.style.display = 'block';
+
+    // Mark all checkboxes as required via custom validation (actual "required" doesn't apply to groups)
+    mediaVehicleSection.setAttribute('data-required', 'true');
+
     vendorWebsiteSection.style.display = 'block';
     vendorWebsiteInput.required = true;
     websiteStar.style.display = 'inline';
-  } else if (['NONMEDIA','HOUSE','TAXSS'].includes(grp)) {
-    vendorWebsiteSection.style.display = 'block';
-    vendorWebsiteInput.required = false;
-    websiteStar.style.display = 'none';
-  }
-      else if (['INTCO'].includes(grp)) {
-    vendorWebsiteSection.style.display = 'block';
-    vendorWebsiteInput.required = false;
-    websiteStar.style.display = 'none';
-    inactiveBcEntity.style.display = 'block';
+
+  } else {
+    mediaVehicleSection.setAttribute('data-required', 'false');
+    
+    if (['NONMEDIA', 'HOUSE', 'TAXSS'].includes(grp)) {
+      vendorWebsiteSection.style.display = 'block';
+      vendorWebsiteInput.required = false;
+      websiteStar.style.display = 'none';
+    }
+
+    if (grp === 'INTCO') {
+      vendorWebsiteSection.style.display = 'block';
+      vendorWebsiteInput.required = false;
+      websiteStar.style.display = 'none';
+      inactiveBcEntity.style.display = 'block';
+    }
   }
 }
-
     supplierType.addEventListener('change', toggleSupplierFields);
     mediagroupSelector.addEventListener('change', toggleBasedOnMediaGroup);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
