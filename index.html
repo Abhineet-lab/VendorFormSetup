@@ -82,7 +82,7 @@
 
   <!-- dentsu buyer contact email -->
 <div>
-  <label for="dentsu_buyer_email">Dentsu Buyer Contact email<span style="color: red;">*</span></label>
+  <label for="dentsu_buyer_email">Dentsu Buyer Contact Email<span style="color: red;">*</span></label>
   <input type="email" id="dentsu_buyer_email" name="dentsu_buyer_email"/>
 </div>
 
@@ -524,7 +524,7 @@
     return false;
   }
   const selectedMediaConfirmation = document.querySelectorAll('input[name="we_the_supplier"]:checked');
-  if ((selectedMediaConfirmation.length === 0 && document.getElementById('media_confirmation').value === 'We are not a press/print') || (selectedMediaVehicles.length === 0 && document.getElementById('media_confirmation').value === 'A separate contract')) {
+  if ((selectedMediaConfirmation.length === 0 && document.getElementById('media_confirmation').value === 'We are not a press/print') || (selectedMediaConfirmation.length === 0 && document.getElementById('media_confirmation').value === 'A separate contract')) {
     alert("Please select the supplier confirmation.");
     e.preventDefault();
     return false;
