@@ -82,7 +82,7 @@
 
   <!-- dentsu buyer contact email -->
 <div>
-  <label for="dentsu_buyer_email">Dentsu Buyer Contact Email<span style="color: red;">*</span></label>
+  <label for="dentsu_buyer_email">Dentsu Buyer Contact email<span style="color: red;">*</span></label>
   <input type="email" id="dentsu_buyer_email" name="dentsu_buyer_email"/>
 </div>
 
@@ -449,10 +449,11 @@
   <button type="submit">Submit</button>
 </form>
 
-<!-- JavaScript to handle conditional visibility -->
+!-- JavaScript to handle conditional visibility -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('dentsu_buyer_email').required = true;
+    function makeRequiredFields(){
+     document.getElementById('dentsu_buyer_email').required = true;
     document.getElementById('supplier_type').required = true;
     document.getElementById('company_name').required = true;
     document.getElementById('address_line_1').required = true;
@@ -472,7 +473,7 @@
     document.getElementById('media_discount').required = true;
     document.getElementById('supplier_remittance_email').required = true;
     document.getElementById('attachments').required = true;
-
+    }
     function toggleBasedOnCurrencySelection(){
       if(document.getElementById('currency').value === 'Other') {
         document.getElementById('currency_others_section').style.display = 'block';
@@ -515,7 +516,7 @@
     toggleBasedOnCurrencySelection();
     toggleBasedOnPressSelection();
     toggleBasedOnMediaConfirmation();
-
+  });
     document.querySelector('form').addEventListener('submit', function (e) {
   const selectedMedia = document.querySelectorAll('input[name="media_type"]:checked');
   if (selectedMedia.length === 0) {
@@ -529,7 +530,7 @@
     e.preventDefault();
     return false;
   }
-  });
+});
 </script>
 </body>
 </html>
