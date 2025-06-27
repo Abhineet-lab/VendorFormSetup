@@ -78,13 +78,13 @@
   <h2 style="margin: 0; color: white; font-size: 45px;">NEW VENDOR FORM</h2>
 </header>
 {% with messages = get_flashed_messages(with_categories=true) %}  {% if messages %}    {% for category, message in messages %}      <div id="flash-message" class="flash {{ category }}" style="        padding: 10px;        margin: 10px 0;        background-color: {% if category == 'success' %}#d4edda{% else %}#f8d7da{% endif %};        color: {% if category == 'success' %}#155724{% else %}#721c24{% endif %};        border: 1px solid {% if category == 'success' %}#c3e6cb{% else %}#f5c6cb{% endif %};        border-radius: 4px;      ">        {{ message }}      </div>    {% endfor %}  {% endif %}{% endwith %}
-<form action="/submit" method="POST" enctype="multipart/form-data">
+<form action="/itvendor/submit" method="POST" enctype="multipart/form-data">
 
   <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made by:<span style="color: red;">*</span>
+  Request made By:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First and last name of the person who fills in the form</span>
@@ -367,6 +367,7 @@
       <!-- supplier company name -->
     <label for="supplier_company_name">Supplier Company Name:<span style="color: red;">*</span></label>
   <input type="text" id="supplier_company_name" name="supplier_company_name" />
+      
     </div>
 
    <!-- address -->
@@ -382,136 +383,292 @@
   <input type="text" id="postal_code" name="postal_code" />
 
     <!-- country -->
-  <label>Country:<span style="color: red;">*</span></label>
-<select name="country" id ="country">
+<label>Country:<span style="color: red;">*</span></label>
+<select name="country" id="country">
   <option value="">--Select--</option>
-  <option value="AFG">Afghanistan</option>
-  <option value="ALA">Åland Islands</option>
-  <option value="ALB">Albania</option>
-  <option value="DZA">Algeria</option>
-  <option value="ASM">American Samoa</option>
-  <option value="AND">Andorra</option>
-  <option value="AGO">Angola</option>
-  <option value="AIA">Anguilla</option>
-  <option value="ATA">Antarctica</option>
-  <option value="ATG">Antigua and Barbuda</option>
-  <option value="ARG">Argentina</option>
-  <option value="ARM">Armenia</option>
-  <option value="ABW">Aruba</option>
-  <option value="AUS">Australia</option>
-  <option value="AUT">Austria</option>
-  <option value="AZE">Azerbaijan</option>
-  <option value="BHS">Bahamas</option>
-  <option value="BHR">Bahrain</option>
-  <option value="BLM">Saint Barthélemy</option>
-  <option value="BGD">Bangladesh</option>
-  <option value="BRB">Barbados</option>
-  <option value="BLR">Belarus</option>
-  <option value="BEL">Belgium</option>
-  <option value="BLZ">Belize</option>
-  <option value="BEN">Benin</option>
-  <option value="BMU">Bermuda</option>
-  <option value="BTN">Bhutan</option>
-  <option value="BOL">Bolivia</option>
-  <option value="BIH">Bosnia and Herzegovina</option>
-  <option value="BWA">Botswana</option>
-  <option value="BVT">Bouvet Island</option>
-  <option value="BRA">Brazil</option>
-  <option value="IOT">British Indian Ocean Territory</option>
-  <option value="BRN">Brunei</option>
-  <option value="BGR">Bulgaria</option>
-  <option value="BFA">Burkina Faso</option>
-  <option value="BDI">Burundi</option>
-  <option value="KHM">Cambodia</option>
-  <option value="CMR">Cameroon</option>
-  <option value="CAN">Canada</option>
-  <option value="CPV">Cape Verde</option>
-  <option value="CYM">Cayman Islands</option>
-  <option value="CAF">Central African Republic</option>
-  <option value="TCD">Chad</option>
-  <option value="CHL">Chile</option>
-  <option value="CHN">China</option>
-  <option value="CXR">Christmas Island</option>
-  <option value="CCK">Cocos (Keeling) Islands</option>
-  <option value="COL">Colombia</option>
-  <option value="COM">Comoros</option>
-  <option value="COG">Congo</option>
-  <option value="COD">Congo (DRC)</option>
-  <option value="COK">Cook Islands</option>
-  <option value="CRI">Costa Rica</option>
-  <option value="CIV">Côte d’Ivoire</option>
-  <option value="HRV">Croatia</option>
-  <option value="CUB">Cuba</option>
-  <option value="CYP">Cyprus</option>
-  <option value="CZE">Czech Republic</option>
-  <option value="DNK">Denmark</option>
-  <option value="DJI">Djibouti</option>
-  <option value="DMA">Dominica</option>
-  <option value="DOM">Dominican Republic</option>
-  <option value="ECU">Ecuador</option>
-  <option value="EGY">Egypt</option>
-  <option value="SLV">El Salvador</option>
-  <option value="GNQ">Equatorial Guinea</option>
-  <option value="ERI">Eritrea</option>
-  <option value="EST">Estonia</option>
-  <option value="ETH">Ethiopia</option>
-  <option value="FLK">Falkland Islands (Islas Malvinas)</option>
-  <option value="FRO">Faroe Islands</option>
-  <option value="FJI">Fiji</option>
-  <option value="FIN">Finland</option>
-  <option value="FRA">France</option>
-  <option value="GUF">French Guiana</option>
-  <option value="PYF">French Polynesia</option>
-  <option value="ATF">French Southern and Antarctic Lands</option>
-  <option value="GAB">Gabon</option>
-  <option value="GMB">Gambia</option>
-  <option value="GEO">Georgia</option>
-  <option value="DEU">Germany</option>
-  <option value="GHA">Ghana</option>
-  <option value="GIB">Gibraltar</option>
-  <option value="GRC">Greece</option>
-  <option value="GRL">Greenland</option>
-  <option value="GRD">Grenada</option>
-  <option value="GLP">Guadeloupe</option>
-  <option value="GUM">Guam</option>
-  <option value="GTM">Guatemala</option>
-  <option value="GGY">Guernsey</option>
-  <option value="GIN">Guinea</option>
-  <option value="GNB">Guinea-Bissau</option>
-  <option value="GUY">Guyana</option>
-  <option value="HTI">Haiti</option>
-  <option value="HMD">Heard Island and McDonald Islands</option>
-  <option value="HND">Honduras</option>
-  <option value="HKG">Hong Kong SAR</option>
-  <option value="HUN">Hungary</option>
-  <option value="ISL">Iceland</option>
-  <option value="IND">India</option>
-  <option value="IDN">Indonesia</option>
-  <option value="IRN">Iran</option>
-  <option value="IRQ">Iraq</option>
-  <option value="IRL">Ireland</option>
-  <option value="IMN">Isle of Man</option>
-  <option value="ISR">Israel</option>
-  <option value="ITA">Italy</option>
-  <option value="JPN">Japan</option>
-  <option value="USA">United States</option>
-  <option value="UMI">United States Minor Outlying Islands</option>
-  <option value="URY">Uruguay</option>
-  <option value="UZB">Uzbekistan</option>
-  <option value="VUT">Vanuatu</option>
-  <option value="VAT">Vatican City</option>
-  <option value="VEN">Venezuela</option>
-  <option value="VNM">Vietnam</option>
-  <option value="VGB">British Virgin Islands</option>
-  <option value="VIR">U.S. Virgin Islands</option>
-  <option value="WLF">Wallis and Futuna</option>
-  <option value="ESH">Western Sahara</option>
-  <option value="YEM">Yemen</option>
-  <option value="ZMB">Zambia</option>
-  <option value="ZWE">Zimbabwe</option>
+  <option value="AFG">AFG - Afghanistan</option>
+  <option value="ALA">ALA - Åland Islands</option>
+  <option value="ALB">ALB - Albania</option>
+  <option value="DZA">DZA - Algeria</option>
+  <option value="ASM">ASM - American Samoa</option>
+  <option value="AND">AND - Andorra</option>
+  <option value="AGO">AGO - Angola</option>
+  <option value="AIA">AIA - Anguilla</option>
+  <option value="ATA">ATA - Antarctica</option>
+  <option value="ATG">ATG - Antigua and Barbuda</option>
+  <option value="ARG">ARG - Argentina</option>
+  <option value="ARM">ARM - Armenia</option>
+  <option value="ABW">ABW - Aruba</option>
+  <option value="AUS">AUS - Australia</option>
+  <option value="AUT">AUT - Austria</option>
+  <option value="AZE">AZE - Azerbaijan</option>
+  <option value="BHS">BHS - Bahamas</option>
+  <option value="BHR">BHR - Bahrain</option>
+  <option value="BLM">BLM - Saint Barthélemy</option>
+  <option value="BGD">BGD - Bangladesh</option>
+  <option value="BRB">BRB - Barbados</option>
+  <option value="BLR">BLR - Belarus</option>
+  <option value="BEL">BEL - Belgium</option>
+  <option value="BLZ">BLZ - Belize</option>
+  <option value="BEN">BEN - Benin</option>
+  <option value="BMU">BMU - Bermuda</option>
+  <option value="BTN">BTN - Bhutan</option>
+  <option value="BOL">BOL - Bolivia</option>
+  <option value="BIH">BIH - Bosnia and Herzegovina</option>
+  <option value="BWA">BWA - Botswana</option>
+  <option value="BVT">BVT - Bouvet Island</option>
+  <option value="BRA">BRA - Brazil</option>
+  <option value="IOT">IOT - British Indian Ocean Territory</option>
+  <option value="BRN">BRN - Brunei</option>
+  <option value="BGR">BGR - Bulgaria</option>
+  <option value="BFA">BFA - Burkina Faso</option>
+  <option value="BDI">BDI - Burundi</option>
+  <option value="KHM">KHM - Cambodia</option>
+  <option value="CMR">CMR - Cameroon</option>
+  <option value="CAN">CAN - Canada</option>
+  <option value="CPV">CPV - Cape Verde</option>
+  <option value="CYM">CYM - Cayman Islands</option>
+  <option value="CAF">CAF - Central African Republic</option>
+  <option value="TCD">TCD - Chad</option>
+  <option value="CHL">CHL - Chile</option>
+  <option value="CHN">CHN - China</option>
+  <option value="CXR">CXR - Christmas Island</option>
+  <option value="CCK">CCK - Cocos (Keeling) Islands</option>
+  <option value="COL">COL - Colombia</option>
+  <option value="COM">COM - Comoros</option>
+  <option value="COG">COG - Congo</option>
+  <option value="COD">COD - Congo (DRC)</option>
+  <option value="COK">COK - Cook Islands</option>
+  <option value="CRI">CRI - Costa Rica</option>
+  <option value="CIV">CIV - Côte d’Ivoire</option>
+  <option value="HRV">HRV - Croatia</option>
+  <option value="CUB">CUB - Cuba</option>
+  <option value="CYP">CYP - Cyprus</option>
+  <option value="CZE">CZE - Czech Republic</option>
+  <option value="DNK">DNK - Denmark</option>
+  <option value="DJI">DJI - Djibouti</option>
+  <option value="DMA">DMA - Dominica</option>
+  <option value="DOM">DOM - Dominican Republic</option>
+  <option value="ECU">ECU - Ecuador</option>
+  <option value="EGY">EGY - Egypt</option>
+  <option value="SLV">SLV - El Salvador</option>
+  <option value="GNQ">GNQ - Equatorial Guinea</option>
+  <option value="ERI">ERI - Eritrea</option>
+  <option value="EST">EST - Estonia</option>
+  <option value="ETH">ETH - Ethiopia</option>
+  <option value="FLK">FLK - Falkland Islands (Islas Malvinas)</option>
+  <option value="FRO">FRO - Faroe Islands</option>
+  <option value="FJI">FJI - Fiji</option>
+  <option value="FIN">FIN - Finland</option>
+  <option value="FRA">FRA - France</option>
+  <option value="GUF">GUF - French Guiana</option>
+  <option value="PYF">PYF - French Polynesia</option>
+  <option value="ATF">ATF - French Southern and Antarctic Lands</option>
+  <option value="GAB">GAB - Gabon</option>
+  <option value="GMB">GMB - Gambia</option>
+  <option value="GEO">GEO - Georgia</option>
+  <option value="DEU">DEU - Germany</option>
+  <option value="GHA">GHA - Ghana</option>
+  <option value="GIB">GIB - Gibraltar</option>
+  <option value="GRC">GRC - Greece</option>
+  <option value="GRL">GRL - Greenland</option>
+  <option value="GRD">GRD - Grenada</option>
+  <option value="GLP">GLP - Guadeloupe</option>
+  <option value="GUM">GUM - Guam</option>
+  <option value="GTM">GTM - Guatemala</option>
+  <option value="GGY">GGY - Guernsey</option>
+  <option value="GIN">GIN - Guinea</option>
+  <option value="GNB">GNB - Guinea-Bissau</option>
+  <option value="GUY">GUY - Guyana</option>
+  <option value="HTI">HTI - Haiti</option>
+  <option value="HMD">HMD - Heard Island and McDonald Islands</option>
+  <option value="HND">HND - Honduras</option>
+  <option value="HKG">HKG - Hong Kong SAR</option>
+  <option value="HUN">HUN - Hungary</option>
+  <option value="ISL">ISL - Iceland</option>
+  <option value="IND">IND - India</option>
+  <option value="IDN">IDN - Indonesia</option>
+  <option value="IRN">IRN - Iran</option>
+  <option value="IRQ">IRQ - Iraq</option>
+  <option value="IRL">IRL - Ireland</option>
+  <option value="IMN">IMN - Isle of Man</option>
+  <option value="ISR">ISR - Israel</option>
+  <option value="ITA">ITA - Italy</option>
+  <option value="JAM">JAM - Jamaica</option>
+  <option value="JPN">JPN - Japan</option>
+  <option value="JEY">JEY - Jersey</option>
+  <option value="JOR">JOR - Jordan</option>
+  <option value="KAZ">KAZ - Kazakhstan</option>
+  <option value="KEN">KEN - Kenya</option>
+  <option value="KIR">KIR - Kiribati</option>
+  <option value="KOR">KOR - Korea</option>
+  <option value="KWT">KWT - Kuwait</option>
+  <option value="KGZ">KGZ - Kyrgyzstan</option>
+  <option value="LAO">LAO - Laos</option>
+  <option value="LVA">LVA - Latvia</option>
+  <option value="LBN">LBN - Lebanon</option>
+  <option value="LSO">LSO - Lesotho</option>
+  <option value="LBR">LBR - Liberia</option>
+  <option value="LBY">LBY - Libya</option>
+  <option value="LIE">LIE - Liechtenstein</option>
+  <option value="LTU">LTU - Lithuania</option>
+  <option value="LUX">LUX - Luxembourg</option>
+  <option value="MAC">MAC - Macao SAR</option>
+  <option value="MAF">MAF - Saint Martin</option>
+  <option value="MKD">MKD - Macedonia (Former Yugoslav Republic of)</option>
+  <option value="MDG">MDG - Madagascar</option>
+  <option value="MWI">MWI - Malawi</option>
+    <option value="MYS">MYS - Malaysia</option>
+  <option value="MDV">MDV - Maldives</option>
+  <option value="MLI">MLI - Mali</option>
+  <option value="MLT">MLT - Malta</option>
+  <option value="MHL">MHL - Marshall Islands</option>
+  <option value="MTQ">MTQ - Martinique</option>
+  <option value="MRT">MRT - Mauritania</option>
+  <option value="MUS">MUS - Mauritius</option>
+  <option value="MYT">MYT - Mayotte</option>
+  <option value="MEX">MEX - Mexico</option>
+  <option value="FSM">FSM - Micronesia</option>
+  <option value="MDA">MDA - Moldova</option>
+  <option value="MCO">MCO - Monaco</option>
+  <option value="MNG">MNG - Mongolia</option>
+  <option value="MNE">MNE - Montenegro</option>
+  <option value="MSR">MSR - Montserrat</option>
+  <option value="MAR">MAR - Morocco</option>
+  <option value="MOZ">MOZ - Mozambique</option>
+  <option value="MMR">MMR - Myanmar</option>
+  <option value="NAM">NAM - Namibia</option>
+  <option value="NRU">NRU - Nauru</option>
+  <option value="NPL">NPL - Nepal</option>
+  <option value="NLD">NLD - Netherlands</option>
+  <option value="ANT">ANT - Netherlands Antilles</option>
+  <option value="NCL">NCL - New Caledonia</option>
+  <option value="NZL">NZL - New Zealand</option>
+  <option value="NIC">NIC - Nicaragua</option>
+  <option value="NER">NER - Niger</option>
+  <option value="NGA">NGA - Nigeria</option>
+  <option value="NIU">NIU - Niue</option>
+  <option value="NFK">NFK - Norfolk Island</option>
+  <option value="PRK">PRK - North Korea</option>
+  <option value="MNP">MNP - Northern Mariana Islands</option>
+  <option value="NOR">NOR - Norway</option>
+  <option value="OMN">OMN - Oman</option>
+  <option value="PAK">PAK - Pakistan</option>
+  <option value="PLW">PLW - Palau</option>
+  <option value="PSE">PSE - Palestinian Authority</option>
+  <option value="PAN">PAN - Panama</option>
+  <option value="PNG">PNG - Papua New Guinea</option>
+  <option value="PRY">PRY - Paraguay</option>
+  <option value="PER">PER - Peru</option>
+  <option value="PHL">PHL - Philippines</option>
+  <option value="PCN">PCN - Pitcairn Islands</option>
+  <option value="POL">POL - Poland</option>
+  <option value="PRT">PRT - Portugal</option>
+  <option value="PRI">PRI - Puerto Rico</option>
+  <option value="QAT">QAT - Qatar</option>
+  <option value="REU">REU - Reunion</option>
+  <option value="ROU">ROU - Romania</option>
+  <option value="RUS">RUS - Russia</option>
+  <option value="RWA">RWA - Rwanda</option>
+  <option value="SHN">SHN - Saint Helena Ascension and Tristan da Cunha</option>
+  <option value="KNA">KNA - Saint Kitts and Nevis</option>
+  <option value="LCA">LCA - Saint Lucia</option>
+  <option value="SPM">SPM - Saint Pierre and Miquelon</option>
+  <option value="VCT">VCT - Saint Vincent and the Grenadines</option>
+  <option value="WSM">WSM - Samoa</option>
+  <option value="SMR">SMR - San Marino</option>
+  <option value="STP">STP - São Tomé and Príncipe</option>
+  <option value="SAU">SAU - Saudi Arabia</option>
+  <option value="SEN">SEN - Senegal</option>
+  <option value="SRB">SRB - Serbia</option>
+  <option value="SYC">SYC - Seychelles</option>
+  <option value="SLE">SLE - Sierra Leone</option>
+  <option value="SGP">SGP - Singapore</option>
+  <option value="SVK">SVK - Slovakia</option>
+  <option value="SVN">SVN - Slovenia</option>
+  <option value="SLB">SLB - Solomon Islands</option>
+  <option value="SOM">SOM - Somalia</option>
+  <option value="ZAF">ZAF - South Africa</option>
+  <option value="SGS">SGS - South Georgia and the South Sandwich Islands</option>
+  <option value="ESP">ESP - Spain</option>
+  <option value="LKA">LKA - Sri Lanka</option>
+  <option value="SDN">SDN - Sudan</option>
+  <option value="SUR">SUR - Suriname</option>
+  <option value="SJM">SJM - Svalbard and Jan Mayen Island</option>
+  <option value="SWZ">SWZ - Swaziland</option>
+  <option value="SWE">SWE - Sweden</option>
+  <option value="CHE">CHE - Switzerland</option>
+  <option value="SYR">SYR - Syria</option>
+  <option value="TWN">TWN - Taiwan</option>
+  <option value="TJK">TJK - Tajikistan</option>
+  <option value="TZA">TZA - Tanzania</option>
+  <option value="THA">THA - Thailand</option>
+  <option value="TLS">TLS - Timor-Leste</option>
+  <option value="TGO">TGO - Togo</option>
+  <option value="TKL">TKL - Tokelau</option>
+  <option value="TON">TON - Tonga</option>
+  <option value="TTO">TTO - Trinidad and Tobago</option>
+  <option value="TUN">TUN - Tunisia</option>
+  <option value="TUR">TUR - Turkey</option>
+  <option value="TKM">TKM - Turkmenistan</option>
+  <option value="TCA">TCA - Turks and Caicos Islands</option>
+  <option value="TUV">TUV - Tuvalu</option>
+  <option value="UMI">UMI - U.S. Minor Outlying Islands</option>
+  <option value="UGA">UGA - Uganda</option>
+  <option value="UKR">UKR - Ukraine</option>
+  <option value="ARE">ARE - United Arab Emirates</option>
+  <option value="GBR">GBR - United Kingdom</option>
+  <option value="USA">USA - United States</option>
+  <option value="URY">URY - Uruguay</option>
+  <option value="UZB">UZB - Uzbekistan</option>
+  <option value="VUT">VUT - Vanuatu</option>
+  <option value="VAT">VAT - Vatican City</option>
+  <option value="VEN">VEN - Venezuela</option>
+  <option value="VNM">VNM - Vietnam</option>
+  <option value="VGB">VGB - British Virgin Islands</option>
+  <option value="VIR">VIR - Virgin Islands</option>
+  <option value="WLF">WLF - Wallis and Futuna</option>
+  <option value="YEM">YEM - Yemen</option>
+  <option value="ZMB">ZMB - Zambia</option>
+  <option value="ZWE">ZWE - Zimbabwe</option>
+  <option value="BES">BES - Bonaire</option>
+  <option value="CUW">CUW - Curaçao</option>
+  <option value="XJA">XJA - Jan Mayen</option>
+  <option value="XKS">XKS - Kosovo</option>
+  <option value="XSE">XSE - Sint Eustatius</option>
+  <option value="SXM">SXM - Sint Maarten</option>
+  <option value="SSD">SSD - South Sudan</option>
 </select>
 
-   <!-- city -->
+       <!-- State and County -->
+  <div id="state_and_county" style="display: none;">
+
+      <label for="state">State:<span style="color: red;">*</span></label>
+<select name="state" id="state">
+  <option value="">--Select--</option>
+  <option value="ABB">ABB - ABRUZZO</option>
+  <option value="BAS">BAS - BASILICATA</option>
+  <option value="CAL">CAL - CALABRIA</option>
+  <option value="CAM">CAM - CAMPANIA</option>
+  <option value="EMI">EMI - EMILIA-ROMAGNA</option>
+  <option value="FRI">FRI - FRIULI VENEZIA GIULIA</option>
+  <option value="LAZ">LAZ - LAZIO</option>
+  <option value="LIG">LIG - LIGURIA</option>
+  <option value="LOM">LOM - LOMBARDIA</option>
+  <option value="MAR">MAR - MARCHE</option>
+  <option value="MOL">MOL - MOLISE</option>
+  <option value="PIE">PIE - PIEMONTE</option>
+  <option value="PUG">PUG - PUGLIA</option>
+  <option value="SAR">SAR - SARDEGNA</option>
+  <option value="SIC">SIC - SICILIA</option>
+  <option value="TOS">TOS - TOSCANA</option>
+  <option value="TRE">TRE - TRENTINO ALTO ADIGE</option>
+  <option value="UMB">UMB - UMBRIA</option>
+  <option value="VAL">VAL - VALLE D'AOSTA</option>
+  <option value="VEN">VEN - VENETO</option>
+</select>
+
+    <!-- city -->
 <label for="city">City:<span style="color: red;">*</span></label>
 <select id="city" name="city" required>
   <option value="">--Select a city--</option>
@@ -810,7 +967,7 @@
     <span class="tooltiptext">Copy of fiscal code</span>
   </span>
  </label>
-    <input type="file" name="attachment_fiscal_code" id="attachment_fiscal_code" />
+    <input type="file" name="attachment_fiscal_code" id="attachment_fiscal_code"  accept="application/pdf, image/*"  />
 
 <!-- attachment identity card -->
  <label>
@@ -822,7 +979,7 @@
     <span class="tooltiptext">Copy of carta d’identità</span>
   </span>
  </label>
-  <input type="file" id="attachment_identity_card" name="attachment_identity_card" />
+  <input type="file" id="attachment_identity_card" name="attachment_identity_card"  accept="application/pdf, image/*" />
 </div>
 
       <!-- treatment type vat -->
@@ -856,7 +1013,7 @@
     </span>
   </label>
 
-  <input type="file" id="attachment_chambre" name="attachment_chambre" />
+  <input type="file" id="attachment_chambre" name="attachment_chambre"  accept="application/pdf, image/*" />
  </div>
 
  </div>
@@ -928,7 +1085,7 @@
   </span>
 </label>
 
-<input type="file" name="payment_terms_attachments" />
+<input type="file" name="payment_terms_attachments"  accept="application/pdf, image/*" />
 
    </fieldset>
 
@@ -1211,7 +1368,7 @@
     </span>
   </label>
 
-  <input type="file" id="bank_details_attachment" name="bank_details_attachment" />
+  <input type="file" id="bank_details_attachment" name="bank_details_attachment"  accept="application/pdf, image/*"  />
 </div>
 
  </fieldset>
@@ -1284,75 +1441,118 @@
     const attachmentChambreStar = document.getElementById('attachment_chambre_required_star');
     const companySection = document.getElementById("company_section");
 
+  function validateAccountNumber() {
+  const accountInput = document.getElementById("account_number");
+  const accountValue = accountInput.value.trim();
+  const accountError = document.getElementById("account_number_error");
+  // Don't validate empty optional fields
+  if (!accountValue) {
+    accountInput.style.borderColor = "";
+    accountInput.setCustomValidity("");
+    if (accountError) accountError.style.display = "none";
+    return true;
+  }
 
-    function validateAccountNumber() {
-     const accountInput = document.getElementById("account_number");
-     const accountValue = accountInput.value.trim();
-     const accountError = document.getElementById("account_number_error");
+  const isValid = /^\d{12}$/.test(accountValue);
 
-     const isValid = /^\d{12}$/.test(accountValue);
+  if (!isValid) {
+    accountInput.style.borderColor = "red";
+    accountInput.setCustomValidity("Invalid account number. Must be exactly 12 digits.");
+    if (accountError) accountError.style.display = "inline";
+    return false;
+  } else {
+    accountInput.style.borderColor = "";
+    accountInput.setCustomValidity("");
+    if (accountError) accountError.style.display = "none";
+    return true;
+  }
+}
 
-     if (!isValid) {
-        accountInput.style.borderColor = "red";
-        accountInput.setCustomValidity("Invalid account number. Must be exactly 12 digits.");
-        if (accountError) accountError.style.display = "inline";
-     } else {
-        accountInput.style.borderColor = "";
-        accountInput.setCustomValidity("");
-        if (accountError) accountError.style.display = "none";
-     }
-   }
-    function validateVATNumber() {
-      const vatInput = document.getElementById("supplier_vat_number");
-      const vatValue = vatInput.value.trim();
-      const vatError = document.getElementById("vat_error");
-
+function validateVATNumber() {
+  const vatInput = document.getElementById("supplier_vat_number");
+  const vatValue = vatInput.value.trim();
+  const vatError = document.getElementById("vat_error");
+  // Don't validate empty optional fields
+  if (!vatValue) {
+    vatInput.style.borderColor = "";
+    vatInput.setCustomValidity("");
+    if (vatError) vatError.style.display = "none";
+    return true;
+  }
   const isValid = /^\d{11}$/.test(vatValue);
 
   if (!isValid) {
     vatInput.style.borderColor = "red";
     vatInput.setCustomValidity("Invalid VAT number. Must be exactly 11 digits.");
     if (vatError) vatError.style.display = "inline";
+    return false;
   } else {
     vatInput.style.borderColor = "";
     vatInput.setCustomValidity("");
     if (vatError) vatError.style.display = "none";
+    return true;
   }
 }
-    function validateIBAN() {
-    const ibanInput = document.getElementById("iban_code");
-    const errorMsg = document.getElementById("iban_error");
-    const ibanValue = ibanInput.value.trim();
 
-    // Remove any whitespace for validation check
-    const noSpaces = ibanValue.replace(/\s/g, '');
-
-    if (noSpaces.length !== 27 || /\s/.test(ibanValue)) {
-      errorMsg.style.display = "block";
-      ibanInput.style.borderColor = "red";
-    } else {
-      errorMsg.style.display = "none";
-      ibanInput.style.borderColor = "";
-    }
+function validateIBAN() {
+  const ibanInput = ibanCodeInput;
+  const errorMsg = document.getElementById("iban_error");
+  const ibanValue = ibanInput.value.trim();
+  // Don't validate empty optional fields
+  if (!ibanValue) {
+    ibanInput.style.borderColor = "";
+    ibanInput.setCustomValidity("");
+    errorMsg.style.display = "none";
+    return true;
   }
-    function validateEmail(event) {
+
+  const isValid = /^[A-Za-z0-9]{27}$/.test(ibanValue);
+
+  if (!isValid) {
+    errorMsg.style.display = "block";
+    ibanInput.style.borderColor = "red";
+    ibanInput.setCustomValidity("Invalid IBAN number. Must be exactly 27 digits.");
+    return false;
+  } else {
+    errorMsg.style.display = "none";
+    ibanInput.setCustomValidity("");
+    ibanInput.style.borderColor = "";
+    return true;
+  }
+}
+
+function validateEmail(event) {
   const emailInput = event.target;
   const email = emailInput.value.trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const errorSpan = document.getElementById(`${emailInput.id}_error`);
+  // Don't validate empty optional fields
+  if (!email) {
+    emailInput.style.borderColor = "";
+    emailInput.setCustomValidity("");
+    if (errorSpan) errorSpan.style.display = 'none';
+    return true;
+  }
+  const isValid = email === '' || emailRegex.test(email); // Allow empty or valid
 
-  if (email !== '' && !emailRegex.test(email)) {
+  if (!isValid) {
     emailInput.style.borderColor = 'red';
     emailInput.setCustomValidity('Invalid email address.');
     if (errorSpan) errorSpan.style.display = 'inline';
+    return false;
   } else {
     emailInput.style.borderColor = '';
     emailInput.setCustomValidity('');
     if (errorSpan) errorSpan.style.display = 'none';
+    return true;
   }
 }
-    function toggleBasedOnProfessional() {
+function shouldValidate(el) {
+  return el && el.required;
+}
+
+   function toggleBasedOnProfessional() {
   const supplier = supplierType.value;
   const vendorCreated = vendorCreatedByDentsu.value;
   const professional = professionalInput.value;
@@ -1698,7 +1898,7 @@
 }
 
 
-     supplierType.addEventListener('change', toggleSupplierFields);
+    supplierType.addEventListener('change', toggleSupplierFields);
     mediagroupSelector.addEventListener('change', toggleBasedOnMediaGroup);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnVendorCreatedByDentsu);
     vendorCreatedByDentsu.addEventListener('change', toogleBasedOnAttachmentChambre);
@@ -1719,7 +1919,6 @@
 
 
 
-
     // Initial load
     toggleSupplierFields();
     toggleBasedOnProfessional();
@@ -1732,7 +1931,6 @@
 
 document.querySelector('form').addEventListener('submit', function (e) {
   const selectedCompanies = document.querySelectorAll('input[name="company"]:checked');
-  let hasError = false;
   if (selectedCompanies.length === 0) {
     alert("Please select at least one Company.");
     e.preventDefault();
@@ -1744,86 +1942,16 @@ document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
     return false;
   }
-   // Helper: validate if visible and required
-  function shouldValidate(input) {
-    return input && input.offsetParent !== null && input.hasAttribute('required');
-  }
+  const isAccountValid = validateAccountNumber();
+  const isVATValid = validateVATNumber();
+  const isIBANValid = validateIBAN();
+  const isEmail1Valid = validateEmailById("dentsu_contact_email");
+  const isEmail2Valid = validateEmailById("vendor_email");
 
-  // IBAN validation
-    const ibanInput = document.getElementById("iban_code");
-    const errorMsg = document.getElementById("iban_error");
-    const ibanValue = ibanInput.value.trim();
-
-    // Remove any whitespace for validation check
-    const noSpaces = ibanValue.replace(/\s/g, '');
-
-    if (noSpaces.length !== 27 || /\s/.test(ibanValue)) {
-      errorMsg.style.display = "block";
-      ibanInput.style.borderColor = "red";
-      hasError = true;
-    } else {
-      errorMsg.style.display = "none";
-      ibanInput.style.borderColor = "";
-    }
-
-  // Email validation (vendor)
-  const emailInput = event.target;
-  const email = emailInput.value.trim();
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const errorSpan = document.getElementById(`${emailInput.id}_error`);
-
-  if (email !== '' && !emailRegex.test(email)) {
-    emailInput.style.borderColor = 'red';
-    emailInput.setCustomValidity('Invalid email address.');
-    hasError = true;
-    if (errorSpan) errorSpan.style.display = 'inline';
-  } else {
-    emailInput.style.borderColor = '';
-    emailInput.setCustomValidity('');
-    if (errorSpan) errorSpan.style.display = 'none';
-  }
-
-  // Account number validation
-  const accountInput = document.getElementById("account_number");
-  const accountValue = accountInput.value.trim();
-  const accountError = document.getElementById("account_number_error");
-
-  const isValid = /^\d{12}$/.test(accountValue);
-
-  if (!isValid) {
-    accountInput.style.borderColor = "red";
-    accountInput.setCustomValidity("Invalid account number. Must be exactly 12 digits.");
-    hasError = true;
-    if (accountError) accountError.style.display = "inline";
-  } else {
-    accountInput.style.borderColor = "";
-    accountInput.setCustomValidity("");
-    if (accountError) accountError.style.display = "none";
-  }
-
-  // VAT number validation
-  const vatInput = document.getElementById("supplier_vat_number");
-  const vatValue = vatInput.value.trim();
-  const vatError = document.getElementById("vat_error");
-
-  const isValid = /^\d{11}$/.test(vatValue);
-
-  if (!isValid) {
-    vatInput.style.borderColor = "red";
-    vatInput.setCustomValidity("Invalid VAT number. Must be exactly 11 digits.");
-    if (vatError) vatError.style.display = "inline";
-    hasError = true;
-  } else {
-    vatInput.style.borderColor = "";
-    vatInput.setCustomValidity("");
-    if (vatError) vatError.style.display = "none";
-  }
-
-  // Final check
-  if (hasError) {
+  // If any is false, prevent submission
+  if (!isAccountValid || !isVATValid || !isIBANValid || !isEmail1Valid || !isEmail2Valid) {
     e.preventDefault();
-    alert("Please correct the highlighted errors before submitting.");
+    alert("Please correct the errors in the form before submitting.");
   }
 });
 
