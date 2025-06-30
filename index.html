@@ -84,7 +84,7 @@
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
   <!-- Request made by -->
  <label for="request_by" style="display: flex; align-items: center; gap: 8px;">
-  Request made By:<span style="color: red;">*</span>
+  Request made by:<span style="color: red;">*</span>
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">First and last name of the person who fills in the form</span>
@@ -2127,7 +2127,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
     return false;
   }
   const selectedMediaVehicles = document.querySelectorAll('input[name="media_vehicle"]:checked');
-  if (selectedMediaVehicles.length === 0 && mediagroupSelector.value === 'MEDIA') {
+  if (selectedMediaVehicles.length === 0) {
     alert("Please select at least one Media Vehicle.");
     e.preventDefault();
     return false;
