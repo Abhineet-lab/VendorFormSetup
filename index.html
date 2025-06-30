@@ -78,7 +78,7 @@
   <h2 style="margin: 0; color: white; font-size: 45px;">NEW VENDOR FORM</h2>
 </header>
 {% with messages = get_flashed_messages(with_categories=true) %}  {% if messages %}    {% for category, message in messages %}      <div id="flash-message" class="flash {{ category }}" style="        padding: 10px;        margin: 10px 0;        background-color: {% if category == 'success' %}#d4edda{% else %}#f8d7da{% endif %};        color: {% if category == 'success' %}#155724{% else %}#721c24{% endif %};        border: 1px solid {% if category == 'success' %}#c3e6cb{% else %}#f5c6cb{% endif %};        border-radius: 4px;      ">        {{ message }}      </div>    {% endfor %}  {% endif %}{% endwith %}
-<form action="/itvendor/submit" method="POST" enctype="multipart/form-data">
+<form action="/submit" method="POST" enctype="multipart/form-data">
 
   <fieldset style="border: 2px solid #ccc; padding: 15px 30px 15px 15px; margin-bottom: 20px;">
   <legend style="font-weight: bold; font-size: 18px;">1. Requester Information</legend>
@@ -177,7 +177,7 @@
 </div>
 
     <!-- Influencer -->
-    <label>Influencer (D365) promoter:<span style="color: red;">*</span>
+    <label>Influencer (D365) promoter:</label>
   <select name="influencer_d365" id = "influencer_d365">
     <option value="">--Select--</option>
     <option value="Nessuno / None">Nessuno / None</option>
@@ -187,7 +187,7 @@
     <!-- vendor website -->
     <div id="vendor_website_section" style="display: none;">
   <label for="vendor_website">Vendor Website:<span id="website_required_star" style="color: red; display: none;">*</span></label>
-  <input type="url" id="vendor_website" name="vendor_website">
+  <input type="url" id="vendor_website" name="vendor_website" />
 </div>
 
     <!-- inactive bpc entity -->
@@ -367,7 +367,7 @@
       <!-- supplier company name -->
     <label for="supplier_company_name">Supplier Company Name:<span style="color: red;">*</span></label>
   <input type="text" id="supplier_company_name" name="supplier_company_name" />
-      
+
     </div>
 
    <!-- address -->
@@ -518,7 +518,7 @@
   <option value="MKD">MKD - Macedonia (Former Yugoslav Republic of)</option>
   <option value="MDG">MDG - Madagascar</option>
   <option value="MWI">MWI - Malawi</option>
-    <option value="MYS">MYS - Malaysia</option>
+  <option value="MYS">MYS - Malaysia</option>
   <option value="MDV">MDV - Maldives</option>
   <option value="MLI">MLI - Mali</option>
   <option value="MLT">MLT - Malta</option>
@@ -643,7 +643,7 @@
        <!-- State and County -->
   <div id="state_and_county" style="display: none;">
 
-      <label for="state">State<span style="color: red;">*</span></label>
+      <label for="state">State/Region<span style="color: red;">*</span></label>
 <select name="state" id="state">
   <option value="">--Select--</option>
   <option value="ABB">ABB - ABRUZZO</option>
@@ -668,7 +668,14 @@
   <option value="VEN">VEN - VENETO</option>
 </select>
 
-    <label for="county">County<span style="color: red;">*</span></label>
+    <label for="county">County<span style="color: red;">*</span>
+    <!-- Tooltip -->
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">Provincia</span>
+  </span>
+</label>
+    </label>
 <select name="county" id="county">
   <option value="">--Select--</option>
   <option value="AG">AG - Agrigento</option>
@@ -783,153 +790,7 @@
 
     <!-- city -->
 <label for="city">City:<span style="color: red;">*</span></label>
-<select id="city" name="city" required>
-  <option value="">--Select a city--</option>
-  <option value="Pescara">Pescara</option>
-  <option value="L’Aquila">L’Aquila</option>
-  <option value="Teramo">Teramo</option>
-  <option value="Montesilvano">Montesilvano</option>
-  <option value="Chieti">Chieti</option>
-  <option value="San Severo">San Severo</option>
-  <option value="Potenza">Potenza</option>
-  <option value="Matera">Matera</option>
-  <option value="Reggio Calabria">Reggio Calabria</option>
-  <option value="Catanzaro">Catanzaro</option>
-  <option value="Corigliano-Rossano">Corigliano-Rossano</option>
-  <option value="Lamezia Terme">Lamezia Terme</option>
-  <option value="Cosenza">Cosenza</option>
-  <option value="Crotone">Crotone</option>
-  <option value="Ancona">Ancona</option>
-  <option value="Pesaro">Pesaro</option>
-  <option value="Fano">Fano</option>
-  <option value="Napoli">Napoli</option>
-  <option value="Salerno">Salerno</option>
-  <option value="Giugliano in Campania">Giugliano in Campania</option>
-  <option value="Torre del Greco">Torre del Greco</option>
-  <option value="Pozzuoli">Pozzuoli</option>
-  <option value="Casoria">Casoria</option>
-  <option value="Caserta">Caserta</option>
-  <option value="Castellammare di Stabia">Castellammare di Stabia</option>
-  <option value="Afragola">Afragola</option>
-  <option value="Acerra">Acerra</option>
-  <option value="Marano di Napoli">Marano di Napoli</option>
-  <option value="Benevento">Benevento</option>
-  <option value="Portici">Portici</option>
-  <option value="Avellino">Avellino</option>
-  <option value="Cava de' Tirreni">Cava de' Tirreni</option>
-  <option value="Aversa">Aversa</option>
-  <option value="Ercolano">Ercolano</option>
-  <option value="Battipaglia">Battipaglia</option>
-  <option value="Scafati">Scafati</option>
-  <option value="Bologna">Bologna</option>
-  <option value="Parma">Parma</option>
-  <option value="Modena">Modena</option>
-  <option value="Reggio Emilia">Reggio Emilia</option>
-  <option value="Ravenna">Ravenna</option>
-  <option value="Rimini">Rimini</option>
-  <option value="Ferrara">Ferrara</option>
-  <option value="Forlì">Forlì</option>
-  <option value="Piacenza">Piacenza</option>
-  <option value="Cesena">Cesena</option>
-  <option value="Carpi">Carpi</option>
-  <option value="Imola">Imola</option>
-  <option value="Faenza">Faenza</option>
-  <option value="Trieste">Trieste</option>
-  <option value="Udine">Udine</option>
-  <option value="Pordenone">Pordenone</option>
-  <option value="Roma">Roma</option>
-  <option value="Latina">Latina</option>
-  <option value="Guidonia Montecelio">Guidonia Montecelio</option>
-  <option value="Fiumicino">Fiumicino</option>
-  <option value="Aprilia">Aprilia</option>
-  <option value="Viterbo">Viterbo</option>
-  <option value="Pomezia">Pomezia</option>
-  <option value="Tivoli">Tivoli</option>
-  <option value="Anzio">Anzio</option>
-  <option value="Velletri">Velletri</option>
-  <option value="Civitavecchia">Civitavecchia</option>
-  <option value="Genova">Genova</option>
-  <option value="La Spezia">La Spezia</option>
-  <option value="Savona">Savona</option>
-  <option value="Sanremo">Sanremo</option>
-  <option value="Milano">Milano</option>
-  <option value="Brescia">Brescia</option>
-  <option value="Monza">Monza</option>
-  <option value="Bergamo">Bergamo</option>
-  <option value="Busto Arsizio">Busto Arsizio</option>
-  <option value="Como">Como</option>
-  <option value="Sesto San Giovanni">Sesto San Giovanni</option>
-  <option value="Varese">Varese</option>
-  <option value="Cinisello Balsamo">Cinisello Balsamo</option>
-  <option value="Pavia">Pavia</option>
-  <option value="Cremona">Cremona</option>
-  <option value="Vigevano">Vigevano</option>
-  <option value="Legnano">Legnano</option>
-  <option value="Rho">Rho</option>
-  <option value="Gallarate">Gallarate</option>
-  <option value="Torino">Torino</option>
-  <option value="Novara">Novara</option>
-  <option value="Alessandria">Alessandria</option>
-  <option value="Moncalieri">Moncalieri</option>
-  <option value="Cuneo">Cuneo</option>
-  <option value="Bari">Bari</option>
-  <option value="Taranto">Taranto</option>
-  <option value="Foggia">Foggia</option>
-  <option value="Andria">Andria</option>
-  <option value="Lecce">Lecce</option>
-  <option value="Barletta">Barletta</option>
-  <option value="Brindisi">Brindisi</option>
-  <option value="Altamura">Altamura</option>
-  <option value="Molfetta">Molfetta</option>
-  <option value="Cerignola">Cerignola</option>
-  <option value="Manfredonia">Manfredonia</option>
-  <option value="Trani">Trani</option>
-  <option value="Bisceglie">Bisceglie</option>
-  <option value="Bitonto">Bitonto</option>
-  <option value="Cagliari">Cagliari</option>
-  <option value="Sassari">Sassari</option>
-  <option value="Quartu Sant'Elena">Quartu Sant'Elena</option>
-  <option value="Olbia">Olbia</option>
-  <option value="Palermo">Palermo</option>
-  <option value="Catania">Catania</option>
-  <option value="Messina">Messina</option>
-  <option value="Siracusa">Siracusa</option>
-  <option value="Marsala">Marsala</option>
-  <option value="Gela">Gela</option>
-  <option value="Ragusa">Ragusa</option>
-  <option value="Trapani">Trapani</option>
-  <option value="Vittoria">Vittoria</option>
-  <option value="Caltanissetta">Caltanissetta</option>
-  <option value="Agrigento">Agrigento</option>
-  <option value="Bagheria">Bagheria</option>
-  <option value="Modica">Modica</option>
-  <option value="Acireale">Acireale</option>
-  <option value="Mazara del Vallo">Mazara del Vallo</option>
-  <option value="Firenze">Firenze</option>
-  <option value="Prato">Prato</option>
-  <option value="Livorno">Livorno</option>
-  <option value="Arezzo">Arezzo</option>
-  <option value="Pisa">Pisa</option>
-  <option value="Pistoia">Pistoia</option>
-  <option value="Lucca">Lucca</option>
-  <option value="Grosseto">Grosseto</option>
-  <option value="Massa">Massa</option>
-  <option value="Carrara">Carrara</option>
-  <option value="Viareggio">Viareggio</option>
-  <option value="Scandicci">Scandicci</option>
-  <option value="Trento">Trento</option>
-  <option value="Bolzano">Bolzano</option>
-  <option value="Siena">Siena</option>
-  <option value="Perugia">Perugia</option>
-  <option value="Terni">Terni</option>
-  <option value="Foligno">Foligno</option>
-  <option value="Verona">Verona</option>
-  <option value="Venezia">Venezia</option>
-  <option value="Padova">Padova</option>
-  <option value="Vicenza">Vicenza</option>
-  <option value="Treviso">Treviso</option>
-  <option value="Rovigo">Rovigo</option>
-</select>
+<input type="text" id="city" name="city" />
 
 
     <!-- telephone number -->
@@ -1070,7 +931,8 @@
 
     <!-- End-of-Supplier-Type Specific Fields -->
 <div id="natural_person_fields_end" style="display: none;">
-  <!-- attachment fiscal code -->
+ <!-- attachment fiscal code -->
+  <div id="attachment_fiscal_code_section">
 <label>
   Attachment fiscal code:<span id="attachment_fiscal_code_star" style="color: red; display: none;">*</span>
 
@@ -1080,9 +942,15 @@
     <span class="tooltiptext">Copy of fiscal code</span>
   </span>
  </label>
+    <div class="file-group">
     <input type="file" name="attachment_fiscal_code" id="attachment_fiscal_code"  accept="application/pdf, image/*"  />
+</div></div>
+<button type="button" id="attachment_fiscal_code_button" title="Add Another File" style="display: none; margin: 0; padding: 2px 4px; background-color: #0078D4; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">+</button>
+
+
 
 <!-- attachment identity card -->
+  <div id="attachment_identity_card_section">
  <label>
   Attachment Identity card:<span id="attachment_identity_card_star" style="color: red; display: none;">*</span>
 
@@ -1092,9 +960,12 @@
     <span class="tooltiptext">Copy of carta d’identità</span>
   </span>
  </label>
+     <div class="file-group">
   <input type="file" id="attachment_identity_card" name="attachment_identity_card"  accept="application/pdf, image/*" />
 </div>
-
+    </div>
+  <button type="button" id="attachment_identity_card_button" title="Add Another File" style="display: none; margin: 0; padding: 2px 4px; background-color: #0078D4; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">+</button>
+</div>
       <!-- treatment type vat -->
 <label for="treatment_type_vat">
   Treatment type VAT / Jurisprudence:
@@ -1126,8 +997,12 @@
     </span>
   </label>
 
+   <div class="file-group">
   <input type="file" id="attachment_chambre" name="attachment_chambre"  accept="application/pdf, image/*" />
  </div>
+</div>
+   <button type="button" id="chambre_attachment_button" title="Add Another File" style="display: none; margin: 0; padding: 2px 4px; background-color: #0078D4; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">+</button>
+
 
  </div>
 </fieldset>
@@ -1168,24 +1043,40 @@
   <option value="N120">N120 - 120 Days - Net</option>
   <option value="N150">N150 - 150 Days - Net</option>
 </select>
-      <!-- payment method -->
+      <!-- payment method eft-->
+      <div id="payment_term_eft_section" style="display: none;">
 <label>
   Payment Method:<span style="color: red;">*</span>
-
-  <!-- Tooltip -->
   <span class="tooltip">
     <span class="tooltip-icon">i</span>
     <span class="tooltiptext">Bonifico bancario SEPA / SEPA bank transfer</span>
   </span>
 </label>
 
-<select name="payment_method" id ="payment_method">
-  <option value="">--Select--</option>
-  <option value="EFT">EFT</option>
+<select name="payment_method_eft" id="payment_method_eft" disabled>
+  <option value="EFT" selected>EFT</option>
 </select>
+<input type="hidden" name="payment_method_eft" id="hidden_payment_method_eft" value="EFT">
+      </div>
+<!-- payment method cash-->
+      <div id="payment_term_cash_section" style="display: none;">
+<label>
+  Payment Method:<span style="color: red;">*</span>
+  <span class="tooltip">
+    <span class="tooltip-icon">i</span>
+    <span class="tooltiptext">Bonifico bancario SEPA / SEPA bank transfer</span>
+  </span>
+</label>
+
+<select name="payment_method_cash" id="payment_method_cash" disabled>
+  <option value="CASH" selected>CASH</option>
+</select>
+<input type="hidden" name="payment_method_cash" id="hidden_payment_method_cash" value="CASH">
+      </div>
 
 
      <!-- payment term attachment -->
+      <div id="payment_terms_attachments_section" style="display: block;">
 <label>
   Payment Terms Attachments:
 
@@ -1197,8 +1088,11 @@
     </span>
   </span>
 </label>
+ <div class="file-group">
+<input type="file" name="payment_terms_attachments" id="payment_terms_attachments"  accept="application/pdf, image/*" />
+ </div></div>
+       <button type="button" id="payment_attachments_button" title="Add Another File" style="display: block; margin: 0; padding: 2px 4px; background-color: #0078D4; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">+</button>
 
-<input type="file" name="payment_terms_attachments"  accept="application/pdf, image/*" />
 
    </fieldset>
 
@@ -1481,8 +1375,11 @@
     </span>
   </label>
 
+  <div class="file-group">
   <input type="file" id="bank_details_attachment" name="bank_details_attachment"  accept="application/pdf, image/*"  />
 </div>
+</div>
+    <button type="button" id="bank_attachment_button" title="Add Another File" style="display: none; margin: 0; padding: 2px 4px; background-color: #0078D4; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">+</button>
 
  </fieldset>
 
@@ -1492,6 +1389,10 @@
 <!-- JavaScript to handle conditional visibility -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+
+    const birthDateInput = document.getElementById('birth_date');
+    const today = new Date().toISOString().split('T')[0];
+    birthDateInput.max = today;
     const supplierType = document.getElementById('supplier_legal_personality');
     const naturalFields = document.getElementById('natural_person_fields');
     const legalFields = document.getElementById('legal_person_fields');
@@ -1665,6 +1566,141 @@ function shouldValidate(el) {
   return el && el.required;
 }
 
+    function addAnotherBankFileInput() {
+    const wrapper = document.getElementById("bank_detail_attachment_section");
+    const fileGroup = document.createElement("div");
+    fileGroup.className = "file-group";
+
+    const input = document.createElement("input");
+    input.type = "file";
+    input.name = "bank_details_attachment";
+    input.accept = "application/pdf,image/*";
+
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (!file) return;
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (ext !== "pdf") {
+        input.setCustomValidity("Only PDF and Image files are allowed.");
+        input.style.borderColor = "red";
+        input.reportValidity();
+      } else {
+        input.setCustomValidity("");
+        input.style.borderColor = "";
+      }
+    });
+
+    fileGroup.appendChild(input);
+    wrapper.appendChild(fileGroup);
+  }
+    function addAnotherPaymentFileInput() {
+    const wrapper = document.getElementById("payment_terms_attachments_section");
+    const fileGroup = document.createElement("div");
+    fileGroup.className = "file-group";
+
+    const input = document.createElement("input");
+    input.type = "file";
+    input.name = "payment_terms_attachments";
+    input.accept = "application/pdf,image/*";
+
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (!file) return;
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (ext !== "pdf") {
+        input.setCustomValidity("Only PDF and Image files are allowed.");
+        input.style.borderColor = "red";
+        input.reportValidity();
+      } else {
+        input.setCustomValidity("");
+        input.style.borderColor = "";
+      }
+    });
+
+    fileGroup.appendChild(input);
+    wrapper.appendChild(fileGroup);
+  }
+  function addAnotherFiscalCodeFileInput() {
+    const wrapper = document.getElementById("attachment_fiscal_code_section");
+    const fileGroup = document.createElement("div");
+    fileGroup.className = "file-group";
+
+    const input = document.createElement("input");
+    input.type = "file";
+    input.name = "attachment_fiscal_code";
+    input.accept = "application/pdf,image/*";
+
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (!file) return;
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (ext !== "pdf") {
+        input.setCustomValidity("Only PDF and Image files are allowed.");
+        input.style.borderColor = "red";
+        input.reportValidity();
+      } else {
+        input.setCustomValidity("");
+        input.style.borderColor = "";
+      }
+    });
+
+    fileGroup.appendChild(input);
+    wrapper.appendChild(fileGroup);
+  }
+   function addAnotherIdentityCradFileInput() {
+    const wrapper = document.getElementById("attachment_identity_card_section");
+    const fileGroup = document.createElement("div");
+    fileGroup.className = "file-group";
+
+    const input = document.createElement("input");
+    input.type = "file";
+    input.name = "attachment_identity_card";
+    input.accept = "application/pdf,image/*";
+
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (!file) return;
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (ext !== "pdf") {
+        input.setCustomValidity("Only PDF and Image files are allowed.");
+        input.style.borderColor = "red";
+        input.reportValidity();
+      } else {
+        input.setCustomValidity("");
+        input.style.borderColor = "";
+      }
+    });
+
+    fileGroup.appendChild(input);
+    wrapper.appendChild(fileGroup);
+  }
+    function addAnotherAttachmentChambreFileInput() {
+    const wrapper = document.getElementById("attachment_chambre_section");
+    const fileGroup = document.createElement("div");
+    fileGroup.className = "file-group";
+
+    const input = document.createElement("input");
+    input.type = "file";
+    input.name = "attachment_chambre";
+    input.accept = "application/pdf,image/*";
+
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (!file) return;
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (ext !== "pdf") {
+        input.setCustomValidity("Only PDF and Image files are allowed.");
+        input.style.borderColor = "red";
+        input.reportValidity();
+      } else {
+        input.setCustomValidity("");
+        input.style.borderColor = "";
+      }
+    });
+
+    fileGroup.appendChild(input);
+    wrapper.appendChild(fileGroup);
+  }
    function toggleBasedOnProfessional() {
   const supplier = supplierType.value;
   const vendorCreated = vendorCreatedByDentsu.value;
@@ -1680,6 +1716,8 @@ function shouldValidate(el) {
       professionalStar.style.display = 'inline';
       document.getElementById('attachment_fiscal_code').required = false;
       document.getElementById('attachment_identity_card').required = false;
+      document.getElementById('attachment_identity_card_button').style.display = 'block';
+      document.getElementById('attachment_fiscal_code_button').style.display = 'block';
       document.getElementById('attachment_fiscal_code_star').style.display = 'none';
       document.getElementById('attachment_identity_card_star').style.display = 'none';
 
@@ -1699,6 +1737,8 @@ function shouldValidate(el) {
       // Dentsu == No
       document.getElementById('attachment_fiscal_code').required = true;
       document.getElementById('attachment_identity_card').required = true;
+      document.getElementById('attachment_identity_card_button').style.display = 'block';
+      document.getElementById('attachment_fiscal_code_button').style.display = 'block';
       document.getElementById('attachment_fiscal_code_star').style.display = 'inline';
       document.getElementById('attachment_identity_card_star').style.display = 'inline';
       professionalInput.required = true;
@@ -1764,7 +1804,6 @@ function shouldValidate(el) {
     document.getElementById('supplier_legal_personality').required = true;
     document.getElementById('vendor_created_by_dentsu').required = true;
     document.getElementById('group_d365').required = true;
-    document.getElementById('influencer_d365').required = true;
     document.getElementById('supplier_company_name').required = true;
     document.getElementById('address').required = true;
     document.getElementById('n').required = true;
@@ -1775,7 +1814,6 @@ function shouldValidate(el) {
     document.getElementById('vat_group').required = true;
     document.getElementById('dentsu_contact_email').required = true;
     document.getElementById('vendor_email').required = true;
-    document.getElementById('payment_method').required = true;
   } else if (supplier === 'Natural Person') {
     naturalInputs.forEach(input => input.required = true);
     naturalEndInputs.forEach(input => input.required = false);
@@ -1786,7 +1824,6 @@ function shouldValidate(el) {
     document.getElementById('supplier_legal_personality').required = true;
     document.getElementById('vendor_created_by_dentsu').required = true;
     document.getElementById('group_d365').required = true;
-    document.getElementById('influencer_d365').required = true;
     document.getElementById('first_name').required = true;
     document.getElementById('last_name').required = true;
     document.getElementById('birth_place').required = true;
@@ -1802,34 +1839,51 @@ function shouldValidate(el) {
     document.getElementById('vat_group').required = true;
     document.getElementById('dentsu_contact_email').required = true;
     document.getElementById('vendor_email').required = true;
-    document.getElementById('payment_method').required = true;
   }
 }
 
     function toogleBasedOnAttachmentChambre(){
       if(vendorCreatedByDentsu.value === 'Yes') {
         attachmentChambreSection.style.display = 'block';
+        document.getElementById('chambre_attachment_button').style.display = 'block';
         attachmentChambreInput.required = false;
         attachmentChambreStar.style.display = 'none';
       } else if (vendorCreatedByDentsu.value === 'No' && supplierType.value === 'Legal Person') {
         attachmentChambreSection.style.display = 'block';
+        document.getElementById('chambre_attachment_button').style.display = 'block';
         attachmentChambreInput.required = true;
         attachmentChambreStar.style.display = 'inline';
       } else {
         attachmentChambreSection.style.display = 'block';
+        document.getElementById('chambre_attachment_button').style.display = 'block';
         attachmentChambreInput.required = false;
         attachmentChambreStar.style.display = 'none';
       }
     }
     function toggleForStateAndCounty(){
-      if(document.getElementById('country').value === 'ITA - Italy') {
-        state_and_county.style.display = 'block';
-        county.required = true;
-        state.required = true;
+      if(document.getElementById('country').value === 'ITA') {
+        document.getElementById('state_and_county').style.display = 'block';
+        document.getElementById('county').required = true;
+        document.getElementById('state').required = true;
       }else {
-        state_and_county.style.display = 'none';
-        county.required = false;
-        state.required = flase;
+        document.getElementById('state_and_county').style.display = 'none';
+        document.getElementById('county').required = false;
+        document.getElementById('state').required = false;
+      }
+    }
+    function toggleForEftAndCash(){
+      if(document.getElementById('vendor_created_by_dentsu').value === 'Yes') {
+        document.getElementById('payment_term_cash_section').style.display = 'block';
+        document.getElementById('payment_term_eft_section').style.display = 'none';
+         // Enable CASH input, disable EFT input
+        document.getElementById('hidden_payment_method_cash').disabled = false;
+        document.getElementById('hidden_payment_method_eft').disabled = true;
+      }else {
+        document.getElementById('payment_term_cash_section').style.display = 'none';
+        document.getElementById('payment_term_eft_section').style.display = 'block';
+        // Enable EFT input, disable CASH input
+        document.getElementById('hidden_payment_method_cash').disabled = true;
+        document.getElementById('hidden_payment_method_eft').disabled = false;
       }
     }
     function toggleBasedOnVendorCreatedByDentsu() {
@@ -1862,6 +1916,7 @@ function shouldValidate(el) {
         swiftCodeInput.required = false;
         swiftCodeStar.style.display = 'none';
         bankDetailsAttachmentSection.style.display = 'block';
+        document.getElementById('bank_attachment_button').style.display = 'block';
         bankDetailsAttachmentInput.required = false;
         bankDetailsAttachmentStar.style.display = 'none';
       } else if (vendorCreatedByDentsu.value === 'No' && vatGroup.value === 'FOR_ITA'){
@@ -1893,6 +1948,7 @@ function shouldValidate(el) {
         swiftCodeInput.required = false;
         swiftCodeStar.style.display = 'none';
         bankDetailsAttachmentSection.style.display = 'block';
+        document.getElementById('bank_attachment_button').style.display = 'block';
         bankDetailsAttachmentInput.required = true;
         bankDetailsAttachmentStar.style.display = 'inline';
       } else {
@@ -1924,6 +1980,7 @@ function shouldValidate(el) {
         swiftCodeInput.required = true;
         swiftCodeStar.style.display = 'inline';
         bankDetailsAttachmentSection.style.display = 'block';
+        document.getElementById('bank_attachment_button').style.display = 'block';
         bankDetailsAttachmentInput.required = true;
         bankDetailsAttachmentStar.style.display = 'inline';
       }
@@ -2038,9 +2095,15 @@ function shouldValidate(el) {
     supplierType.addEventListener('change', toggleBasedOnVatGroup);
     supplierType.addEventListener('change', toggleBasedOnProfessional);
     vendorCreatedByDentsu.addEventListener('change', toggleBasedOnProfessional);
+    vendorCreatedByDentsu.addEventListener('change', toggleForEftAndCash);
     professionalInput.addEventListener('change', toggleBasedOnProfessional);
     supplierVatNumberInput.addEventListener('input', validateVATNumber);
     accountNumberInput.addEventListener("input", validateAccountNumber);
+    document.getElementById("bank_attachment_button").addEventListener("click", addAnotherBankFileInput);
+    document.getElementById("payment_attachments_button").addEventListener("click", addAnotherPaymentFileInput);
+    document.getElementById("chambre_attachment_button").addEventListener("click", addAnotherAttachmentChambreFileInput);
+    document.getElementById("attachment_identity_card_button").addEventListener("click", addAnotherIdentityCradFileInput);
+    document.getElementById("attachment_fiscal_code_button").addEventListener("click", addAnotherFiscalCodeFileInput);
 
 
 
@@ -2053,6 +2116,7 @@ function shouldValidate(el) {
     toogleBasedOnAttachmentChambre();
     toggleBasedOnVatGroup();
     toggleForStateAndCounty();
+    toggleForEftAndCash();
   });
 
 document.querySelector('form').addEventListener('submit', function (e) {
